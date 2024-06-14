@@ -5,20 +5,19 @@ Given 'I have a list of events' do
 end
 
 When 'I try to view all my events' do
-  get api_events_path
+  @page = EventsPage.new
+
+  @page.load
 end
 
 Then 'I must see the following events:' do |table|
   actual = []
 
-  json_response.each do |event|
-    starts_at = DateTime.parse event[:starts_at]
-    ends_at = DateTime.parse event[:ends_at]
-
+  @page.events.each do |event|
     actual << {
-      'Summary' => event[:summary],
-      'Starts At' => "#{starts_at.to_fs(:db)} UTC",
-      'Ends At' => "#{ends_at.to_fs(:db)} UTC"
+      'Summary' => event.summary.text,
+      'Starts At' => event.starts_at.text,
+      'Ends At' => event.ends_at.text
     }
   end
 
