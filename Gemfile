@@ -69,4 +69,5 @@ group :test do
 
   gem 'cucumber-rails', require: false
   gem 'database_cleaner'
+  gem 'site_prism'
 end
