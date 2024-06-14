@@ -35,34 +35,7 @@
     <script src="https://unpkg.com/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script>
-      const Eventee = {
-        data () {
-          return {
-            events: []
-          }
-        },
-        methods: {
-          fetchEvents: function () {
-            axios
-              .get('/api/events')
-              .then(response => {
-                this.events = response.data
-              })
-          },
-          formatDate: function (date) {
-            return date
-              .replace('T', ' ')
-              .replace('.000Z', ' UTC')
-          }
-        },
-        mounted () {
-          this.fetchEvents()
-        }
-      }
-
-      Vue.createApp(Eventee).mount('#app')
-    </script>
+    <script src="js/index.js"></script>
   </body>
 </html>
 
