@@ -9,11 +9,15 @@ When 'I try to view all my events' do
 end
 
 Then 'I must see the following events:' do |table|
-  table.hashes.each_with_index do |row, i|
-    event = @events[i]
+  actual = []
 
-    expect(event.summary).to eql row['Summary']
-    expect(event.starts_at.to_formatted_s).to eql row['Starts At']
-    expect(event.ends_at.to_formatted_s).to eql row['Ends At']
+  @events.each do |event|
+    actual << {
+      'Summary' => event.summary,
+      'Starts At' => event.starts_at.to_formatted_s,
+      'Ends At' => event.ends_at.to_formatted_s
+    }
   end
+
+  expect(actual).to eql table.hashes
 end
