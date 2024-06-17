@@ -72,8 +72,8 @@
           </div>
           <template v-for="week in month">
             <div class="row text-end">
-              <div class="col border day" v-for="day in week">
-                {{ day }}
+              <div class="col border day" v-for="date in week" :id="date">
+                {{ getDay(date) }}
               </div>
             </div>
           </template>
