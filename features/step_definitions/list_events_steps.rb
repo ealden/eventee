@@ -42,9 +42,11 @@ Then 'I must see the following calendar for {string}:' do |current_month, table|
 
   expected = table.raw.drop(1).flatten.reject(&:blank?)
 
-  expected.each_with_index do |day, i|
-    expect(@page.month_view.month_days[i].text).to eql day
+  actual = expected.each_with_index.collect do |day, i|
+    @page.month_view.month_days[i].text
   end
+
+  expect(actual).to eql expected
 end
 
 Then 'I must see the following events on {string}:' do |date, table|
