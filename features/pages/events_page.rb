@@ -7,5 +7,7 @@ end
 class EventsPage < SitePrism::Page
   set_url '/'
 
+  element :month_view, '#month-view'
+
   sections :events, EventRow, '#events .event'
 end

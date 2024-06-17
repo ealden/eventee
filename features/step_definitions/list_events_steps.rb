@@ -10,6 +10,14 @@ When 'I try to view all my events' do
   @page.load
 end
 
+When 'I try to view all my events in month view' do
+  @page = EventsPage.new
+
+  @page.load
+
+  @page.month_view.click
+end
+
 Then 'I must see the following events:' do |table|
   actual = []
 
@@ -22,4 +30,8 @@ Then 'I must see the following events:' do |table|
   end
 
   expect(actual).to eql table.hashes
+end
+
+Then 'I must see the date {string}' do |date|
+  expect(@page).to have_content date
 end
