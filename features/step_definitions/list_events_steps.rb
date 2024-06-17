@@ -21,6 +21,7 @@ When 'I try to view all my events in month view' do
 end
 
 Then 'I must see the following events:' do |table|
+  expected = table.hashes
   actual = []
 
   @page.all_events.events.each do |event|
@@ -31,18 +32,21 @@ Then 'I must see the following events:' do |table|
     }
   end
 
-  expect(actual).to eql table.hashes
+  expect(actual).to eql expected
 end
 
-Then 'I must see the following calendar for {string}:' do |current_month, calendar|
+Then 'I must see the following calendar for {string}:' do |current_month, table|
   expect(@page.month_view.current_month.text).to eql current_month
 
-  calendar.raw.drop(1).flatten.reject(&:blank?).each_with_index do |day, i|
+  expected = table.raw.drop(1).flatten.reject(&:blank?)
+
+  expected.each_with_index do |day, i|
     expect(@page.month_view.month_days[i].text).to eql day
   end
 end
 
 Then 'I must see the following events on {string}:' do |date, table|
+  expected = table.hashes
   actual = []
 
   @page.month_view.events.each do |event|
@@ -52,5 +56,5 @@ Then 'I must see the following events on {string}:' do |date, table|
     }
   end
 
-  expect(actual).to eql table.hashes
+  expect(actual).to eql expected
 end
