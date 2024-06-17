@@ -11,7 +11,7 @@ const Eventee = {
         [ '2024-06-23', '2024-06-24', '2024-06-25', '2024-06-26', '2024-06-27', '2024-06-28', '2024-06-29' ],
         [ '2024-06-30', null, null, null, null, null, null ]
       ]
-    };
+    }
   },
   computed: {
     isAllEvents() {
@@ -47,13 +47,13 @@ const Eventee = {
       axios
         .get('/api/events')
         .then(response => {
-          this.events = response.data;
-        });
+          this.events = response.data
+        })
     },
     formatDate(date) {
       return date
         .replace('T', ' ')
-        .replace('.000Z', ' UTC');
+        .replace('.000Z', ' UTC')
     },
     formatTime(date) {
       return date
@@ -62,15 +62,15 @@ const Eventee = {
     },
     getDay(dateString) {
       if (dateString) {
-        return new Date(dateString).getDate();
+        return new Date(dateString).getDate()
       } else {
-        return dateString;
+        return dateString
       }
     }
   },
   mounted() {
-    this.fetchEvents();
+    this.fetchEvents()
   }
-};
+}
 
-Vue.createApp(Eventee).mount('#app');
+Vue.createApp(Eventee).mount('#app')
