@@ -4,11 +4,11 @@ class EventRow < SitePrism::Section
   element :ends_at, '.ends_at'
 end
 
-class AllEventsSection < SitePrism::Section
+class AllEventsView < SitePrism::Section
   sections :events, EventRow, '.event'
 end
 
-class MonthViewSection < SitePrism::Section
+class MonthView < SitePrism::Section
   element :current_month, '#current-month'
 
   elements :days, '#month .day'
@@ -28,6 +28,6 @@ class EventsPage < SitePrism::Page
   element :nav_all_events, '#nav-all-events'
   element :nav_month_view, '#nav-month-view'
 
-  section :all_events, AllEventsSection, '#all-events'
-  section :month_view, MonthViewSection, '#month-view'
+  section :all_events, AllEventsView, '#all-events'
+  section :month_view, MonthView, '#month-view'
 end
