@@ -2,15 +2,7 @@ const Eventee = {
   data() {
     return {
       events: [],
-      view: 0,
-      month: [
-        [ null, null, null, null, null, null, '2024-06-01' ],
-        [ '2024-06-02', '2024-06-03', '2024-06-04', '2024-06-05', '2024-06-06', '2024-06-07', '2024-06-08' ],
-        [ '2024-06-09', '2024-06-10', '2024-06-11', '2024-06-12', '2024-06-13', '2024-06-14', '2024-06-15' ],
-        [ '2024-06-16', '2024-06-17', '2024-06-18', '2024-06-19', '2024-06-20', '2024-06-21', '2024-06-22' ],
-        [ '2024-06-23', '2024-06-24', '2024-06-25', '2024-06-26', '2024-06-27', '2024-06-28', '2024-06-29' ],
-        [ '2024-06-30', null, null, null, null, null, null ]
-      ]
+      view: 0
     }
   },
   computed: {
@@ -34,6 +26,45 @@ const Eventee = {
       }
 
       return groups
+    },
+    month() {
+      const startDate = new Date('2024-06-01')
+      const endDate = new Date(startDate.getFullYear(), (startDate.getMonth() + 1), 0)
+
+      let week = []
+
+      for (let i = 0; i < startDate.getDay(); i++) {
+        week.push(null)
+      }
+
+      const month = []
+
+      for (let i = 0; i < endDate.getDate(); i++) {
+        const m = (startDate.getMonth() + 1)
+        const d = (i + 1)
+
+        const yyyy = startDate.getFullYear()
+        const mm = m.toString().padStart(2, 0)
+        const dd = d.toString().padStart(2, 0)
+
+        week.push(yyyy + "-" + mm + "-" + dd)
+
+        if (week.length == 7) {
+          month.push(week)
+
+          week = []
+        }
+      }
+
+      if (week.length > 0) {
+        while (week.length < 7) {
+          week.push(null)
+        }
+
+        month.push(week)
+      }
+
+      return month
     }
   },
   methods: {
