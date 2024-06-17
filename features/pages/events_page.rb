@@ -5,7 +5,7 @@ class EventRow < SitePrism::Section
 end
 
 class AllEventsSection < SitePrism::Section
-  sections :events, EventRow, '#events .event'
+  sections :events, EventRow, '.event'
 end
 
 class MonthViewSection < SitePrism::Section
