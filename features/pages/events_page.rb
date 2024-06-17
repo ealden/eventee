@@ -14,6 +14,12 @@ class MonthViewSection < SitePrism::Section
   elements :month_days, '#month .day'
 
   sections :events, EventRow, '.event'
+
+  def events_on date
+    events.keep_if do |event|
+      event.root_element[:class].include? date
+    end
+  end
 end
 
 class EventsPage < SitePrism::Page

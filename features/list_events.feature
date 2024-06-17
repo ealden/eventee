@@ -5,6 +5,8 @@ Feature: List Events
       | Event 1 | 2024-06-14 14:00  | 2024-06-14 15:00  |
       | Event 2 | 2024-06-14 15:00  | 2024-06-14 16:00  |
       | Event 3 | 2024-06-14 17:00  | 2024-06-14 18:00  |
+      | Event 4 | 2024-06-17 14:00  | 2024-06-17 20:00  |
+      | Event 5 | 2024-06-30 12:00  | 2024-06-30 18:00  |
 
   Scenario: All Events
     When  I try to view all my events
@@ -13,6 +15,8 @@ Feature: List Events
       | Event 1 | 2024-06-14 14:00  | 2024-06-14 15:00  |
       | Event 2 | 2024-06-14 15:00  | 2024-06-14 16:00  |
       | Event 3 | 2024-06-14 17:00  | 2024-06-14 18:00  |
+      | Event 4 | 2024-06-17 14:00  | 2024-06-17 20:00  |
+      | Event 5 | 2024-06-30 12:00  | 2024-06-30 18:00  |
 
   Scenario: Month View
     When  I try to view all my events in month view
@@ -29,3 +33,9 @@ Feature: List Events
       | Event 1 | 14:00     |
       | Event 2 | 15:00     |
       | Event 3 | 17:00     |
+    And   I must see the following events on '2024-06-17':
+      | Summary | Starts At |
+      | Event 4 | 14:00     |
+    And   I must see the following events on '2024-06-30':
+      | Summary | Starts At |
+      | Event 5 | 12:00     |

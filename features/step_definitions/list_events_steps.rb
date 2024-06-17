@@ -53,7 +53,7 @@ Then 'I must see the following events on {string}:' do |date, table|
   expected = table.hashes
   actual = []
 
-  @page.month_view.events.each do |event|
+  @page.month_view.events_on(date).each do |event|
     actual << {
       'Summary' => event.summary.text,
       'Starts At' => event.starts_at.text
