@@ -16,7 +16,7 @@ const Eventee = {
       const groups = {}
 
       for (event of this.events) {
-        const date = event.starts_at.split('T')[0]
+        const date = this.formatDate(event.starts_at)
 
         if (!Object.hasOwn(groups, date)) {
           groups[date] = []
@@ -28,26 +28,28 @@ const Eventee = {
       return groups
     },
     month() {
-      const startDate = new Date('2024-06-01')
-      const endDate = new Date(startDate.getFullYear(), (startDate.getMonth() + 1), 0)
+      const startDate = new Date()
+      startDate.setUTCFullYear(2024)
+      startDate.setUTCMonth(6 - 1)
+      startDate.setUTCDate(1)
+
+      const endDate = new Date(startDate)
+      endDate.setUTCMonth(startDate.getUTCMonth() + 1)
+      endDate.setUTCDate(0)
 
       let week = []
 
-      for (let i = 0; i < startDate.getDay(); i++) {
+      for (let i = 0; i < startDate.getUTCDay(); i++) {
         week.push(null)
       }
 
       const month = []
 
-      for (let i = 0; i < endDate.getDate(); i++) {
-        const m = (startDate.getMonth() + 1)
-        const d = (i + 1)
+      for (let i = 1; i <= endDate.getUTCDate(); i++) {
+        const date = new Date(startDate)
+        date.setUTCDate(i)
 
-        const yyyy = startDate.getFullYear()
-        const mm = m.toString().padStart(2, 0)
-        const dd = d.toString().padStart(2, 0)
-
-        week.push(yyyy + "-" + mm + "-" + dd)
+        week.push(this.formatDate(date))
 
         if (week.length == 7) {
           month.push(week)
@@ -82,21 +84,18 @@ const Eventee = {
         })
     },
     formatDate(date) {
-      return date
-        .replace('T', ' ')
-        .replace(':00.000Z', '')
+      return new Date(date)
+        .toISOString()
+        .split('T')[0]
     },
     formatTime(date) {
-      return date
+      return new Date(date)
+        .toISOString()
         .split('T')[1]
         .replace(':00.000Z', '')
     },
-    getDay(dateString) {
-      if (dateString) {
-        return new Date(dateString).getDate()
-      } else {
-        return dateString
-      }
+    formatDay(date) {
+      return new Date(date).getUTCDate()
     }
   },
   mounted() {

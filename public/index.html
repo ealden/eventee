@@ -49,10 +49,10 @@
                 {{ event.summary }}
               </td>
               <td class="starts_at">
-                {{ formatDate(event.starts_at) }}
+                {{ formatDate(event.starts_at) }} {{ formatTime(event.starts_at) }}
               </td>
               <td class="ends_at">
-                {{ formatDate(event.ends_at) }}
+                {{ formatDate(event.ends_at) }} {{ formatTime(event.ends_at) }}
               </td>
             </tr>
           </tbody>
@@ -75,7 +75,9 @@
               <div class="col border" v-for="date in week" :id="date">
                 <div class="row text-end">
                   <div class="col day">
-                    {{ getDay(date) }}
+                    <template v-if="date">
+                      {{ formatDay(date) }}
+                    </template>
                   </div>
                 </div>
                 <div class="row event"
