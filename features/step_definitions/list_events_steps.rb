@@ -24,10 +24,9 @@ end
 
 Then 'I must see the following events:' do |table|
   expected = table.hashes
-  actual = []
 
-  @page.all_events.events.each do |event|
-    actual << {
+  actual = @page.all_events.events.collect do |event|
+    {
       'Summary' => event.summary.text,
       'Starts At' => event.starts_at.text,
       'Ends At' => event.ends_at.text
@@ -51,10 +50,9 @@ end
 
 Then 'I must see the following events on {string}:' do |date, table|
   expected = table.hashes
-  actual = []
 
-  @page.month_view.events_on(date).each do |event|
-    actual << {
+  actual = @page.month_view.events_on(date).collect do |event|
+    {
       'Summary' => event.summary.text,
       'Starts At' => event.starts_at.text
     }
