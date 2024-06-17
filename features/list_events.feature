@@ -20,3 +20,8 @@ Feature: List Events
       | 16  | 17  | 18  | 19  | 20  | 21  | 22  |
       | 23  | 24  | 25  | 26  | 27  | 28  | 29  |
       | 30  |     |     |     |     |     |     |
+    And   I must see the following events on '2024-06-14':
+      | Summary | Starts At |
+      | Event 1 | 14:00     |
+      | Event 2 | 15:00     |
+      | Event 3 | 17:00     |

@@ -71,9 +71,21 @@
             <div class="col"><strong>Sat</strong></div>
           </div>
           <template v-for="week in month">
-            <div class="row text-end">
-              <div class="col border day" v-for="date in week" :id="date">
-                {{ getDay(date) }}
+            <div class="row">
+              <div class="col border" v-for="date in week" :id="date">
+                <div class="row text-end">
+                  <div class="col day">
+                    {{ getDay(date) }}
+                  </div>
+                </div>
+                <div class="row event" v-for="event in groupedEvents[date]">
+                  <div class="col summary text-start">
+                    {{ event.summary }}
+                  </div>
+                  <div class="col starts_at text-end">
+                    {{ formatTime(event.starts_at) }}
+                  </div>
+                </div>
               </div>
             </div>
           </template>

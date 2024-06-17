@@ -12,6 +12,8 @@ class MonthViewSection < SitePrism::Section
   element :current_month, '#current-month'
 
   elements :month_days, '#month .day'
+
+  sections :events, EventRow, '.event'
 end
 
 class EventsPage < SitePrism::Page

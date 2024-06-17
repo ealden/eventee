@@ -37,7 +37,20 @@ end
 Then 'I must see the following calendar for {string}:' do |current_month, calendar|
   expect(@page.month_view.current_month.text).to eql current_month
 
-  calendar.raw.drop(1).flatten.each_with_index do |day, i|
+  calendar.raw.drop(1).flatten.reject(&:blank?).each_with_index do |day, i|
     expect(@page.month_view.month_days[i].text).to eql day
   end
+end
+
+Then 'I must see the following events on {string}:' do |date, table|
+  actual = []
+
+  @page.month_view.events.each do |event|
+    actual << {
+      'Summary' => event.summary.text,
+      'Starts At' => event.starts_at.text
+    }
+  end
+
+  expect(actual).to eql table.hashes
 end

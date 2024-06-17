@@ -19,6 +19,21 @@ const Eventee = {
     },
     isMonthView() {
       return (this.view == 3)
+    },
+    groupedEvents() {
+      const groups = {}
+
+      for (event of this.events) {
+        const date = event.starts_at.split('T')[0]
+
+        if (!Object.hasOwn(groups, date)) {
+          groups[date] = []
+        }
+
+        groups[date].push(event)
+      }
+
+      return groups
     }
   },
   methods: {
@@ -39,6 +54,11 @@ const Eventee = {
       return date
         .replace('T', ' ')
         .replace('.000Z', ' UTC');
+    },
+    formatTime(date) {
+      return date
+        .split('T')[1]
+        .replace(':00.000Z', '')
     },
     getDay(dateString) {
       if (dateString) {
