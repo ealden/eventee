@@ -93,6 +93,13 @@ const Eventee = {
 
       this.today = date
     },
+    nextMonth() {
+      const date = new Date(this.today)
+      date.setUTCMonth(this.today.getUTCMonth() + 1)
+      date.setUTCDate(1)
+
+      this.today = date
+    },
     fetchEvents() {
       axios
         .get('/api/events')

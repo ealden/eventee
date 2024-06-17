@@ -16,6 +16,16 @@ When 'I try to view all my events in the previous month' do
   @page.month_view.prev_month.click
 end
 
+When 'I try to view all my events in the next month' do
+  @page = EventsPage.new
+
+  @page.load
+
+  @page.nav_month_view.click
+
+  @page.month_view.next_month.click
+end
+
 Then 'I must see the following calendar for {string}:' do |current_month, table|
   expect(@page.month_view.current_month.text).to eql current_month
 
