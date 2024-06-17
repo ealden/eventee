@@ -59,7 +59,16 @@
         </table>
       </div>
       <div id="month-view" v-if="isMonthView">
-        <h1 id="current-month">June 2024</h1>
+        <div class="container">
+          <div class="row">
+            <div class="col">
+              <h1 id="current-month">{{ formatMonthYear(today) }}</h1>
+            </div>
+            <div class="col text-end">
+              <a id="prev-month" href="#" @click="prevMonth">&lt; Prev</a>
+            </div>
+          </div>
+        </div>
         <div id="month" class="container">
           <div class="row text-end">
             <div class="col"><strong>Sun</strong></div>

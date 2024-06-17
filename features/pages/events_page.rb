@@ -11,6 +11,8 @@ end
 class MonthView < SitePrism::Section
   element :current_month, '#current-month'
 
+  element :prev_month, '#prev-month'
+
   elements :days, '#month .day'
 
   sections :events, EventRow, '.event'

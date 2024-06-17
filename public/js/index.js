@@ -2,6 +2,7 @@ const Eventee = {
   data() {
     return {
       events: [],
+      today: new Date(),
       view: 0
     }
   },
@@ -27,15 +28,24 @@ const Eventee = {
 
       return groups
     },
-    month() {
+    startMonth() {
       const startDate = new Date()
-      startDate.setUTCFullYear(2024)
-      startDate.setUTCMonth(6 - 1)
+      startDate.setUTCFullYear(this.today.getUTCFullYear())
+      startDate.setUTCMonth(this.today.getUTCMonth())
       startDate.setUTCDate(1)
 
-      const endDate = new Date(startDate)
-      endDate.setUTCMonth(startDate.getUTCMonth() + 1)
+      return startDate
+    },
+    endMonth() {
+      const endDate = new Date(this.startMonth)
+      endDate.setUTCMonth(this.startMonth.getUTCMonth() + 1)
       endDate.setUTCDate(0)
+
+      return endDate
+    },
+    month() {
+      const startDate = this.startMonth
+      const endDate = this.endMonth
 
       let week = []
 
@@ -76,6 +86,13 @@ const Eventee = {
     monthView() {
       this.view = 3
     },
+    prevMonth() {
+      const date = new Date(this.today)
+      date.setUTCMonth(this.today.getUTCMonth() - 1)
+      date.setUTCDate(1)
+
+      this.today = date
+    },
     fetchEvents() {
       axios
         .get('/api/events')
@@ -93,6 +110,30 @@ const Eventee = {
         .toISOString()
         .split('T')[1]
         .replace(':00.000Z', '')
+    },
+    formatMonthYear(date) {
+      const MONTHS = {
+        1: 'January',
+        2: 'February',
+        3: 'March',
+        4: 'April',
+        5: 'May',
+        6: 'June',
+        7: 'July',
+        8: 'August',
+        9: 'September',
+        10: 'October',
+        11: 'November',
+        12: 'December'
+      }
+
+      const dateObject = new Date(date)
+
+      const month = MONTHS[dateObject.getUTCMonth() + 1]
+      const year = dateObject.getUTCFullYear()
+
+      return month + ' ' + year
+
     },
     formatDay(date) {
       return new Date(date).getUTCDate()
