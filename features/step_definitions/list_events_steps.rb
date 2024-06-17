@@ -41,9 +41,7 @@ Then 'I must see the following calendar for {string}:' do |current_month, table|
 
   expected = table.raw.drop(1).flatten.reject(&:blank?)
 
-  actual = expected.each_with_index.collect do |day, i|
-    @page.month_view.month_days[i].text
-  end
+  actual = @page.month_view.days.map(&:text)
 
   expect(actual).to eql expected
 end
