@@ -14,7 +14,7 @@
         </a>
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a id="all-events"
+            <a id="nav-all-events"
                class="nav-link"
                href="#"
                :class="{ active: isAllEvents }"
@@ -23,7 +23,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a id="month-view"
+            <a id="nav-month-view"
                class="nav-link"
                href="#"
                :class="{ active: isMonthView }"
@@ -33,7 +33,7 @@
           </li>
         </ul>
       </nav>
-      <div v-if="isAllEvents">
+      <div id="all-events" v-if="isAllEvents">
         <h1>All Events</h1>
         <table id="events" class="table">
           <thead>
@@ -58,7 +58,7 @@
           </tbody>
         </table>
       </div>
-      <div v-if="isMonthView">
+      <div id="month-view" v-if="isMonthView">
         <h1 id="current-month">June 2024</h1>
         <div id="month" class="container">
           <div class="row text-end">
