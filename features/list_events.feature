@@ -5,10 +5,10 @@ Feature: List Events
   Scenario: All Events
     When  I try to view all my events
     Then  I must see the following events:
-      | Summary | Starts At               | Ends At                 |
-      | Event 1 | 2024-06-14 14:00:00 UTC | 2024-06-14 15:00:00 UTC |
-      | Event 2 | 2024-06-14 15:00:00 UTC | 2024-06-14 16:00:00 UTC |
-      | Event 3 | 2024-06-14 17:00:00 UTC | 2024-06-14 18:00:00 UTC |
+      | Summary | Starts At         | Ends At           |
+      | Event 1 | 2024-06-14 14:00  | 2024-06-14 15:00  |
+      | Event 2 | 2024-06-14 15:00  | 2024-06-14 16:00  |
+      | Event 3 | 2024-06-14 17:00  | 2024-06-14 18:00  |
 
   Scenario: Month View
     When  I try to view all my events in month view

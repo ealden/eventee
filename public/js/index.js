@@ -53,7 +53,7 @@ const Eventee = {
     formatDate(date) {
       return date
         .replace('T', ' ')
-        .replace('.000Z', ' UTC')
+        .replace(':00.000Z', '')
     },
     formatTime(date) {
       return date
