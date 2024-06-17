@@ -32,6 +32,10 @@ Then 'I must see the following events:' do |table|
   expect(actual).to eql table.hashes
 end
 
-Then 'I must see the date {string}' do |date|
-  expect(@page).to have_content date
+Then 'I must see the following calendar for {string}:' do |current_month, calendar|
+  expect(@page.current_month.text).to eql current_month
+
+  calendar.raw.drop(1).flatten.each_with_index do |day, i|
+    expect(@page.month_days[i].text).to eql day
+  end
 end

@@ -8,6 +8,8 @@ class EventsPage < SitePrism::Page
   set_url '/'
 
   element :month_view, '#month-view'
+  element :current_month, '#current-month'
+  elements :month_days, '#month .day'
 
   sections :events, EventRow, '#events .event'
 end
