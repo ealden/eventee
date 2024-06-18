@@ -26,7 +26,7 @@ const Eventee = {
         const date = this.formatDate(event.starts_at)
         const time = this.formatTime(event.starts_at)
 
-        const dateTime = this.weekKey(date, time)
+        const dateTime = this.formatDateTime(date, time)
 
         if (!Object.hasOwn(groups, date)) {
           groups[date] = []
@@ -129,9 +129,6 @@ const Eventee = {
 
       this.today = date
     },
-    weekKey(date, time) {
-      return (date + 'T' + time)
-    },
     prevMonth() {
       const date = new Date(this.today)
       date.setUTCMonth(this.today.getUTCMonth() - 1)
@@ -166,6 +163,9 @@ const Eventee = {
         .toISOString()
         .split('T')[1]
         .replace(':00.000Z', '')
+    },
+    formatDateTime(date, time) {
+      return (date + 'T' + time)
     },
     formatHour(hour) {
       return ((hour - 1).toString().padStart(2, 0) + ':00')

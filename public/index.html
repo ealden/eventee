@@ -84,8 +84,8 @@
             <div class="col border">
               <div class="row">
                 <div class="col event"
-                     :class="weekKey(formatDate(today), formatHour(hour))"
-                     v-for="event in groups[weekKey(formatDate(today), formatHour(hour))]">
+                     :class="formatDateTime(formatDate(today), formatHour(hour))"
+                     v-for="event in groups[formatDateTime(formatDate(today), formatHour(hour))]">
                   <span class="summary">
                     {{ event.summary }}
                   </span>
@@ -164,8 +164,8 @@
             <div class="col border" v-for="date in week">
               <div class="row">
                 <div class="col event"
-                     :class="weekKey(date, formatHour(hour))"
-                     v-for="event in groups[weekKey(date, formatHour(hour))]">
+                     :class="formatDateTime(date, formatHour(hour))"
+                     v-for="event in groups[formatDateTime(date, formatHour(hour))]">
                   <span class="summary">
                     {{ event.summary }}
                   </span>
