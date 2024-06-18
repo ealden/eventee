@@ -10,6 +10,9 @@ const Eventee = {
     isAllEvents() {
       return (this.view == 0)
     },
+    isWeekView() {
+      return (this.view == 2)
+    },
     isMonthView() {
       return (this.view == 3)
     },
@@ -82,6 +85,9 @@ const Eventee = {
   methods: {
     allEvents() {
       this.view = 0
+    },
+    weekView() {
+      this.view = 2
     },
     monthView() {
       this.view = 3

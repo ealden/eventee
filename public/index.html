@@ -23,6 +23,15 @@
             </a>
           </li>
           <li class="nav-item">
+            <a id="nav-week-view"
+               class="nav-link"
+               href="#"
+               :class="{ active: isWeekView }"
+               @click="weekView">
+              Week
+            </a>
+          </li>
+          <li class="nav-item">
             <a id="nav-month-view"
                class="nav-link"
                href="#"
@@ -57,6 +66,9 @@
             </tr>
           </tbody>
         </table>
+      </div>
+      <div id="week-view" v-if="isWeekView">
+        <h2 id="current-week">{{ formatMonthYear(today) }}</h2>
       </div>
       <div id="month-view" v-if="isMonthView">
         <div class="container">

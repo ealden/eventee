@@ -8,6 +8,10 @@ class AllEventsView < SitePrism::Section
   sections :events, EventRow, '.event'
 end
 
+class WeekView < SitePrism::Section
+  element :current_week, '#current-week'
+end
+
 class MonthView < SitePrism::Section
   element :current_month, '#current-month'
 
@@ -29,8 +33,10 @@ class EventsPage < SitePrism::Page
   set_url '/'
 
   element :nav_all_events, '#nav-all-events'
+  element :nav_week_view, '#nav-week-view'
   element :nav_month_view, '#nav-month-view'
 
   section :all_events, AllEventsView, '#all-events'
+  section :week_view, WeekView, '#week-view'
   section :month_view, MonthView, '#month-view'
 end
