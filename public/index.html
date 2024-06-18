@@ -23,6 +23,15 @@
             </a>
           </li>
           <li class="nav-item">
+            <a id="nav-day-view"
+               class="nav-link"
+               href="#"
+               :class="{ active: isDayView }"
+               @click="dayView">
+              Day
+            </a>
+          </li>
+          <li class="nav-item">
             <a id="nav-week-view"
                class="nav-link"
                href="#"
@@ -66,6 +75,28 @@
             </tr>
           </tbody>
         </table>
+      </div>
+      <div id="day-view" v-if="isDayView">
+        <h2 class="current-period">{{ formatMonthYear(today) }}</h2>
+        <div id="day" class="container">
+          <div class="row" v-for="hour in 24">
+            <div class="col-1 border text-end">{{ formatHour(hour) }}</div>
+            <div class="col border">
+              <div class="row">
+                <div class="col event"
+                     :class="weekKey(formatDate(today), formatHour(hour))"
+                     v-for="event in weekEvents[weekKey(formatDate(today), formatHour(hour))]">
+                  <span class="summary">
+                    {{ event.summary }}
+                  </span>
+                  <span class="starts_at visually-hidden">
+                    {{ formatTime(event.starts_at) }}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <div id="week-view" v-if="isWeekView">
         <div class="container">

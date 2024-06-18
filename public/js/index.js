@@ -10,6 +10,9 @@ const Eventee = {
     isAllEventsView() {
       return (this.view == 0)
     },
+    isDayView() {
+      return (this.view == 1)
+    },
     isWeekView() {
       return (this.view == 2)
     },
@@ -125,6 +128,9 @@ const Eventee = {
   methods: {
     allEventsView() {
       this.view = 0
+    },
+    dayView() {
+      this.view = 1
     },
     weekView() {
       this.view = 2
