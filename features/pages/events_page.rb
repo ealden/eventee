@@ -32,11 +32,11 @@ end
 class EventsPage < SitePrism::Page
   set_url '/'
 
-  element :nav_all_events, '#nav-all-events'
+  element :nav_all_events_view, '#nav-all-events-view'
   element :nav_week_view, '#nav-week-view'
   element :nav_month_view, '#nav-month-view'
 
-  section :all_events, AllEventsView, '#all-events'
+  section :all_events_view, AllEventsView, '#all-events-view'
   section :week_view, WeekView, '#week-view'
   section :month_view, MonthView, '#month-view'
 end

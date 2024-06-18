@@ -7,7 +7,7 @@ const Eventee = {
     }
   },
   computed: {
-    isAllEvents() {
+    isAllEventsView() {
       return (this.view == 0)
     },
     isWeekView() {
@@ -83,7 +83,7 @@ const Eventee = {
     }
   },
   methods: {
-    allEvents() {
+    allEventsView() {
       this.view = 0
     },
     weekView() {
