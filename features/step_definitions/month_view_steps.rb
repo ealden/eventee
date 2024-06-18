@@ -31,16 +31,6 @@ When 'I try to view all my events this month' do
   @page.month_view.this_month.click
 end
 
-Then 'I must see the following month for {string}:' do |current_period, table|
-  expect(@page.current_period.text).to eql current_period
-
-  expected = table.raw.drop(1).flatten.reject(&:blank?)
-
-  actual = @page.days.map(&:text)
-
-  expect(actual).to eql expected
-end
-
 Then 'I must see the following month events on {string}:' do |date, table|
   expected = table.hashes
 

@@ -31,16 +31,6 @@ When 'I try to view all my events this week' do
   @page.week_view.this_week.click
 end
 
-Then 'I must see the following week for {string}:' do |current_period, table|
-  expect(@page.current_period.text).to eql current_period
-
-  expected = table.raw.drop(1).flatten
-
-  actual = @page.days.map(&:text)
-
-  expect(actual).to eql expected
-end
-
 Then 'I must see the following week events on {string}:' do |date, table|
   expected = table.hashes
 
