@@ -54,6 +54,10 @@ Then 'I must see the following week events on {string}:' do |date, table|
   expect(actual).to eql expected
 end
 
+Then 'I must see {int} events this week' do |count|
+  expect(@page.week_view.events).to have_attributes count: count
+end
+
 Then 'I must not see any events this week' do
   expect(@page.week_view.events).to be_empty
 end
