@@ -17,15 +17,21 @@ const Eventee = {
       return (this.view == 3)
     },
     week() {
-      return [
-        '2024-06-16',
-        '2024-06-17',
-        '2024-06-18',
-        '2024-06-19',
-        '2024-06-20',
-        '2024-06-21',
-        '2024-06-22'
-      ]
+      const startDate = new Date()
+      startDate.setUTCFullYear(2024)
+      startDate.setUTCMonth(6 - 1)
+      startDate.setUTCDate(16)
+
+      const week = []
+
+      for (let i = 0; i < 7; i++) {
+        const date = new Date(startDate)
+        date.setUTCDate(startDate.getUTCDate() + i)
+
+        week.push(this.formatDate(date))
+      }
+
+      return week
     },
     monthStart() {
       const startDate = new Date()
