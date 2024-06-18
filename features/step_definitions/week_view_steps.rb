@@ -31,8 +31,8 @@ When 'I try to view all my events this week' do
   @page.week_view.this_week.click
 end
 
-Then 'I must see the following week for {string}:' do |current_week, table|
-  expect(@page.week_view.current_week.text).to eql current_week
+Then 'I must see the following week for {string}:' do |current_period, table|
+  expect(@page.current_period.text).to eql current_period
 
   expected = table.raw.drop(1).flatten
 
