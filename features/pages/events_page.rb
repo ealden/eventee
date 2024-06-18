@@ -12,6 +12,14 @@ class WeekView < SitePrism::Section
   element :current_week, '#current-week'
 
   elements :days, '#week .day'
+
+  sections :events, EventRow, '.event'
+
+  def events_on date
+    events.keep_if do |event|
+      event.root_element[:class].include? date
+    end
+  end
 end
 
 class MonthView < SitePrism::Section

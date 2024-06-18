@@ -17,5 +17,14 @@ Then 'I must see the following week for {string}:' do |current_week, table|
 end
 
 Then 'I must see the following week events on {string}:' do |date, table|
-  pending
+  expected = table.hashes
+
+  actual = @page.week_view.events_on(date).collect do |event|
+    {
+      'Starts At' => event.starts_at.text,
+      'Summary' => event.summary.text
+    }
+  end
+
+  expect(actual).to eql expected
 end

@@ -17,5 +17,5 @@ Feature: Week View
       | Sun | Mon | Tue | Wed | Thu | Fri | Sat |
       | 16  | 17  | 18  | 19  | 20  | 21  | 22  |
     And   I must see the following week events on '2024-06-17':
-      | Summary | Starts At |
-      | Event 6 | 09:00     |
+      | Starts At | Summary |
+      | 14:00     | Event 4 |
