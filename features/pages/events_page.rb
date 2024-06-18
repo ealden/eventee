@@ -2,6 +2,7 @@ class AllEventsView < SitePrism::Section
 end
 
 class DayView < SitePrism::Section
+  element :prev_day, '#prev-day'
 end
 
 class WeekView < SitePrism::Section

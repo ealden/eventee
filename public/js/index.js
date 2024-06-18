@@ -130,6 +130,12 @@ const Eventee = {
     monthView() {
       this.view = 3
     },
+    prevDay() {
+      const date = new Date(this.today)
+      date.setUTCDate(this.today.getUTCDate() - 1)
+
+      this.today = date
+    },
     prevWeek() {
       const date = new Date(this.today)
       date.setUTCDate(this.today.getUTCDate() - 7)

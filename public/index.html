@@ -77,7 +77,16 @@
         </table>
       </div>
       <div id="day-view" v-if="isDayView">
-        <h2 class="current-period">{{ formatDateToday(today) }}</h2>
+        <div class="container">
+          <div class="row">
+            <div class="col">
+              <h2 class="current-period">{{ formatDateToday(today) }}</h2>
+            </div>
+            <div class="col text-end">
+              <a id="prev-day" href="#" @click="prevDay">&lt; Prev</a>
+            </div>
+          </div>
+        </div>
         <div id="day" class="container">
           <div class="row" v-for="hour in 24">
             <div class="col-1 border text-end">{{ formatHour(hour) }}</div>

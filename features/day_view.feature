@@ -1,6 +1,6 @@
 Feature: Day View
 
-  Scenario: Day View
+  Background:
     Given I have these existing events:
       | Summary   | Starts At         | Ends At           |
       | Event 1   | 2024-06-14 14:00  | 2024-06-14 15:00  |
@@ -10,6 +10,8 @@ Feature: Day View
       | Event 5a  | 2024-06-18 13:00  | 2024-06-18 14:00  |
       | Event 5b  | 2024-06-18 13:00  | 2024-06-18 15:00  |
       | Event 6   | 2024-06-30 12:00  | 2024-06-30 18:00  |
+
+  Scenario: Day View
     When  I try to view events in day view
     Then  I must see the calendar for 'June 18, 2024'
     And   I must see 2 events
@@ -17,3 +19,12 @@ Feature: Day View
       | Starts At | Summary   |
       | 13:00     | Event 5a  |
       | 13:00     | Event 5b  |
+
+  Scenario: Yesterday
+    When  I try to view events yesterday
+    Then  I must see the calendar for 'June 17, 2024'
+    And   I must see 1 event
+    And   I must see these events on '2024-06-17':
+      | Starts At | Summary |
+      | 14:00     | Event 4 |
+
