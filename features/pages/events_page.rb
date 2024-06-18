@@ -11,6 +11,8 @@ end
 class WeekView < SitePrism::Section
   element :current_week, '#current-week'
 
+  element :prev_week, '#prev-week'
+
   elements :days, '#week .day'
 
   sections :events, EventRow, '.event'

@@ -1,9 +1,19 @@
-When 'I try to view all my events in week view' do
+def load_week_view
   @page = EventsPage.new
 
   @page.load
 
   @page.nav_week_view.click
+end
+
+When 'I try to view all my events in week view' do
+  load_week_view
+end
+
+When 'I try to view all my events in the previous week' do
+  load_week_view
+
+  @page.week_view.prev_week.click
 end
 
 Then 'I must see the following week for {string}:' do |current_week, table|

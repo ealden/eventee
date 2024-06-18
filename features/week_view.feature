@@ -19,3 +19,14 @@ Feature: Week View
     And   I must see the following week events on '2024-06-17':
       | Starts At | Summary |
       | 14:00     | Event 4 |
+
+  Scenario: Previous Week
+    When  I try to view all my events in the previous week
+    Then  I must see the following week for 'June 2024':
+      | Sun | Mon | Tue | Wed | Thu | Fri | Sat |
+      | 9   | 10  | 11  | 12  | 13  | 14  | 15  |
+    And   I must see the following week events on '2024-06-14':
+      | Starts At | Summary |
+      | 14:00     | Event 1 |
+      | 15:00     | Event 2 |
+      | 17:00     | Event 3 |
