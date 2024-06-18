@@ -136,6 +136,12 @@ const Eventee = {
 
       this.today = date
     },
+    nextDay() {
+      const date = new Date(this.today)
+      date.setUTCDate(this.today.getUTCDate() + 1)
+
+      this.today = date
+    },
     prevWeek() {
       const date = new Date(this.today)
       date.setUTCDate(this.today.getUTCDate() - 7)

@@ -3,6 +3,7 @@ end
 
 class DayView < SitePrism::Section
   element :prev_day, '#prev-day'
+  element :next_day, '#next-day'
 end
 
 class WeekView < SitePrism::Section

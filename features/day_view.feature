@@ -28,3 +28,7 @@ Feature: Day View
       | Starts At | Summary |
       | 14:00     | Event 4 |
 
+  Scenario: Tomorrow
+    When  I try to view events tomorrow
+    Then  I must see the calendar for 'June 19, 2024'
+    And   I must not see any events

@@ -15,3 +15,9 @@ When 'I try to view events yesterday' do
 
   @page.day_view.prev_day.click
 end
+
+When 'I try to view events tomorrow' do
+  load_day_view
+
+  @page.day_view.next_day.click
+end
