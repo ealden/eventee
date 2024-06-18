@@ -36,6 +36,7 @@ Feature: Week View
     Then  I must see the following week for 'June 2024':
       | Sun | Mon | Tue | Wed | Thu | Fri | Sat |
       | 23  | 24  | 25  | 26  | 27  | 28  | 29  |
+    Then  I must not see any events this week
 
   Scenario: This Week
     When  I try to view all my events this week
