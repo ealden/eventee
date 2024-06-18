@@ -32,7 +32,7 @@ Then 'I must see the following month for {string}:' do |current_month, table|
   expect(actual).to eql expected
 end
 
-Then 'I must see the following events on {string}:' do |date, table|
+Then 'I must see the following month events on {string}:' do |date, table|
   expected = table.hashes
 
   actual = @page.month_view.events_on(date).collect do |event|
