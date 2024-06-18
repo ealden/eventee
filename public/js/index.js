@@ -31,6 +31,17 @@ const Eventee = {
 
       return groups
     },
+    week() {
+      return [
+        '2024-06-16',
+        '2024-06-17',
+        '2024-06-18',
+        '2024-06-19',
+        '2024-06-20',
+        '2024-06-21',
+        '2024-06-22'
+      ]
+    },
     startMonth() {
       const startDate = new Date()
       startDate.setUTCFullYear(this.today.getUTCFullYear())

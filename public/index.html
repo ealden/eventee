@@ -69,6 +69,65 @@
       </div>
       <div id="week-view" v-if="isWeekView">
         <h2 id="current-week">{{ formatMonthYear(today) }}</h2>
+        <div id="week" class="container">
+          <div class="row text-center">
+            <div class="col">
+              &nbsp;
+            </div>
+            <div class="col">
+              <strong>Sun</strong>
+              <span class="day ms-1">
+                <strong>{{ formatDay(week[0]) }}</strong>
+              </span>
+            </div>
+            <div class="col">
+              <strong>Mon</strong>
+              <span class="day ms-1">
+                <strong>{{ formatDay(week[1]) }}</strong>
+              </span>
+            </div>
+            <div class="col">
+              <strong>Tue</strong>
+              <span class="day ms-1">
+                <strong>{{ formatDay(week[2]) }}</strong>
+              </span>
+            </div>
+            <div class="col">
+              <strong>Wed</strong>
+              <span class="day ms-1">
+                <strong>{{ formatDay(week[3]) }}</strong>
+              </span>
+            </div>
+            <div class="col">
+              <strong>Thu</strong>
+              <span class="day ms-1">
+                <strong>{{ formatDay(week[4]) }}</strong>
+              </span>
+            </div>
+            <div class="col">
+              <strong>Fri</strong>
+              <span class="day ms-1">
+                <strong>{{ formatDay(week[5]) }}</strong>
+              </span>
+            </div>
+            <div class="col">
+              <strong>Sat</strong>
+              <span class="day ms-1">
+                <strong>{{ formatDay(week[6]) }}</strong>
+              </span>
+            </div>
+          </div>
+          <div class="row" v-for="hour in 24">
+            <div class="col border text-end">{{ (hour - 1) }}:00</div>
+            <div class="col border">&nbsp;</div>
+            <div class="col border">&nbsp;</div>
+            <div class="col border">&nbsp;</div>
+            <div class="col border">&nbsp;</div>
+            <div class="col border">&nbsp;</div>
+            <div class="col border">&nbsp;</div>
+            <div class="col border">&nbsp;</div>
+          </div>
+        </div>
       </div>
       <div id="month-view" v-if="isMonthView">
         <div class="container">

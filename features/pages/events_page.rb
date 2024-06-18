@@ -10,6 +10,8 @@ end
 
 class WeekView < SitePrism::Section
   element :current_week, '#current-week'
+
+  elements :days, '#week .day'
 end
 
 class MonthView < SitePrism::Section
