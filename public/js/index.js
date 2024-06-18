@@ -35,7 +35,7 @@ const Eventee = {
 
       return startDate
     },
-    endMonth() {
+    monthEnd() {
       const endDate = new Date(this.monthStart)
       endDate.setUTCMonth(this.monthStart.getUTCMonth() + 1)
       endDate.setUTCDate(0)
@@ -44,7 +44,7 @@ const Eventee = {
     },
     month() {
       const startDate = this.monthStart
-      const endDate = this.endMonth
+      const endDate = this.monthEnd
 
       let week = []
 
