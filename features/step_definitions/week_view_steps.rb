@@ -30,11 +30,3 @@ When 'I try to view all my events this week' do
 
   @page.week_view.this_week.click
 end
-
-Then 'I must see {int} events this week' do |count|
-  expect(@page.events).to have_attributes count: count
-end
-
-Then 'I must not see any events this week' do
-  expect(@page.events).to be_empty
-end

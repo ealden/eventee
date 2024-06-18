@@ -28,3 +28,11 @@ Then 'I must see these events on {string}:' do |date, table|
 
   expect(actual).to eql expected
 end
+
+Then 'I must see {int} event(s)' do |count|
+  expect(@page.events).to have_attributes count: count
+end
+
+Then 'I must not see any event(s)' do
+  expect(@page.events).to be_empty
+end

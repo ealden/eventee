@@ -16,7 +16,7 @@ Feature: Week View
     Then  I must see this calendar for 'June 2024':
       | Sun | Mon | Tue | Wed | Thu | Fri | Sat |
       | 16  | 17  | 18  | 19  | 20  | 21  | 22  |
-    And   I must see 3 events this week
+    And   I must see 3 events
     And   I must see these events on '2024-06-17':
       | Starts At | Summary |
       | 14:00     | Event 4 |
@@ -30,7 +30,7 @@ Feature: Week View
     Then  I must see this calendar for 'June 2024':
       | Sun | Mon | Tue | Wed | Thu | Fri | Sat |
       | 9   | 10  | 11  | 12  | 13  | 14  | 15  |
-    And   I must see 3 events this week
+    And   I must see 3 events
     And   I must see these events on '2024-06-14':
       | Starts At | Summary |
       | 14:00     | Event 1 |
@@ -42,11 +42,11 @@ Feature: Week View
     Then  I must see this calendar for 'June 2024':
       | Sun | Mon | Tue | Wed | Thu | Fri | Sat |
       | 23  | 24  | 25  | 26  | 27  | 28  | 29  |
-    Then  I must not see any events this week
+    Then  I must not see any events
 
   Scenario: This Week
     When  I try to view all my events this week
     Then  I must see this calendar for 'June 2024':
       | Sun | Mon | Tue | Wed | Thu | Fri | Sat |
       | 16  | 17  | 18  | 19  | 20  | 21  | 22  |
-    And   I must see 3 events this week
+    And   I must see 3 events
