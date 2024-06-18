@@ -131,14 +131,16 @@
           <div class="row" v-for="hour in 24">
             <div class="col border text-end">{{ formatHour(hour) }}</div>
             <div class="col border" v-for="date in week">
-              <div class="row event"
-                   :class="weekKey(date, formatHour(hour))"
-                   v-for="event in weekEvents[weekKey(date, formatHour(hour))]">
-                <div class="col summary text-start">
-                  {{ event.summary }}
-                </div>
-                <div class="col starts_at text-end">
-                  {{ formatTime(event.starts_at) }}
+              <div class="row">
+                <div class="col event"
+                     :class="weekKey(date, formatHour(hour))"
+                     v-for="event in weekEvents[weekKey(date, formatHour(hour))]">
+                  <span class="summary">
+                    {{ event.summary }}
+                  </span>
+                  <span class="starts_at visually-hidden">
+                    {{ formatTime(event.starts_at) }}
+                  </span>
                 </div>
               </div>
             </div>
