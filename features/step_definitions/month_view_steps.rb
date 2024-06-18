@@ -22,7 +22,7 @@ When 'I try to view all my events in the next month' do
   @page.month_view.next_month.click
 end
 
-Then 'I must see the following calendar for {string}:' do |current_month, table|
+Then 'I must see the following month for {string}:' do |current_month, table|
   expect(@page.month_view.current_month.text).to eql current_month
 
   expected = table.raw.drop(1).flatten.reject(&:blank?)

@@ -13,7 +13,7 @@ Feature: Month View
 
   Scenario: Month View
     When  I try to view all my events in month view
-    Then  I must see the following calendar for 'June 2024':
+    Then  I must see the following month for 'June 2024':
       | Sun | Mon | Tue | Wed | Thu | Fri | Sat |
       |     |     |     |     |     |     | 1   |
       | 2   | 3   | 4   | 5   | 6   | 7   | 8   |
@@ -35,7 +35,7 @@ Feature: Month View
 
   Scenario: Previous Month
     When  I try to view all my events in the previous month
-    Then  I must see the following calendar for 'May 2024':
+    Then  I must see the following month for 'May 2024':
       | Sun | Mon | Tue | Wed | Thu | Fri | Sat |
       |     |     |     | 1   | 2   | 3   | 4   |
       | 5   | 6   | 7   | 8   | 9   | 10  | 11  |
@@ -48,7 +48,7 @@ Feature: Month View
 
   Scenario: Next Month
     When  I try to view all my events in the next month
-    Then  I must see the following calendar for 'July 2024':
+    Then  I must see the following month for 'July 2024':
       | Sun | Mon | Tue | Wed | Thu | Fri | Sat |
       | 1   | 2   | 3   | 4   | 5   | 6   | 7   |
       | 8   | 9   | 10  | 11  | 12  | 13  | 14  |
