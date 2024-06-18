@@ -38,6 +38,24 @@ const Eventee = {
 
       return week
     },
+    weekEvents() {
+      const groups = {}
+
+      for (event of this.events) {
+        const date = this.formatDate(event.starts_at)
+        const time = this.formatTime(event.starts_at)
+
+        const key = this.weekKey(date, time)
+
+        if (!Object.hasOwn(groups, key)) {
+          groups[key] = []
+        }
+
+        groups[key].push(event)
+      }
+
+      return groups
+    },
     monthStart() {
       const startDate = new Date()
       startDate.setUTCFullYear(this.today.getUTCFullYear())
@@ -129,6 +147,9 @@ const Eventee = {
 
       this.today = date
     },
+    weekKey(date, time) {
+      return (date + 'T' + time)
+    },
     prevMonth() {
       const date = new Date(this.today)
       date.setUTCMonth(this.today.getUTCMonth() - 1)
@@ -163,6 +184,9 @@ const Eventee = {
         .toISOString()
         .split('T')[1]
         .replace(':00.000Z', '')
+    },
+    formatHour(hour) {
+      return ((hour - 1).toString().padStart(2, 0) + ':00')
     },
     formatMonthYear(date) {
       const MONTHS = {

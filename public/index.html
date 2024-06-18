@@ -128,12 +128,12 @@
               </span>
             </div>
           </div>
-          <div class="row">
-            <div class="col">&nbsp;</div>
-            <div class="col" v-for="date in week" :id="date">
+          <div class="row" v-for="hour in 24">
+            <div class="col border text-end">{{ formatHour(hour) }}</div>
+            <div class="col border" v-for="date in week">
               <div class="row event"
-                   :class="date"
-                   v-for="event in monthEvents[date]">
+                   :class="weekKey(date, formatHour(hour))"
+                   v-for="event in weekEvents[weekKey(date, formatHour(hour))]">
                 <div class="col summary text-start">
                   {{ event.summary }}
                 </div>
@@ -142,16 +142,6 @@
                 </div>
               </div>
             </div>
-          </div>
-          <div class="row" v-for="hour in 24">
-            <div class="col border text-end">{{ (hour - 1) }}:00</div>
-            <div class="col border">&nbsp;</div>
-            <div class="col border">&nbsp;</div>
-            <div class="col border">&nbsp;</div>
-            <div class="col border">&nbsp;</div>
-            <div class="col border">&nbsp;</div>
-            <div class="col border">&nbsp;</div>
-            <div class="col border">&nbsp;</div>
           </div>
         </div>
       </div>
