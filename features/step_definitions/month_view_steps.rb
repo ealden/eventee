@@ -1,4 +1,4 @@
-When 'I try to view all my events in month view' do
+def load_month_view
   @page = EventsPage.new
 
   @page.load
@@ -6,22 +6,18 @@ When 'I try to view all my events in month view' do
   @page.nav_month_view.click
 end
 
+When 'I try to view all my events in month view' do
+  load_month_view
+end
+
 When 'I try to view all my events in the previous month' do
-  @page = EventsPage.new
-
-  @page.load
-
-  @page.nav_month_view.click
+  load_month_view
 
   @page.month_view.prev_month.click
 end
 
 When 'I try to view all my events in the next month' do
-  @page = EventsPage.new
-
-  @page.load
-
-  @page.nav_month_view.click
+  load_month_view
 
   @page.month_view.next_month.click
 end
