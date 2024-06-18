@@ -30,16 +30,3 @@ When 'I try to view all my events this month' do
 
   @page.month_view.this_month.click
 end
-
-Then 'I must see the following month events on {string}:' do |date, table|
-  expected = table.hashes
-
-  actual = @page.events_on(date).collect do |event|
-    {
-      'Summary' => event.summary.text,
-      'Starts At' => event.starts_at.text
-    }
-  end
-
-  expect(actual).to eql expected
-end

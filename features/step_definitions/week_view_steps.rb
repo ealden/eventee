@@ -31,19 +31,6 @@ When 'I try to view all my events this week' do
   @page.week_view.this_week.click
 end
 
-Then 'I must see the following week events on {string}:' do |date, table|
-  expected = table.hashes
-
-  actual = @page.events_on(date).collect do |event|
-    {
-      'Starts At' => event.starts_at.text,
-      'Summary' => event.summary.text
-    }
-  end
-
-  expect(actual).to eql expected
-end
-
 Then 'I must see {int} events this week' do |count|
   expect(@page.events).to have_attributes count: count
 end

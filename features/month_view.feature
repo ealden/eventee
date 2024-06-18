@@ -21,15 +21,15 @@ Feature: Month View
       | 16  | 17  | 18  | 19  | 20  | 21  | 22  |
       | 23  | 24  | 25  | 26  | 27  | 28  | 29  |
       | 30  |     |     |     |     |     |     |
-    And   I must see the following month events on '2024-06-14':
+    And   I must see these events on '2024-06-14':
       | Summary | Starts At |
       | Event 1 | 14:00     |
       | Event 2 | 15:00     |
       | Event 3 | 17:00     |
-    And   I must see the following month events on '2024-06-17':
+    And   I must see these events on '2024-06-17':
       | Summary | Starts At |
       | Event 4 | 14:00     |
-    And   I must see the following month events on '2024-06-30':
+    And   I must see these events on '2024-06-30':
       | Summary | Starts At |
       | Event 5 | 12:00     |
 
@@ -42,7 +42,7 @@ Feature: Month View
       | 12  | 13  | 14  | 15  | 16  | 17  | 18  |
       | 19  | 20  | 21  | 22  | 23  | 24  | 25  |
       | 26  | 27  | 28  | 29  | 30  | 31  |     |
-    And   I must see the following month events on '2024-05-07':
+    And   I must see these events on '2024-05-07':
       | Summary | Starts At |
       | Event 6 | 09:00     |
 
@@ -55,7 +55,7 @@ Feature: Month View
       | 15  | 16  | 17  | 18  | 19  | 20  | 21  |
       | 22  | 23  | 24  | 25  | 26  | 27  | 28  |
       | 29  | 30  | 31  |     |     |     |     |
-    And   I must see the following month events on '2024-07-07':
+    And   I must see these events on '2024-07-07':
       | Summary | Starts At |
       | Event 7 | 07:00     |
 

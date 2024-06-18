@@ -15,3 +15,16 @@ Then 'I must see the following calendar for {string}:' do |current_period, table
 
   expect(actual).to eql expected
 end
+
+Then 'I must see these events on {string}:' do |date, table|
+  expected = table.hashes
+
+  actual = @page.events_on(date).collect do |event|
+    {
+      'Summary' => event.summary.text,
+      'Starts At' => event.starts_at.text
+    }
+  end
+
+  expect(actual).to eql expected
+end
