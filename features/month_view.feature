@@ -12,7 +12,7 @@ Feature: Month View
       | Event 7 | 2024-07-07 7:00   | 2024-07-07 21:00  |
 
   Scenario: Month View
-    When  I try to view all my events in month view
+    When  I try to view events in month view
     Then  I must see this calendar for 'June 2024':
       | Sun | Mon | Tue | Wed | Thu | Fri | Sat |
       |     |     |     |     |     |     | 1   |
@@ -34,8 +34,8 @@ Feature: Month View
       | Summary | Starts At |
       | Event 5 | 12:00     |
 
-  Scenario: Previous Month
-    When  I try to view all my events in the previous month
+  Scenario: Last Month
+    When  I try to view events last month
     Then  I must see this calendar for 'May 2024':
       | Sun | Mon | Tue | Wed | Thu | Fri | Sat |
       |     |     |     | 1   | 2   | 3   | 4   |
@@ -49,7 +49,7 @@ Feature: Month View
       | Event 6 | 09:00     |
 
   Scenario: Next Month
-    When  I try to view all my events in the next month
+    When  I try to view events next month
     Then  I must see this calendar for 'July 2024':
       | Sun | Mon | Tue | Wed | Thu | Fri | Sat |
       | 1   | 2   | 3   | 4   | 5   | 6   | 7   |
@@ -63,7 +63,7 @@ Feature: Month View
       | Event 7 | 07:00     |
 
   Scenario: This Month
-    When  I try to view all my events this month
+    When  I try to view events this month
     Then  I must see this calendar for 'June 2024':
       | Sun | Mon | Tue | Wed | Thu | Fri | Sat |
       |     |     |     |     |     |     | 1   |

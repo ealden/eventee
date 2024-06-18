@@ -6,23 +6,23 @@ def load_week_view
   @page.nav_week_view.click
 end
 
-When 'I try to view all my events in week view' do
+When 'I try to view events in week view' do
   load_week_view
 end
 
-When 'I try to view all my events in the previous week' do
+When 'I try to view events last week' do
   load_week_view
 
   @page.week_view.prev_week.click
 end
 
-When 'I try to view all my events in the next week' do
+When 'I try to view events next week' do
   load_week_view
 
   @page.week_view.next_week.click
 end
 
-When 'I try to view all my events this week' do
+When 'I try to view events this week' do
   load_week_view
 
   # We default to this week, so navigate to a different week first

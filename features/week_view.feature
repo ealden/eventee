@@ -12,7 +12,7 @@ Feature: Week View
       | Event 6   | 2024-06-30 12:00  | 2024-06-30 18:00  |
 
   Scenario: Week View
-    When  I try to view all my events in week view
+    When  I try to view events in week view
     Then  I must see this calendar for 'June 2024':
       | Sun | Mon | Tue | Wed | Thu | Fri | Sat |
       | 16  | 17  | 18  | 19  | 20  | 21  | 22  |
@@ -25,8 +25,8 @@ Feature: Week View
       | 13:00     | Event 5a  |
       | 13:00     | Event 5b  |
 
-  Scenario: Previous Week
-    When  I try to view all my events in the previous week
+  Scenario: Last Week
+    When  I try to view events last week
     Then  I must see this calendar for 'June 2024':
       | Sun | Mon | Tue | Wed | Thu | Fri | Sat |
       | 9   | 10  | 11  | 12  | 13  | 14  | 15  |
@@ -38,14 +38,14 @@ Feature: Week View
       | 17:00     | Event 3 |
 
   Scenario: Next Week
-    When  I try to view all my events in the next week
+    When  I try to view events next week
     Then  I must see this calendar for 'June 2024':
       | Sun | Mon | Tue | Wed | Thu | Fri | Sat |
       | 23  | 24  | 25  | 26  | 27  | 28  | 29  |
     Then  I must not see any events
 
   Scenario: This Week
-    When  I try to view all my events this week
+    When  I try to view events this week
     Then  I must see this calendar for 'June 2024':
       | Sun | Mon | Tue | Wed | Thu | Fri | Sat |
       | 16  | 17  | 18  | 19  | 20  | 21  | 22  |
