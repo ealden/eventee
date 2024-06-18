@@ -32,3 +32,8 @@ Feature: Day View
     When  I try to view events tomorrow
     Then  I must see the calendar for 'June 19, 2024'
     And   I must not see any events
+
+  Scenario: Today
+    When  I try to view events today
+    Then  I must see the calendar for 'June 18, 2024'
+    And   I must see 2 events

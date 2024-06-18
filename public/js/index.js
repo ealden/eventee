@@ -136,6 +136,9 @@ const Eventee = {
 
       this.today = date
     },
+    thisDay() {
+      this.today = new Date()
+    },
     nextDay() {
       const date = new Date(this.today)
       date.setUTCDate(this.today.getUTCDate() + 1)
