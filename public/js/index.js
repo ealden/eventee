@@ -27,7 +27,7 @@ const Eventee = {
         '2024-06-22'
       ]
     },
-    startMonth() {
+    monthStart() {
       const startDate = new Date()
       startDate.setUTCFullYear(this.today.getUTCFullYear())
       startDate.setUTCMonth(this.today.getUTCMonth())
@@ -36,14 +36,14 @@ const Eventee = {
       return startDate
     },
     endMonth() {
-      const endDate = new Date(this.startMonth)
-      endDate.setUTCMonth(this.startMonth.getUTCMonth() + 1)
+      const endDate = new Date(this.monthStart)
+      endDate.setUTCMonth(this.monthStart.getUTCMonth() + 1)
       endDate.setUTCDate(0)
 
       return endDate
     },
     month() {
-      const startDate = this.startMonth
+      const startDate = this.monthStart
       const endDate = this.endMonth
 
       let week = []
