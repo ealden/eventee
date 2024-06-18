@@ -30,3 +30,9 @@ Feature: Week View
       | 14:00     | Event 1 |
       | 15:00     | Event 2 |
       | 17:00     | Event 3 |
+
+  Scenario: Next Week
+    When  I try to view all my events in the next week
+    Then  I must see the following week for 'June 2024':
+      | Sun | Mon | Tue | Wed | Thu | Fri | Sat |
+      | 23  | 24  | 25  | 26  | 27  | 28  | 29  |

@@ -120,6 +120,12 @@ const Eventee = {
 
       this.today = date
     },
+    nextWeek() {
+      const date = new Date(this.weekStart)
+      date.setUTCDate(this.weekStart.getUTCDate() + 7)
+
+      this.today = date
+    },
     prevMonth() {
       const date = new Date(this.today)
       date.setUTCMonth(this.today.getUTCMonth() - 1)
