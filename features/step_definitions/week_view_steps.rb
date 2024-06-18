@@ -22,6 +22,15 @@ When 'I try to view all my events in the next week' do
   @page.week_view.next_week.click
 end
 
+When 'I try to view all my events this week' do
+  load_week_view
+
+  # We default to this week, so navigate to a different week first
+  @page.week_view.prev_week.click
+
+  @page.week_view.this_week.click
+end
+
 Then 'I must see the following week for {string}:' do |current_week, table|
   expect(@page.week_view.current_week.text).to eql current_week
 

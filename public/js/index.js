@@ -120,6 +120,9 @@ const Eventee = {
 
       this.today = date
     },
+    thisWeek() {
+      this.today = new Date()
+    },
     nextWeek() {
       const date = new Date(this.weekStart)
       date.setUTCDate(this.weekStart.getUTCDate() + 7)

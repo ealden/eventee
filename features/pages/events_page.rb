@@ -12,6 +12,7 @@ class WeekView < SitePrism::Section
   element :current_week, '#current-week'
 
   element :prev_week, '#prev-week'
+  element :this_week, '#this-week'
   element :next_week, '#next-week'
 
   elements :days, '#week .day'
