@@ -19,16 +19,11 @@ const Eventee = {
     isMonthView() {
       return (this.view == 3)
     },
-    weekStart() {
+    week() {
       const startDate = new Date()
       startDate.setUTCFullYear(this.today.getUTCFullYear())
       startDate.setUTCMonth(this.today.getUTCMonth())
       startDate.setUTCDate(this.today.getUTCDate() - this.today.getUTCDay())
-
-      return startDate
-    },
-    week() {
-      const startDate = this.weekStart
 
       const week = []
 
@@ -59,24 +54,15 @@ const Eventee = {
 
       return groups
     },
-    monthStart() {
+    month() {
       const startDate = new Date()
       startDate.setUTCFullYear(this.today.getUTCFullYear())
       startDate.setUTCMonth(this.today.getUTCMonth())
       startDate.setUTCDate(1)
 
-      return startDate
-    },
-    monthEnd() {
-      const endDate = new Date(this.monthStart)
-      endDate.setUTCMonth(this.monthStart.getUTCMonth() + 1)
+      const endDate = new Date(startDate)
+      endDate.setUTCMonth(startDate.getUTCMonth() + 1)
       endDate.setUTCDate(0)
-
-      return endDate
-    },
-    month() {
-      const startDate = this.monthStart
-      const endDate = this.monthEnd
 
       let week = []
 
@@ -139,8 +125,8 @@ const Eventee = {
       this.view = 3
     },
     prevWeek() {
-      const date = new Date(this.weekStart)
-      date.setUTCDate(this.weekStart.getUTCDate() - 7)
+      const date = new Date(this.today)
+      date.setUTCDate(this.today.getUTCDate() - 7)
 
       this.today = date
     },
@@ -148,8 +134,8 @@ const Eventee = {
       this.today = new Date()
     },
     nextWeek() {
-      const date = new Date(this.weekStart)
-      date.setUTCDate(this.weekStart.getUTCDate() + 7)
+      const date = new Date(this.today)
+      date.setUTCDate(this.today.getUTCDate() + 7)
 
       this.today = date
     },
