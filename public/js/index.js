@@ -19,6 +19,29 @@ const Eventee = {
     isMonthView() {
       return (this.view == 3)
     },
+    groups() {
+      const groups = {}
+
+      for (event of this.events) {
+        const date = this.formatDate(event.starts_at)
+        const time = this.formatTime(event.starts_at)
+
+        const dateTime = this.weekKey(date, time)
+
+        if (!Object.hasOwn(groups, date)) {
+          groups[date] = []
+        }
+
+        if (!Object.hasOwn(groups, dateTime)) {
+          groups[dateTime] = []
+        }
+
+        groups[date].push(event)
+        groups[dateTime].push(event)
+      }
+
+      return groups
+    },
     week() {
       const startDate = new Date()
       startDate.setUTCFullYear(this.today.getUTCFullYear())
@@ -35,24 +58,6 @@ const Eventee = {
       }
 
       return week
-    },
-    weekEvents() {
-      const groups = {}
-
-      for (event of this.events) {
-        const date = this.formatDate(event.starts_at)
-        const time = this.formatTime(event.starts_at)
-
-        const key = this.weekKey(date, time)
-
-        if (!Object.hasOwn(groups, key)) {
-          groups[key] = []
-        }
-
-        groups[key].push(event)
-      }
-
-      return groups
     },
     month() {
       const startDate = new Date()
@@ -94,21 +99,6 @@ const Eventee = {
       }
 
       return month
-    },
-    monthEvents() {
-      const groups = {}
-
-      for (event of this.events) {
-        const date = this.formatDate(event.starts_at)
-
-        if (!Object.hasOwn(groups, date)) {
-          groups[date] = []
-        }
-
-        groups[date].push(event)
-      }
-
-      return groups
     }
   },
   methods: {
