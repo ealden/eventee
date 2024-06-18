@@ -43,7 +43,7 @@
         </ul>
       </nav>
       <div id="all-events" v-if="isAllEvents">
-        <h1>All Events</h1>
+        <h2>All Events</h2>
         <table class="table">
           <thead>
             <tr>
@@ -74,7 +74,7 @@
         <div class="container">
           <div class="row">
             <div class="col">
-              <h1 id="current-month">{{ formatMonthYear(today) }}</h1>
+              <h2 id="current-month">{{ formatMonthYear(today) }}</h2>
             </div>
             <div class="col text-end">
               <a id="prev-month" href="#" @click="prevMonth">&lt; Prev</a>
