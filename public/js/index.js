@@ -196,10 +196,10 @@ const Eventee = {
         .replace(':00.000Z', '')
     },
     formatDateTime(date, time) {
-      return (date + 'T' + time)
+      return [date, 'T', time].join('')
     },
     formatHour(hour) {
-      return ((hour - 1).toString().padStart(2, 0) + ':00')
+      return [(hour - 1).toString().padStart(2, 0), ':00'].join('')
     },
     formatDateToday(date) {
       const dateObject = new Date(date)
@@ -208,7 +208,7 @@ const Eventee = {
       const month = this.MONTHS[dateObject.getUTCMonth() + 1]
       const day = dateObject.getUTCDate()
 
-      return (month + ' ' + day + ', ' + year)
+      return [month, ' ', day, ', ', year].join('')
     },
     formatMonthYear(date) {
       const dateObject = new Date(date)
@@ -216,7 +216,7 @@ const Eventee = {
       const year = dateObject.getUTCFullYear()
       const month = this.MONTHS[dateObject.getUTCMonth() + 1]
 
-      return (month + ' ' + year)
+      return [month, year].join(' ')
 
     },
     formatDay(date) {
