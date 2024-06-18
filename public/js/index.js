@@ -16,11 +16,16 @@ const Eventee = {
     isMonthView() {
       return (this.view == 3)
     },
-    week() {
+    weekStart() {
       const startDate = new Date()
-      startDate.setUTCFullYear(2024)
-      startDate.setUTCMonth(6 - 1)
-      startDate.setUTCDate(16)
+      startDate.setUTCFullYear(this.today.getUTCFullYear())
+      startDate.setUTCMonth(this.today.getUTCMonth())
+      startDate.setUTCDate(this.today.getUTCDate() - this.today.getUTCDay())
+
+      return startDate
+    },
+    week() {
+      const startDate = this.weekStart
 
       const week = []
 
