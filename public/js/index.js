@@ -99,6 +99,22 @@ const Eventee = {
       }
 
       return month
+    },
+    MONTHS() {
+      return {
+        1: 'January',
+        2: 'February',
+        3: 'March',
+        4: 'April',
+        5: 'May',
+        6: 'June',
+        7: 'July',
+        8: 'August',
+        9: 'September',
+        10: 'October',
+        11: 'November',
+        12: 'December'
+      }
     }
   },
   methods: {
@@ -170,28 +186,22 @@ const Eventee = {
     formatHour(hour) {
       return ((hour - 1).toString().padStart(2, 0) + ':00')
     },
-    formatMonthYear(date) {
-      const MONTHS = {
-        1: 'January',
-        2: 'February',
-        3: 'March',
-        4: 'April',
-        5: 'May',
-        6: 'June',
-        7: 'July',
-        8: 'August',
-        9: 'September',
-        10: 'October',
-        11: 'November',
-        12: 'December'
-      }
-
+    formatDateToday(date) {
       const dateObject = new Date(date)
 
-      const month = MONTHS[dateObject.getUTCMonth() + 1]
       const year = dateObject.getUTCFullYear()
+      const month = this.MONTHS[dateObject.getUTCMonth() + 1]
+      const day = dateObject.getUTCDate()
 
-      return month + ' ' + year
+      return (month + ' ' + day + ', ' + year)
+    },
+    formatMonthYear(date) {
+      const dateObject = new Date(date)
+
+      const year = dateObject.getUTCFullYear()
+      const month = this.MONTHS[dateObject.getUTCMonth() + 1]
+
+      return (month + ' ' + year)
 
     },
     formatDay(date) {

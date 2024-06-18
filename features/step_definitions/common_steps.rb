@@ -6,6 +6,10 @@ Given 'I have these existing events:' do |table|
   end
 end
 
+Then 'I must see the calendar for {string}' do |current_period|
+  expect(@page.current_period.text).to eql current_period
+end
+
 Then 'I must see the calendar for {string}:' do |current_period, table|
   expect(@page.current_period.text).to eql current_period
 

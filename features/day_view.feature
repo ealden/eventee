@@ -11,7 +11,8 @@ Feature: Day View
       | Event 5b  | 2024-06-18 13:00  | 2024-06-18 15:00  |
       | Event 6   | 2024-06-30 12:00  | 2024-06-30 18:00  |
     When  I try to view events in day view
-    Then  I must see 2 events
+    Then  I must see the calendar for 'June 18, 2024'
+    And   I must see 2 events
     And   I must see these events on '2024-06-18':
       | Starts At | Summary   |
       | 13:00     | Event 5a  |
