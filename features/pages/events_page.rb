@@ -1,11 +1,4 @@
-class EventRow < SitePrism::Section
-  element :summary, '.summary'
-  element :starts_at, '.starts_at'
-  element :ends_at, '.ends_at'
-end
-
 class AllEventsView < SitePrism::Section
-  sections :events, EventRow, '.event'
 end
 
 class WeekView < SitePrism::Section
@@ -14,16 +7,6 @@ class WeekView < SitePrism::Section
   element :prev_week, '#prev-week'
   element :this_week, '#this-week'
   element :next_week, '#next-week'
-
-  elements :days, '#week .day'
-
-  sections :events, EventRow, '.event'
-
-  def events_on date
-    events.keep_if do |event|
-      event.root_element[:class].include? date
-    end
-  end
 end
 
 class MonthView < SitePrism::Section
@@ -32,16 +15,12 @@ class MonthView < SitePrism::Section
   element :prev_month, '#prev-month'
   element :this_month, '#this-month'
   element :next_month, '#next-month'
+end
 
-  elements :days, '#month .day'
-
-  sections :events, EventRow, '.event'
-
-  def events_on date
-    events.keep_if do |event|
-      event.root_element[:class].include? date
-    end
-  end
+class EventRow < SitePrism::Section
+  element :summary, '.summary'
+  element :starts_at, '.starts_at'
+  element :ends_at, '.ends_at'
 end
 
 class EventsPage < SitePrism::Page
@@ -51,7 +30,17 @@ class EventsPage < SitePrism::Page
   element :nav_week_view, '#nav-week-view'
   element :nav_month_view, '#nav-month-view'
 
+  elements :days, '.day'
+
   section :all_events_view, AllEventsView, '#all-events-view'
   section :week_view, WeekView, '#week-view'
   section :month_view, MonthView, '#month-view'
+
+  sections :events, EventRow, '.event'
+
+  def events_on date
+    events.keep_if do |event|
+      event.root_element[:class].include? date
+    end
+  end
 end

@@ -9,7 +9,7 @@ end
 Then 'I must see the following events:' do |table|
   expected = table.hashes
 
-  actual = @page.all_events_view.events.collect do |event|
+  actual = @page.events.collect do |event|
     {
       'Summary' => event.summary.text,
       'Starts At' => event.starts_at.text,

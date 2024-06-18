@@ -36,7 +36,7 @@ Then 'I must see the following month for {string}:' do |current_month, table|
 
   expected = table.raw.drop(1).flatten.reject(&:blank?)
 
-  actual = @page.month_view.days.map(&:text)
+  actual = @page.days.map(&:text)
 
   expect(actual).to eql expected
 end
@@ -44,7 +44,7 @@ end
 Then 'I must see the following month events on {string}:' do |date, table|
   expected = table.hashes
 
-  actual = @page.month_view.events_on(date).collect do |event|
+  actual = @page.events_on(date).collect do |event|
     {
       'Summary' => event.summary.text,
       'Starts At' => event.starts_at.text

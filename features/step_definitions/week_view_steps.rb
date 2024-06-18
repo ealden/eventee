@@ -36,7 +36,7 @@ Then 'I must see the following week for {string}:' do |current_week, table|
 
   expected = table.raw.drop(1).flatten
 
-  actual = @page.week_view.days.map(&:text)
+  actual = @page.days.map(&:text)
 
   expect(actual).to eql expected
 end
@@ -44,7 +44,7 @@ end
 Then 'I must see the following week events on {string}:' do |date, table|
   expected = table.hashes
 
-  actual = @page.week_view.events_on(date).collect do |event|
+  actual = @page.events_on(date).collect do |event|
     {
       'Starts At' => event.starts_at.text,
       'Summary' => event.summary.text
@@ -55,9 +55,9 @@ Then 'I must see the following week events on {string}:' do |date, table|
 end
 
 Then 'I must see {int} events this week' do |count|
-  expect(@page.week_view.events).to have_attributes count: count
+  expect(@page.events).to have_attributes count: count
 end
 
 Then 'I must not see any events this week' do
-  expect(@page.week_view.events).to be_empty
+  expect(@page.events).to be_empty
 end
