@@ -6,7 +6,7 @@ Given 'I have these existing events:' do |table|
   end
 end
 
-Then 'I must see the following calendar for {string}:' do |current_period, table|
+Then 'I must see this calendar for {string}:' do |current_period, table|
   expect(@page.current_period.text).to eql current_period
 
   expected = table.raw.drop(1).flatten.reject(&:blank?)
