@@ -22,6 +22,15 @@ When 'I try to view all my events in the next month' do
   @page.month_view.next_month.click
 end
 
+When 'I try to view all my events this month' do
+  load_month_view
+
+  # We default to this month, so navigate to a different month first
+  @page.month_view.prev_month.click
+
+  @page.month_view.this_month.click
+end
+
 Then 'I must see the following month for {string}:' do |current_month, table|
   expect(@page.month_view.current_month.text).to eql current_month
 

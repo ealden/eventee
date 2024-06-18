@@ -30,6 +30,7 @@ class MonthView < SitePrism::Section
   element :current_month, '#current-month'
 
   element :prev_month, '#prev-month'
+  element :this_month, '#this-month'
   element :next_month, '#next-month'
 
   elements :days, '#month .day'

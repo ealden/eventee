@@ -136,6 +136,9 @@ const Eventee = {
 
       this.today = date
     },
+    thisMonth() {
+      this.today = new Date()
+    },
     nextMonth() {
       const date = new Date(this.today)
       date.setUTCMonth(this.today.getUTCMonth() + 1)
