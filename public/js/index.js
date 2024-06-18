@@ -16,21 +16,6 @@ const Eventee = {
     isMonthView() {
       return (this.view == 3)
     },
-    groupedEvents() {
-      const groups = {}
-
-      for (event of this.events) {
-        const date = this.formatDate(event.starts_at)
-
-        if (!Object.hasOwn(groups, date)) {
-          groups[date] = []
-        }
-
-        groups[date].push(event)
-      }
-
-      return groups
-    },
     week() {
       return [
         '2024-06-16',
@@ -91,6 +76,21 @@ const Eventee = {
       }
 
       return month
+    },
+    monthEvents() {
+      const groups = {}
+
+      for (event of this.events) {
+        const date = this.formatDate(event.starts_at)
+
+        if (!Object.hasOwn(groups, date)) {
+          groups[date] = []
+        }
+
+        groups[date].push(event)
+      }
+
+      return groups
     }
   },
   methods: {
