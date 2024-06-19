@@ -1,21 +1,7 @@
 <script setup>
+import { formatDate, formatTime, formatDateTime, formatHour, formatDateToday, formatMonthYear, formatDay } from './common/format.js'
 import { ref, computed, onMounted } from 'vue'
 import axios from 'axios'
-
-const MONTHS = ref({
-  1: 'January',
-  2: 'February',
-  3: 'March',
-  4: 'April',
-  5: 'May',
-  6: 'June',
-  7: 'July',
-  8: 'August',
-  9: 'September',
-  10: 'October',
-  11: 'November',
-  12: 'December'
-})
 
 const events = ref([])
 
@@ -201,50 +187,6 @@ function fetchEvents() {
     .then(response => {
       events.value = response.data
     })
-}
-
-function formatDate(date) {
-  return new Date(date)
-    .toISOString()
-    .split('T')[0]
-}
-
-function formatTime(date) {
-  return new Date(date)
-    .toISOString()
-    .split('T')[1]
-    .replace(':00.000Z', '')
-}
-
-function formatDateTime(date, time) {
-  return [date, 'T', time].join('')
-}
-
-function formatHour(hour) {
-  return [(hour - 1).toString().padStart(2, 0), ':00'].join('')
-}
-
-function formatDateToday(date) {
-  const dateObject = new Date(date)
-
-  const year = dateObject.getUTCFullYear()
-  const month = MONTHS.value[dateObject.getUTCMonth() + 1]
-  const day = dateObject.getUTCDate()
-
-  return [month, ' ', day, ', ', year].join('')
-}
-
-function formatMonthYear(date) {
-  const dateObject = new Date(date)
-
-  const year = dateObject.getUTCFullYear()
-  const month = MONTHS.value[dateObject.getUTCMonth() + 1]
-
-  return [month, year].join(' ')
-}
-
-function formatDay(date) {
-  return new Date(date).getUTCDate()
 }
 
 onMounted(() => {
