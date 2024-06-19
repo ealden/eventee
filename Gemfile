@@ -71,3 +71,5 @@ group :test do
   gem 'database_cleaner'
   gem 'site_prism'
 end
+
+gem 'rack-cors'
