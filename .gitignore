@@ -36,3 +36,5 @@
 
 /node_modules
 /public/index.html
+!.env.development
+!.env.production

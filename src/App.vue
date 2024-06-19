@@ -197,7 +197,7 @@ function nextMonth() {
 
 function fetchEvents() {
   axios
-    .get('http://localhost:3000/api/events')
+    .get(import.meta.env.VITE_API_HOST + '/api/events')
     .then(response => {
       events.value = response.data
     })
