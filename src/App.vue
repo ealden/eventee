@@ -1,4 +1,5 @@
 <script setup>
+import AllEventsView from './components/AllEventsView.vue'
 import { formatDate, formatTime, formatDateTime, formatHour, formatDateToday, formatMonthYear, formatDay } from './common/format.js'
 import { ref, computed, onMounted } from 'vue'
 import axios from 'axios'
@@ -238,31 +239,7 @@ onMounted(() => {
       </li>
     </ul>
   </nav>
-  <div id="all-events-view" v-if="isAllEventsView">
-    <h2>All Events</h2>
-    <table class="table">
-      <thead>
-        <tr>
-          <th>Summary</th>
-          <th>Starts At</th>
-          <th>Ends At</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr class="event" v-for="event in events">
-          <td class="summary">
-            {{ event.summary }}
-          </td>
-          <td class="starts_at">
-            {{ formatDate(event.starts_at) }} {{ formatTime(event.starts_at) }}
-          </td>
-          <td class="ends_at">
-            {{ formatDate(event.ends_at) }} {{ formatTime(event.ends_at) }}
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+  <AllEventsView :events="events" :is-current-view="isAllEventsView" />
   <div id="day-view" v-if="isDayView">
     <div class="container">
       <div class="row">
