@@ -2,7 +2,7 @@ const Eventee = {
   data() {
     return {
       events: [],
-      today: new Date(),
+      today: new Date('2024-06-18'),
       view: 0
     }
   },
@@ -137,7 +137,7 @@ const Eventee = {
       this.today = date
     },
     thisDay() {
-      this.today = new Date()
+      this.today = new Date('2024-06-18')
     },
     nextDay() {
       const date = new Date(this.today)
