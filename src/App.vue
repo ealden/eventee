@@ -1,5 +1,6 @@
 <script setup>
 import AllEventsView from './components/AllEventsView.vue'
+import DayView from './components/DayView.vue'
 import { formatDate, formatTime, formatDateTime, formatHour, formatDateToday, formatMonthYear, formatDay } from './common/format.js'
 import { ref, computed, onMounted } from 'vue'
 import axios from 'axios'
@@ -126,24 +127,6 @@ function monthView() {
   view.value = 3
 }
 
-function prevDay() {
-  const date = new Date(today.value)
-  date.setUTCDate(date.getUTCDate() - 1)
-
-  today.value = date
-}
-
-function thisDay() {
-  today.value = new Date('2024-06-18')
-}
-
-function nextDay() {
-  const date = new Date(today.value)
-  date.setUTCDate(date.getUTCDate() + 1)
-
-  today.value = date
-}
-
 function prevWeek() {
   const date = new Date(today.value)
   date.setUTCDate(date.getUTCDate() - 7)
@@ -240,39 +223,7 @@ onMounted(() => {
     </ul>
   </nav>
   <AllEventsView :events="events" :is-current-view="isAllEventsView" />
-  <div id="day-view" v-if="isDayView">
-    <div class="container">
-      <div class="row">
-        <div class="col">
-          <h2 class="current-period">{{ formatDateToday(today) }}</h2>
-        </div>
-        <div class="col text-end">
-          <a id="prev-day" href="#" @click="prevDay">&lt; Prev</a>
-          <a id="this-day" class="mx-1" href="#" @click="thisDay">Today</a>
-          <a id="next-day" href="#" @click="nextDay">Next &gt;</a>
-        </div>
-      </div>
-    </div>
-    <div id="day" class="container">
-      <div class="row" v-for="hour in 24">
-        <div class="col-1 border text-end">{{ formatHour(hour) }}</div>
-        <div class="col border">
-          <div class="row">
-            <div class="col event"
-                 :class="formatDateTime(formatDate(today), formatHour(hour))"
-                 v-for="event in groups[formatDateTime(formatDate(today), formatHour(hour))]">
-              <span class="summary">
-                {{ event.summary }}
-              </span>
-              <span class="starts_at visually-hidden">
-                {{ formatTime(event.starts_at) }}
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+  <DayView :events="groups" :today="today" :is-current-view="isDayView" />
   <div id="week-view" v-if="isWeekView">
     <div class="container">
       <div class="row">
