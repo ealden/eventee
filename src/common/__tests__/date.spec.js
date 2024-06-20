@@ -2,6 +2,7 @@ import { describe, it, expect } from 'vitest'
 
 import {
   dateToday,
+  dateFrom,
   monthStart,
   monthEnd,
   monthFrom,
@@ -17,6 +18,33 @@ import {
 describe('dateToday', () => {
   it('returns 2024-06-18', () => {
     expect(dateToday()).toEqual(new Date('2024-06-18T00:00:00Z'))
+  })
+})
+
+describe('dateFrom', () => {
+  it('returns +offset from date', () => {
+    const date = new Date('2024-06-20T00:00:00.000Z')
+
+    const expected = new Date('2024-06-21T00:00:00.000Z')
+    const actual = dateFrom(date, 1)
+
+    expect(actual).toEqual(expected)
+  }),
+  it('returns -offset from date', () => {
+    const date = new Date('2024-06-20T00:00:00.000Z')
+
+    const expected = new Date('2024-06-19T00:00:00.000Z')
+    const actual = dateFrom(date, -1)
+
+    expect(actual).toEqual(expected)
+  }),
+  it('returns no offset from date', () => {
+    const date = new Date('2024-06-20T00:00:00.000Z')
+
+    const expected = new Date('2024-06-20T00:00:00.000Z')
+    const actual = dateFrom(date, 0)
+
+    expect(actual).toEqual(expected)
   })
 })
 

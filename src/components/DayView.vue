@@ -1,17 +1,16 @@
 <script setup>
 import { ref } from 'vue'
 
-import { dateToday, formatDate, formatTime, formatDateTime, formatHour, formatDateToday } from '../common/date.js'
+import {
+  dateToday, dateFrom, formatDate, formatTime, formatDateTime, formatHour, formatDateToday
+} from '../common/date.js'
 
 const props = defineProps(['events', 'today', 'isCurrentView'])
 
 const today = ref(props.today)
 
 function prevDay() {
-  const date = new Date(today.value)
-  date.setUTCDate(date.getUTCDate() - 1)
-
-  today.value = date
+  today.value = dateFrom(today.value, -1)
 }
 
 function thisDay() {
@@ -19,10 +18,7 @@ function thisDay() {
 }
 
 function nextDay() {
-  const date = new Date(today.value)
-  date.setUTCDate(date.getUTCDate() + 1)
-
-  today.value = date
+  today.value = dateFrom(today.value, 1)
 }
 </script>
 
