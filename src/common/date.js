@@ -1,23 +1,27 @@
-export function dateToday() {
-  return new Date('2024-06-18T00:00:00Z')
-}
-
-export function dateFrom(date, offset) {
+function copyDate(date) {
   const target = new Date()
   target.setUTCFullYear(date.getUTCFullYear())
   target.setUTCMonth(date.getUTCMonth())
-  target.setUTCDate(date.getUTCDate() + offset)
+  target.setUTCDate(date.getUTCDate())
   target.setUTCHours(0, 0, 0, 0)
 
   return target
 }
 
+export function dateToday() {
+  return new Date('2024-06-18T00:00:00Z')
+}
+
+export function dateFrom(date, offset) {
+  const target = copyDate(date)
+  target.setUTCDate(target.getUTCDate() + offset)
+
+  return target
+}
+
 export function weekStart(date) {
-  const target = new Date()
-  target.setUTCFullYear(date.getUTCFullYear())
-  target.setUTCMonth(date.getUTCMonth())
-  target.setUTCDate(date.getUTCDate() - date.getUTCDay())
-  target.setUTCHours(0, 0, 0, 0)
+  const target = copyDate(date)
+  target.setUTCDate(target.getUTCDate() - target.getUTCDay())
 
   return target
 }
@@ -30,21 +34,16 @@ export function weekFrom(date, offset) {
 }
 
 export function monthStart(date) {
-  const target = new Date()
-  target.setUTCFullYear(date.getUTCFullYear())
-  target.setUTCMonth(date.getUTCMonth())
+  const target = copyDate(date)
   target.setUTCDate(1)
-  target.setUTCHours(0, 0, 0, 0)
 
   return target
 }
 
 export function monthEnd(date) {
-  const target = new Date()
-  target.setUTCFullYear(date.getUTCFullYear())
-  target.setUTCMonth(date.getUTCMonth() + 1)
+  const target = copyDate(date)
+  target.setUTCMonth(target.getUTCMonth() + 1)
   target.setUTCDate(0)
-  target.setUTCHours(0, 0, 0, 0)
 
   return target
 }
