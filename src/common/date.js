@@ -107,14 +107,15 @@ export function formatDateToday(date) {
   return [month, ' ', day, ', ', year].join('')
 }
 
-export function formatYear(date) {
-  return copyDate(date).getUTCFullYear()
-}
-
-export function formatMonth(date) {
-  return MONTHS[copyDate(date).getUTCMonth() + 1]
-}
-
 export function formatDay(date) {
   return new Date(date).getUTCDate()
+}
+
+export function formatMonthViewHeader(date) {
+  const target = copyDate(date)
+
+  const year = target.getUTCFullYear()
+  const month = MONTHS[target.getUTCMonth() + 1]
+
+  return [month, year].join(' ')
 }

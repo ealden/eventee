@@ -13,9 +13,8 @@ import {
   formatTime,
   formatDateTime,
   formatDateToday,
-  formatYear,
-  formatMonth,
-  formatDay
+  formatDay,
+  formatMonthViewHeader
 } from '../date.js'
 
 describe('dateToday', () => {
@@ -226,34 +225,6 @@ describe('formatDateToday', () => {
   })
 })
 
-describe('formatYear', () => {
-  it('returns YYYY', () => {
-    const date = new Date('2024-06-20T00:00:00.000Z')
-
-    const expected = 2024
-    const actual = formatYear(date)
-
-    expect(actual).toEqual(expected)
-  })
-})
-
-describe('formatMonth', () => {
-  it('returns MMM', () => {
-    expect(formatMonth(new Date('2024-01-01T00:00:00.000Z'))).toEqual('January')
-    expect(formatMonth(new Date('2024-02-02T00:00:00.000Z'))).toEqual('February')
-    expect(formatMonth(new Date('2024-03-03T00:00:00.000Z'))).toEqual('March')
-    expect(formatMonth(new Date('2024-04-04T00:00:00.000Z'))).toEqual('April')
-    expect(formatMonth(new Date('2024-05-05T00:00:00.000Z'))).toEqual('May')
-    expect(formatMonth(new Date('2024-06-06T00:00:00.000Z'))).toEqual('June')
-    expect(formatMonth(new Date('2024-07-07T00:00:00.000Z'))).toEqual('July')
-    expect(formatMonth(new Date('2024-08-08T00:00:00.000Z'))).toEqual('August')
-    expect(formatMonth(new Date('2024-09-09T00:00:00.000Z'))).toEqual('September')
-    expect(formatMonth(new Date('2024-10-10T00:00:00.000Z'))).toEqual('October')
-    expect(formatMonth(new Date('2024-11-11T00:00:00.000Z'))).toEqual('November')
-    expect(formatMonth(new Date('2024-12-12T00:00:00.000Z'))).toEqual('December')
-  })
-})
-
 describe('formatDay', () => {
   it('returns D', () => {
     const date = '2024-06-20'
@@ -262,5 +233,22 @@ describe('formatDay', () => {
     const actual = formatDay(date)
 
     expect(actual).toEqual(expected)
+  })
+})
+
+describe('formatMonthViewHeader', () => {
+  it('returns MMM YYYY', () => {
+    expect(formatMonthViewHeader(new Date('2024-01-01T00:00:00.000Z'))).toEqual('January 2024')
+    expect(formatMonthViewHeader(new Date('2024-02-02T00:00:00.000Z'))).toEqual('February 2024')
+    expect(formatMonthViewHeader(new Date('2024-03-03T00:00:00.000Z'))).toEqual('March 2024')
+    expect(formatMonthViewHeader(new Date('2024-04-04T00:00:00.000Z'))).toEqual('April 2024')
+    expect(formatMonthViewHeader(new Date('2024-05-05T00:00:00.000Z'))).toEqual('May 2024')
+    expect(formatMonthViewHeader(new Date('2024-06-06T00:00:00.000Z'))).toEqual('June 2024')
+    expect(formatMonthViewHeader(new Date('2024-07-07T00:00:00.000Z'))).toEqual('July 2024')
+    expect(formatMonthViewHeader(new Date('2024-08-08T00:00:00.000Z'))).toEqual('August 2024')
+    expect(formatMonthViewHeader(new Date('2024-09-09T00:00:00.000Z'))).toEqual('September 2024')
+    expect(formatMonthViewHeader(new Date('2024-10-10T00:00:00.000Z'))).toEqual('October 2024')
+    expect(formatMonthViewHeader(new Date('2024-11-11T00:00:00.000Z'))).toEqual('November 2024')
+    expect(formatMonthViewHeader(new Date('2024-12-12T00:00:00.000Z'))).toEqual('December 2024')
   })
 })

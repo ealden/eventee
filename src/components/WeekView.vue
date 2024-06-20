@@ -2,12 +2,22 @@
 import { ref, computed } from 'vue'
 
 import {
-  dateToday, dateTimeFrom, weekStart, weekFrom, formatTime, formatYear, formatMonth, formatDay
+  dateToday,
+  dateTimeFrom,
+  weekStart,
+  weekFrom,
+  formatTime,
+  formatDay,
+  formatMonthViewHeader
 } from '../common/date.js'
 
 const props = defineProps(['events', 'today', 'isCurrentView'])
 
 const today = ref(props.today)
+
+const header = computed(() => {
+  return formatMonthViewHeader(today.value)
+})
 
 const calendar = computed(() => {
   const calendar = []
@@ -48,7 +58,7 @@ function nextWeek() {
       <div class="row">
         <div class="col">
           <h2 class="current-period" data-test="header">
-            {{ formatMonth(today) }} {{ formatYear(today) }}
+            {{ header }}
           </h2>
         </div>
         <div class="col text-end">
