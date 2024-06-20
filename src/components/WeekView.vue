@@ -15,7 +15,7 @@ const calendar = computed(() => {
   for (let i = 0; i < 7; i++) {
     const date = dateFrom(weekStart(today.value), i)
 
-    calendar.push(formatDate(date))
+    calendar.push(date.toISOString())
   }
 
   return calendar
@@ -103,8 +103,8 @@ function nextWeek() {
         <div class="col border" v-for="date in calendar">
           <div class="row">
             <div class="col event"
-                 :class="formatDateTime(date, formatHour(hour))"
-                 v-for="event in events[formatDateTime(date, formatHour(hour))]"
+                 :class="formatDateTime(formatDate(date), formatHour(hour))"
+                 v-for="event in events[formatDateTime(formatDate(date), formatHour(hour))]"
                  data-test="event">
               <span class="summary">
                 {{ event.summary }}
