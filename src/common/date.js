@@ -12,6 +12,16 @@ export function dateFrom(date, offset) {
   return target
 }
 
+export function weekStart(date) {
+  const target = new Date()
+  target.setUTCFullYear(date.getUTCFullYear())
+  target.setUTCMonth(date.getUTCMonth())
+  target.setUTCDate(date.getUTCDate() - date.getUTCDay())
+  target.setUTCHours(0, 0, 0, 0)
+
+  return target
+}
+
 export function monthStart(date) {
   const target = new Date()
   target.setUTCFullYear(date.getUTCFullYear())

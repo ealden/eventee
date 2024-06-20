@@ -3,6 +3,7 @@ import { describe, it, expect } from 'vitest'
 import {
   dateToday,
   dateFrom,
+  weekStart,
   monthStart,
   monthEnd,
   monthFrom,
@@ -45,6 +46,20 @@ describe('dateFrom', () => {
     const actual = dateFrom(date, 0)
 
     expect(actual).toEqual(expected)
+  })
+})
+
+describe('weekStart', () => {
+  it('returns start of the week', () => {
+    const expected = new Date('2024-06-16T00:00:00.000Z')
+
+    expect(weekStart(new Date('2024-06-16T00:00:00.000Z'))).toEqual(expected)
+    expect(weekStart(new Date('2024-06-17T00:00:00.000Z'))).toEqual(expected)
+    expect(weekStart(new Date('2024-06-18T00:00:00.000Z'))).toEqual(expected)
+    expect(weekStart(new Date('2024-06-19T00:00:00.000Z'))).toEqual(expected)
+    expect(weekStart(new Date('2024-06-20T00:00:00.000Z'))).toEqual(expected)
+    expect(weekStart(new Date('2024-06-21T00:00:00.000Z'))).toEqual(expected)
+    expect(weekStart(new Date('2024-06-22T00:00:00.000Z'))).toEqual(expected)
   })
 })
 
