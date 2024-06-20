@@ -90,8 +90,11 @@ export function formatTime(date) {
     .replace(':00.000Z', '')
 }
 
-export function formatDateTime(date, time) {
-  return [date, 'T', time].join('')
+export function formatDateTime(date) {
+  return new Date(date)
+    .toISOString()
+    .split(':')[0]
+    .concat(':00:00.000Z')
 }
 
 export function formatHour(hour) {

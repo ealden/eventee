@@ -210,14 +210,9 @@ describe('formatTime', () => {
 })
 
 describe('formatDateTime', () => {
-  it('returns yyyy-MM-ddThh:mm', () => {
-    const date = '2024-06-20'
-    const time = '09:00'
-
-    const expected = '2024-06-20T09:00'
-    const actual = formatDateTime(date, time)
-
-    expect(actual).toEqual(expected)
+  it('returns YYYY-MM-DDTHH:00:00.000Z', () => {
+    expect(formatDateTime('2024-06-21T01:00:00.000Z')).toEqual('2024-06-21T01:00:00.000Z')
+    expect(formatDateTime('2024-06-21T01:23:45.678Z')).toEqual('2024-06-21T01:00:00.000Z')
   })
 })
 
