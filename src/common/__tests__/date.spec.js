@@ -1,6 +1,7 @@
 import { describe, it, expect } from 'vitest'
 
 import {
+  dateToday,
   monthStart,
   monthEnd,
   monthFrom,
@@ -12,6 +13,12 @@ import {
   formatMonthYear,
   formatDay
 } from '../date.js'
+
+describe('dateToday', () => {
+  it('returns 2024-06-18', () => {
+    expect(dateToday()).toEqual(new Date('2024-06-18T00:00:00Z'))
+  })
+})
 
 describe('monthStart', () => {
   it('returns start of the month', () => {

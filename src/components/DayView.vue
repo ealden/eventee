@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 
-import { formatDate, formatTime, formatDateTime, formatHour, formatDateToday } from '../common/date.js'
+import { dateToday, formatDate, formatTime, formatDateTime, formatHour, formatDateToday } from '../common/date.js'
 
 const props = defineProps(['events', 'today', 'isCurrentView'])
 
@@ -15,7 +15,7 @@ function prevDay() {
 }
 
 function thisDay() {
-  today.value = new Date('2024-06-18')
+  today.value = dateToday()
 }
 
 function nextDay() {

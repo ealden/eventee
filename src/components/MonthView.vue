@@ -1,7 +1,9 @@
 <script setup>
 import { ref, computed } from 'vue'
 
-import { monthStart, monthEnd, monthFrom, formatDate, formatTime, formatMonthYear, formatDay } from '../common/date.js'
+import {
+  dateToday, monthStart, monthEnd, monthFrom, formatDate, formatTime, formatMonthYear, formatDay
+} from '../common/date.js'
 
 const props = defineProps(['events', 'today', 'isCurrentView'])
 
@@ -48,7 +50,7 @@ function prevMonth() {
 }
 
 function thisMonth() {
-  today.value = new Date()
+  today.value = dateToday()
 }
 
 function nextMonth() {

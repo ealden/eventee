@@ -1,3 +1,7 @@
+export function dateToday() {
+  return new Date('2024-06-18T00:00:00Z')
+}
+
 export function monthStart(date) {
   const target = new Date()
   target.setUTCFullYear(date.getUTCFullYear())

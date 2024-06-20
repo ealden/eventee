@@ -1,7 +1,9 @@
 <script setup>
 import { ref, computed } from 'vue'
 
-import { formatDate, formatTime, formatDateTime, formatHour, formatMonthYear, formatDay } from '../common/date.js'
+import {
+  dateToday, formatDate, formatTime, formatDateTime, formatHour, formatMonthYear, formatDay
+} from '../common/date.js'
 
 const props = defineProps(['events', 'today', 'isCurrentView'])
 
@@ -33,7 +35,7 @@ function prevWeek() {
 }
 
 function thisWeek() {
-  today.value = new Date()
+  today.value = dateToday()
 }
 
 function nextWeek() {
