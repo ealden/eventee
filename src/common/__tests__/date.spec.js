@@ -188,7 +188,7 @@ describe('monthFrom', () => {
 })
 
 describe('formatDate', () => {
-  it('returns yyyy-MM-dd', () => {
+  it('returns YYYY-MM-DD', () => {
     const date = '2024-06-20T09:00:00.000Z'
 
     const expected = '2024-06-20'
@@ -199,7 +199,7 @@ describe('formatDate', () => {
 })
 
 describe('formatTime', () => {
-  it('returns hh:mm', () => {
+  it('returns HH:mm', () => {
     const date = '2024-06-20T09:00:00.000Z'
 
     const expected = '09:00'
@@ -217,7 +217,7 @@ describe('formatDateTime', () => {
 })
 
 describe('formatHour', () => {
-  it('returns hh:mm', () => {
+  it('returns HH:mm', () => {
     const i = 1
 
     const expected = '00:00'
@@ -228,7 +228,7 @@ describe('formatHour', () => {
 })
 
 describe('formatDateToday', () => {
-  it('returns MMM dd, yyyy', () => {
+  it('returns MMM DD, YYYY', () => {
     const date = '2024-06-20'
 
     const expected = 'June 20, 2024'
@@ -239,7 +239,7 @@ describe('formatDateToday', () => {
 })
 
 describe('formatYear', () => {
-  it('returns yyyy', () => {
+  it('returns YYYY', () => {
     const date = new Date('2024-06-20T00:00:00.000Z')
 
     const expected = 2024
@@ -267,7 +267,7 @@ describe('formatMonth', () => {
 })
 
 describe('formatDay', () => {
-  it('returns d', () => {
+  it('returns D', () => {
     const date = '2024-06-20'
 
     const expected = 20
