@@ -2,7 +2,7 @@
 import { ref, computed } from 'vue'
 
 import {
-  dateToday, dateFrom, weekStart, formatDate, formatTime, formatDateTime, formatHour, formatMonthYear, formatDay
+  dateToday, dateFrom, weekStart, weekFrom, formatDate, formatTime, formatDateTime, formatHour, formatMonthYear, formatDay
 } from '../common/date.js'
 
 const props = defineProps(['events', 'today', 'isCurrentView'])
@@ -22,10 +22,7 @@ const week = computed(() => {
 })
 
 function prevWeek() {
-  const date = new Date(today.value)
-  date.setUTCDate(date.getUTCDate() - 7)
-
-  today.value = date
+  today.value = weekFrom(today.value, -1)
 }
 
 function thisWeek() {
@@ -33,10 +30,7 @@ function thisWeek() {
 }
 
 function nextWeek() {
-  const date = new Date(today.value)
-  date.setUTCDate(date.getUTCDate() + 7)
-
-  today.value = date
+  today.value = weekFrom(today.value, 1)
 }
 </script>
 

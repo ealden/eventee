@@ -4,6 +4,7 @@ import {
   dateToday,
   dateFrom,
   weekStart,
+  weekFrom,
   monthStart,
   monthEnd,
   monthFrom,
@@ -60,6 +61,42 @@ describe('weekStart', () => {
     expect(weekStart(new Date('2024-06-20T00:00:00.000Z'))).toEqual(expected)
     expect(weekStart(new Date('2024-06-21T00:00:00.000Z'))).toEqual(expected)
     expect(weekStart(new Date('2024-06-22T00:00:00.000Z'))).toEqual(expected)
+  })
+})
+
+describe('weekFrom', () => {
+  it('returns +offset from week start', () => {
+    const expected = new Date('2024-06-23T00:00:00.000Z')
+
+    expect(weekFrom(new Date('2024-06-16T00:00:00.000Z'), 1)).toEqual(expected)
+    expect(weekFrom(new Date('2024-06-17T00:00:00.000Z'), 1)).toEqual(expected)
+    expect(weekFrom(new Date('2024-06-18T00:00:00.000Z'), 1)).toEqual(expected)
+    expect(weekFrom(new Date('2024-06-19T00:00:00.000Z'), 1)).toEqual(expected)
+    expect(weekFrom(new Date('2024-06-20T00:00:00.000Z'), 1)).toEqual(expected)
+    expect(weekFrom(new Date('2024-06-21T00:00:00.000Z'), 1)).toEqual(expected)
+    expect(weekFrom(new Date('2024-06-22T00:00:00.000Z'), 1)).toEqual(expected)
+  }),
+  it('returns -offset from week start', () => {
+    const expected = new Date('2024-06-09T00:00:00.000Z')
+
+    expect(weekFrom(new Date('2024-06-16T00:00:00.000Z'), -1)).toEqual(expected)
+    expect(weekFrom(new Date('2024-06-17T00:00:00.000Z'), -1)).toEqual(expected)
+    expect(weekFrom(new Date('2024-06-18T00:00:00.000Z'), -1)).toEqual(expected)
+    expect(weekFrom(new Date('2024-06-19T00:00:00.000Z'), -1)).toEqual(expected)
+    expect(weekFrom(new Date('2024-06-20T00:00:00.000Z'), -1)).toEqual(expected)
+    expect(weekFrom(new Date('2024-06-21T00:00:00.000Z'), -1)).toEqual(expected)
+    expect(weekFrom(new Date('2024-06-22T00:00:00.000Z'), -1)).toEqual(expected)
+  }),
+  it('returns no offset from week start', () => {
+    const expected = new Date('2024-06-16T00:00:00.000Z')
+
+    expect(weekFrom(new Date('2024-06-16T00:00:00.000Z'), 0)).toEqual(expected)
+    expect(weekFrom(new Date('2024-06-17T00:00:00.000Z'), 0)).toEqual(expected)
+    expect(weekFrom(new Date('2024-06-18T00:00:00.000Z'), 0)).toEqual(expected)
+    expect(weekFrom(new Date('2024-06-19T00:00:00.000Z'), 0)).toEqual(expected)
+    expect(weekFrom(new Date('2024-06-20T00:00:00.000Z'), 0)).toEqual(expected)
+    expect(weekFrom(new Date('2024-06-21T00:00:00.000Z'), 0)).toEqual(expected)
+    expect(weekFrom(new Date('2024-06-22T00:00:00.000Z'), 0)).toEqual(expected)
   })
 })
 
