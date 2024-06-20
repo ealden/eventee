@@ -9,7 +9,7 @@ const props = defineProps(['events', 'today', 'isCurrentView'])
 
 const today = ref(props.today)
 
-const month = computed(() => {
+const calendar = computed(() => {
   const startDate = monthStart(today.value)
   const endDate = monthEnd(today.value)
 
@@ -19,7 +19,7 @@ const month = computed(() => {
     week.push(null)
   }
 
-  const month = []
+  const calendar = []
 
   for (let i = 0; i < endDate.getUTCDate(); i++) {
     const date = dateFrom(monthStart(today.value), i)
@@ -27,7 +27,7 @@ const month = computed(() => {
     week.push(formatDate(date))
 
     if (week.length == 7) {
-      month.push(week)
+      calendar.push(week)
 
       week = []
     }
@@ -38,10 +38,10 @@ const month = computed(() => {
       week.push(null)
     }
 
-    month.push(week)
+    calendar.push(week)
   }
 
-  return month
+  return calendar
 })
 
 function prevMonth() {
@@ -83,7 +83,7 @@ function nextMonth() {
         <div class="col"><strong>Fri</strong></div>
         <div class="col"><strong>Sat</strong></div>
       </div>
-      <template v-for="week in month">
+      <template v-for="week in calendar">
         <div class="row">
           <div class="col border" v-for="date in week" :id="date">
             <div class="row text-end">
