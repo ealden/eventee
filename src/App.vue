@@ -8,11 +8,13 @@ import DayView from './components/DayView.vue'
 import WeekView from './components/WeekView.vue'
 import MonthView from './components/MonthView.vue'
 
+const props = defineProps(['view'])
+
 const events = ref([])
 
 const today = ref(new Date('2024-06-18'))
 
-const view = ref(0)
+const view = ref(props.view || 0)
 
 const isAllEventsView = computed(() => {
   return view.value == 0
