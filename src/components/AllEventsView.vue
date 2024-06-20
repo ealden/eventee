@@ -6,7 +6,9 @@ defineProps(['events', 'isCurrentView'])
 
 <template>
   <div id="all-events-view" v-if="isCurrentView">
-    <h2>All Events</h2>
+    <h2 data-test="header">
+      All Events
+    </h2>
     <table class="table">
       <thead>
         <tr>
@@ -16,7 +18,9 @@ defineProps(['events', 'isCurrentView'])
         </tr>
       </thead>
       <tbody>
-        <tr class="event" v-for="event in events">
+        <tr class="event"
+            v-for="event in events"
+            data-test="event">
           <td class="summary">
             {{ event.summary }}
           </td>
