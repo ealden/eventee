@@ -25,55 +25,25 @@ describe('dateToday', () => {
 
 describe('dateFrom', () => {
   it('returns +offset from date', () => {
-    const date = new Date('2024-06-20T00:00:00.000Z')
-
-    const expected = new Date('2024-06-21T00:00:00.000Z')
-    const actual = dateFrom(date, 1)
-
-    expect(actual).toEqual(expected)
+    expect(dateFrom(new Date('2024-06-20T00:00:00.000Z'), 1)).toEqual(new Date('2024-06-21T00:00:00.000Z'))
   }),
   it('returns -offset from date', () => {
-    const date = new Date('2024-06-20T00:00:00.000Z')
-
-    const expected = new Date('2024-06-19T00:00:00.000Z')
-    const actual = dateFrom(date, -1)
-
-    expect(actual).toEqual(expected)
+    expect(dateFrom(new Date('2024-06-20T00:00:00.000Z'), -1)).toEqual(new Date('2024-06-19T00:00:00.000Z'))
   }),
   it('returns no offset from date', () => {
-    const date = new Date('2024-06-20T00:00:00.000Z')
-
-    const expected = new Date('2024-06-20T00:00:00.000Z')
-    const actual = dateFrom(date, 0)
-
-    expect(actual).toEqual(expected)
+    expect(dateFrom(new Date('2024-06-20T00:00:00.000Z'), 0)).toEqual(new Date('2024-06-20T00:00:00.000Z'))
   })
 })
 
 describe('dateTimeFrom', () => {
   it('returns +offset from hour', () => {
-    const date = new Date('2024-06-20T00:00:00.000Z')
-
-    const expected = new Date('2024-06-20T01:00:00.000Z')
-    const actual = dateTimeFrom(date, 1)
-
-    expect(actual).toEqual(expected)
+    expect(dateTimeFrom(new Date('2024-06-20T00:00:00.000Z'), 1)).toEqual(new Date('2024-06-20T01:00:00.000Z'))
   }),
   it('returns -offset from hour', () => {
-    const date = new Date('2024-06-20T00:00:00.000Z')
-
-    const expected = new Date('2024-06-19T23:00:00.000Z')
-    const actual = dateTimeFrom(date, -1)
-
-    expect(actual).toEqual(expected)
+    expect(dateTimeFrom(new Date('2024-06-20T00:00:00.000Z'), -1)).toEqual(new Date('2024-06-19T23:00:00.000Z'))
   }),
   it('returns no offset from hour', () => {
-    const date = new Date('2024-06-20T00:00:00.000Z')
-
-    const expected = new Date('2024-06-20T00:00:00.000Z')
-    const actual = dateTimeFrom(date, 0)
-
-    expect(actual).toEqual(expected)
+    expect(dateTimeFrom(new Date('2024-06-20T00:00:00.000Z'), 0)).toEqual(new Date('2024-06-20T00:00:00.000Z'))
   })
 })
 
@@ -129,12 +99,7 @@ describe('weekFrom', () => {
 
 describe('monthStart', () => {
   it('returns start of the month', () => {
-    const date = new Date('2024-06-20T00:00:00.000Z')
-
-    const expected = new Date('2024-06-01T00:00:00.000Z')
-    const actual = monthStart(date)
-
-    expect(actual).toEqual(expected)
+    expect(monthStart(new Date('2024-06-20T00:00:00.000Z'))).toEqual(new Date('2024-06-01T00:00:00.000Z'))
   })
 })
 
@@ -160,50 +125,25 @@ describe('monthEnd', () => {
 
 describe('monthFrom', () => {
   it('returns +offset from month start', () => {
-    const date = new Date('2024-06-20T00:00:00.000Z')
-
-    const expected = new Date('2024-07-01T00:00:00.000Z')
-    const actual = monthFrom(date, 1)
-
-    expect(actual).toEqual(expected)
+    expect(monthFrom(new Date('2024-06-20T00:00:00.000Z'), 1)).toEqual(new Date('2024-07-01T00:00:00.000Z'))
   }),
   it('returns -offset from month start', () => {
-    const date = new Date('2024-06-20T00:00:00.000Z')
-
-    const expected = new Date('2024-05-01T00:00:00.000Z')
-    const actual = monthFrom(date, -1)
-
-    expect(actual).toEqual(expected)
+    expect(monthFrom(new Date('2024-06-20T00:00:00.000Z'), -1)).toEqual(new Date('2024-05-01T00:00:00.000Z'))
   }),
   it('returns no offset from month start', () => {
-    const date = new Date('2024-06-20T00:00:00.000Z')
-
-    const expected = new Date('2024-06-01T00:00:00.000Z')
-    const actual = monthFrom(date, 0)
-
-    expect(actual).toEqual(expected)
+    expect(monthFrom(new Date('2024-06-20T00:00:00.000Z'), 0)).toEqual(new Date('2024-06-01T00:00:00.000Z'))
   })
 })
 
 describe('formatDate', () => {
   it('returns YYYY-MM-DD', () => {
-    const date = '2024-06-20T09:00:00.000Z'
-
-    const expected = '2024-06-20'
-    const actual = formatDate(date)
-
-    expect(actual).toEqual(expected)
+    expect(formatDate('2024-06-20T09:00:00.000Z')).toEqual('2024-06-20')
   })
 })
 
 describe('formatTime', () => {
   it('returns HH:mm', () => {
-    const date = '2024-06-20T09:00:00.000Z'
-
-    const expected = '09:00'
-    const actual = formatTime(date)
-
-    expect(actual).toEqual(expected)
+    expect(formatTime('2024-06-20T09:00:00.000Z')).toEqual('09:00')
   })
 })
 
@@ -216,23 +156,13 @@ describe('formatDateTime', () => {
 
 describe('formatDay', () => {
   it('returns D', () => {
-    const date = '2024-06-20'
-
-    const expected = 20
-    const actual = formatDay(date)
-
-    expect(actual).toEqual(expected)
+    expect(formatDay('2024-06-20')).toEqual(20)
   })
 })
 
 describe('formatDayViewHeader', () => {
   it('returns MMM DD, YYYY', () => {
-    const date = new Date('2024-06-21T02:00:00.000Z')
-
-    const expected = 'June 21, 2024'
-    const actual = formatDayViewHeader(date)
-
-    expect(actual).toEqual(expected)
+    expect(formatDayViewHeader(new Date('2024-06-21T02:00:00.000Z'))).toEqual('June 21, 2024')
   })
 })
 
