@@ -35,5 +35,17 @@ describe('App', () => {
     expect(wrapper.find('#day-view').exists()).toBe(false)
     expect(wrapper.find('#week-view').exists()).toBe(true)
     expect(wrapper.find('#month-view').exists()).toBe(false)
+  }),
+  it('shows month view', () => {
+    const wrapper = mount(App, {
+      props: {
+        view: 3
+      }
+    })
+
+    expect(wrapper.find('#all-events-view').exists()).toBe(false)
+    expect(wrapper.find('#day-view').exists()).toBe(false)
+    expect(wrapper.find('#week-view').exists()).toBe(false)
+    expect(wrapper.find('#month-view').exists()).toBe(true)
   })
 })
