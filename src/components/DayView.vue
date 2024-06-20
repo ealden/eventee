@@ -31,7 +31,9 @@ function nextDay() {
     <div class="container">
       <div class="row">
         <div class="col">
-          <h2 class="current-period">{{ formatDateToday(today) }}</h2>
+          <h2 class="current-period" data-test="header">
+            {{ formatDateToday(today) }}
+          </h2>
         </div>
         <div class="col text-end">
           <a id="prev-day" href="#" @click="prevDay">&lt; Prev</a>
@@ -47,7 +49,8 @@ function nextDay() {
           <div class="row">
             <div class="col event"
                  :class="formatDateTime(formatDate(today), formatHour(hour))"
-                 v-for="event in events[formatDateTime(formatDate(today), formatHour(hour))]">
+                 v-for="event in events[formatDateTime(formatDate(today), formatHour(hour))]"
+                 data-test="event">
               <span class="summary">
                 {{ event.summary }}
               </span>
