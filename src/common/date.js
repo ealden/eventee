@@ -8,6 +8,16 @@ export function monthStart(date) {
   return target
 }
 
+export function monthEnd(date) {
+  const target = new Date()
+  target.setUTCFullYear(date.getUTCFullYear())
+  target.setUTCMonth(date.getUTCMonth() + 1)
+  target.setUTCDate(0)
+  target.setUTCHours(0, 0, 0, 0)
+
+  return target
+}
+
 const MONTHS = {
   1: 'January',
   2: 'February',
