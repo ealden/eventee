@@ -2,7 +2,7 @@
 import { ref, computed } from 'vue'
 
 import {
-  dateToday, dateFrom, weekStart, weekFrom, formatDate, formatTime, formatDateTime, formatHour, formatYear, formatMonth, formatDay
+  dateToday, dateTimeFrom, weekStart, weekFrom, formatTime, formatHour, formatYear, formatMonth, formatDay
 } from '../common/date.js'
 
 const props = defineProps(['events', 'today', 'isCurrentView'])
@@ -12,10 +12,18 @@ const today = ref(props.today)
 const calendar = computed(() => {
   const calendar = []
 
-  for (let i = 0; i < 7; i++) {
-    const date = dateFrom(weekStart(today.value), i)
+  const startDate = weekStart(today.value)
 
-    calendar.push(date.toISOString())
+  for (let h = 0; h < 24; h++) {
+    const hour = []
+
+    for (let d = 0; d < 7; d++) {
+      const date = dateTimeFrom(startDate, ((d * 24) + h))
+
+      hour.push(date.toISOString())
+    }
+
+    calendar.push(hour)
   }
 
   return calendar
@@ -58,53 +66,53 @@ function nextWeek() {
         <div class="col">
           <strong>Sun</strong>
           <span class="day ms-1">
-            <strong>{{ formatDay(calendar[0]) }}</strong>
+            <strong>{{ formatDay(calendar[0][0]) }}</strong>
           </span>
         </div>
         <div class="col">
           <strong>Mon</strong>
           <span class="day ms-1">
-            <strong>{{ formatDay(calendar[1]) }}</strong>
+            <strong>{{ formatDay(calendar[0][1]) }}</strong>
           </span>
         </div>
         <div class="col">
           <strong>Tue</strong>
           <span class="day ms-1">
-            <strong>{{ formatDay(calendar[2]) }}</strong>
+            <strong>{{ formatDay(calendar[0][2]) }}</strong>
           </span>
         </div>
         <div class="col">
           <strong>Wed</strong>
           <span class="day ms-1">
-            <strong>{{ formatDay(calendar[3]) }}</strong>
+            <strong>{{ formatDay(calendar[0][3]) }}</strong>
           </span>
         </div>
         <div class="col">
           <strong>Thu</strong>
           <span class="day ms-1">
-            <strong>{{ formatDay(calendar[4]) }}</strong>
+            <strong>{{ formatDay(calendar[0][4]) }}</strong>
           </span>
         </div>
         <div class="col">
           <strong>Fri</strong>
           <span class="day ms-1">
-            <strong>{{ formatDay(calendar[5]) }}</strong>
+            <strong>{{ formatDay(calendar[0][5]) }}</strong>
           </span>
         </div>
         <div class="col">
           <strong>Sat</strong>
           <span class="day ms-1">
-            <strong>{{ formatDay(calendar[6]) }}</strong>
+            <strong>{{ formatDay(calendar[0][6]) }}</strong>
           </span>
         </div>
       </div>
-      <div class="row" v-for="hour in 24">
-        <div class="col-1 border text-end">{{ formatHour(hour) }}</div>
-        <div class="col border" v-for="date in calendar">
+      <div class="row" v-for="(hour, i) in calendar">
+        <div class="col-1 border text-end">{{ formatHour(i + 1) }}</div>
+        <div class="col border" v-for="dateTime in hour">
           <div class="row">
             <div class="col event"
-                 :class="formatDateTime(formatDate(date), formatHour(hour))"
-                 v-for="event in events[formatDateTime(formatDate(date), formatHour(hour))]"
+                 :class="dateTime"
+                 v-for="event in events[dateTime]"
                  data-test="event">
               <span class="summary">
                 {{ event.summary }}

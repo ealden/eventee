@@ -37,20 +37,29 @@ const groups = computed(() => {
 
   for (const event of events.value) {
     const date = formatDate(event.starts_at)
-    const time = formatTime(event.starts_at)
-
-    const dateTime = formatDateTime(date, time)
 
     if (!Object.hasOwn(groups, date)) {
       groups[date] = []
     }
 
+    groups[date].push(event)
+
+    const dateTime = event.starts_at
+
     if (!Object.hasOwn(groups, dateTime)) {
       groups[dateTime] = []
     }
 
-    groups[date].push(event)
     groups[dateTime].push(event)
+
+    const time = formatTime(event.starts_at)
+    const old = formatDateTime(date, time)
+
+    if (!Object.hasOwn(groups, old)) {
+      groups[old] = []
+    }
+
+    groups[old].push(event)
   }
 
   return groups
