@@ -2,7 +2,7 @@
 import { ref, computed, onMounted } from 'vue'
 import axios from 'axios'
 
-import { formatDate, formatTime, formatDateTime } from './common/date.js'
+import { formatDate } from './common/date.js'
 import AllEventsView from './components/AllEventsView.vue'
 import DayView from './components/DayView.vue'
 import WeekView from './components/WeekView.vue'
@@ -51,15 +51,6 @@ const groups = computed(() => {
     }
 
     groups[dateTime].push(event)
-
-    const time = formatTime(event.starts_at)
-    const old = formatDateTime(date, time)
-
-    if (!Object.hasOwn(groups, old)) {
-      groups[old] = []
-    }
-
-    groups[old].push(event)
   }
 
   return groups

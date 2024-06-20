@@ -1,13 +1,25 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 
 import {
-  dateToday, dateFrom, formatDate, formatTime, formatDateTime, formatHour, formatDateToday
+  dateToday, dateFrom, dateTimeFrom, formatDate, formatTime, formatHour, formatDateToday
 } from '../common/date.js'
 
 const props = defineProps(['events', 'today', 'isCurrentView'])
 
 const today = ref(props.today)
+
+const calendar = computed(() => {
+  const calendar = []
+
+  for (let h = 0; h < 24; h++) {
+    const date = dateTimeFrom(today.value, h)
+
+    calendar.push(date.toISOString())
+  }
+
+  return calendar
+})
 
 function prevDay() {
   today.value = dateFrom(today.value, -1)
@@ -39,13 +51,13 @@ function nextDay() {
       </div>
     </div>
     <div id="day" class="container">
-      <div class="row" v-for="hour in 24">
-        <div class="col-1 border text-end">{{ formatHour(hour) }}</div>
+      <div class="row" v-for="(dateTime, i) in calendar">
+        <div class="col-1 border text-end">{{ formatHour(i + 1) }}</div>
         <div class="col border">
           <div class="row">
             <div class="col event"
-                 :class="formatDateTime(formatDate(today), formatHour(hour))"
-                 v-for="event in events[formatDateTime(formatDate(today), formatHour(hour))]"
+                 :class="dateTime"
+                 v-for="event in events[dateTime]"
                  data-test="event">
               <span class="summary">
                 {{ event.summary }}
