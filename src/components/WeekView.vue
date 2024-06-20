@@ -39,6 +39,20 @@ const calendar = computed(() => {
   return calendar
 })
 
+const days = computed(() => {
+  const date = calendar.value[0]
+
+  return {
+    'Sun': formatDay(date[0]),
+    'Mon': formatDay(date[1]),
+    'Tue': formatDay(date[2]),
+    'Wed': formatDay(date[3]),
+    'Thu': formatDay(date[4]),
+    'Fri': formatDay(date[5]),
+    'Sat': formatDay(date[6])
+  }
+})
+
 function prevWeek() {
   today.value = weekFrom(today.value, -1)
 }
@@ -73,46 +87,10 @@ function nextWeek() {
         <div class="col">
           &nbsp;
         </div>
-        <div class="col">
-          <strong>Sun</strong>
+        <div class="col" v-for="(value, label) in days">
+          <strong>{{ label }}</strong>
           <span class="day ms-1">
-            <strong>{{ formatDay(calendar[0][0]) }}</strong>
-          </span>
-        </div>
-        <div class="col">
-          <strong>Mon</strong>
-          <span class="day ms-1">
-            <strong>{{ formatDay(calendar[0][1]) }}</strong>
-          </span>
-        </div>
-        <div class="col">
-          <strong>Tue</strong>
-          <span class="day ms-1">
-            <strong>{{ formatDay(calendar[0][2]) }}</strong>
-          </span>
-        </div>
-        <div class="col">
-          <strong>Wed</strong>
-          <span class="day ms-1">
-            <strong>{{ formatDay(calendar[0][3]) }}</strong>
-          </span>
-        </div>
-        <div class="col">
-          <strong>Thu</strong>
-          <span class="day ms-1">
-            <strong>{{ formatDay(calendar[0][4]) }}</strong>
-          </span>
-        </div>
-        <div class="col">
-          <strong>Fri</strong>
-          <span class="day ms-1">
-            <strong>{{ formatDay(calendar[0][5]) }}</strong>
-          </span>
-        </div>
-        <div class="col">
-          <strong>Sat</strong>
-          <span class="day ms-1">
-            <strong>{{ formatDay(calendar[0][6]) }}</strong>
+            <strong>{{ value }}</strong>
           </span>
         </div>
       </div>
