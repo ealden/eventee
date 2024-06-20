@@ -1,6 +1,7 @@
 <script setup>
-import { formatDate, formatTime, formatDateTime, formatHour, formatMonthYear, formatDay } from '../common/format.js'
 import { ref, computed } from 'vue'
+
+import { formatDate, formatTime, formatDateTime, formatHour, formatMonthYear, formatDay } from '../common/date.js'
 
 const props = defineProps(['events', 'today', 'isCurrentView'])
 

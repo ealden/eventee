@@ -1,5 +1,5 @@
 <script setup>
-import { formatDate, formatTime } from '../common/format.js'
+import { formatDate, formatTime } from '../common/date.js'
 
 defineProps(['events', 'isCurrentView'])
 </script>

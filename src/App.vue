@@ -1,11 +1,12 @@
 <script setup>
+import { ref, computed, onMounted } from 'vue'
+import axios from 'axios'
+
+import { formatDate, formatTime, formatDateTime } from './common/date.js'
 import AllEventsView from './components/AllEventsView.vue'
 import DayView from './components/DayView.vue'
 import WeekView from './components/WeekView.vue'
 import MonthView from './components/MonthView.vue'
-import { formatDate, formatTime, formatDateTime } from './common/format.js'
-import { ref, computed, onMounted } from 'vue'
-import axios from 'axios'
 
 const events = ref([])
 
