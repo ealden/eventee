@@ -1,17 +1,14 @@
 <script setup>
 import { ref, computed } from 'vue'
 
-import { formatDate, formatTime, formatMonthYear, formatDay } from '../common/date.js'
+import { monthStart, formatDate, formatTime, formatMonthYear, formatDay } from '../common/date.js'
 
 const props = defineProps(['events', 'today', 'isCurrentView'])
 
 const today = ref(props.today)
 
 const month = computed(() => {
-  const startDate = new Date()
-  startDate.setUTCFullYear(today.value.getUTCFullYear())
-  startDate.setUTCMonth(today.value.getUTCMonth())
-  startDate.setUTCDate(1)
+  const startDate = monthStart(today.value)
 
   const endDate = new Date(startDate)
   endDate.setUTCMonth(endDate.getUTCMonth() + 1)

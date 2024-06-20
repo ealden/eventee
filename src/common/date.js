@@ -1,3 +1,13 @@
+export function monthStart(date) {
+  const target = new Date()
+  target.setUTCFullYear(date.getUTCFullYear())
+  target.setUTCMonth(date.getUTCMonth())
+  target.setUTCDate(1)
+  target.setUTCHours(0, 0, 0, 0)
+
+  return target
+}
+
 const MONTHS = {
   1: 'January',
   2: 'February',

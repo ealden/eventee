@@ -1,6 +1,26 @@
 import { describe, it, expect } from 'vitest'
 
-import { formatDate, formatTime, formatDateTime, formatHour, formatDateToday, formatMonthYear, formatDay } from '../date.js'
+import {
+  monthStart,
+  formatDate,
+  formatTime,
+  formatDateTime,
+  formatHour,
+  formatDateToday,
+  formatMonthYear,
+  formatDay
+} from '../date.js'
+
+describe('monthStart', () => {
+  it('returns start of the month', () => {
+    const date = new Date('2024-06-20T00:00:00.000Z')
+
+    const expected = new Date('2024-06-01T00:00:00.000Z')
+    const actual = monthStart(date)
+
+    expect(actual).toEqual(expected)
+  })
+})
 
 describe('formatDate', () => {
   it('returns yyyy-MM-dd', () => {
