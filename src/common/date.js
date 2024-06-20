@@ -97,18 +97,18 @@ export function formatDateTime(date) {
     .concat(':00:00.000Z')
 }
 
-export function formatDateToday(date) {
-  const dateObject = new Date(date)
-
-  const year = dateObject.getUTCFullYear()
-  const month = MONTHS[dateObject.getUTCMonth() + 1]
-  const day = dateObject.getUTCDate()
-
-  return [month, ' ', day, ', ', year].join('')
-}
-
 export function formatDay(date) {
   return new Date(date).getUTCDate()
+}
+
+export function formatDayViewHeader(date) {
+  const target = copyDate(date)
+
+  const year = target.getUTCFullYear()
+  const month = MONTHS[target.getUTCMonth() + 1]
+  const day = target.getUTCDate()
+
+  return [month, ' ', day, ', ', year].join('')
 }
 
 export function formatMonthViewHeader(date) {

@@ -12,8 +12,8 @@ import {
   formatDate,
   formatTime,
   formatDateTime,
-  formatDateToday,
   formatDay,
+  formatDayViewHeader,
   formatMonthViewHeader
 } from '../date.js'
 
@@ -214,23 +214,23 @@ describe('formatDateTime', () => {
   })
 })
 
-describe('formatDateToday', () => {
-  it('returns MMM DD, YYYY', () => {
-    const date = '2024-06-20'
-
-    const expected = 'June 20, 2024'
-    const actual = formatDateToday(date)
-
-    expect(actual).toEqual(expected)
-  })
-})
-
 describe('formatDay', () => {
   it('returns D', () => {
     const date = '2024-06-20'
 
     const expected = 20
     const actual = formatDay(date)
+
+    expect(actual).toEqual(expected)
+  })
+})
+
+describe('formatDayViewHeader', () => {
+  it('returns MMM DD, YYYY', () => {
+    const date = new Date('2024-06-21T02:00:00.000Z')
+
+    const expected = 'June 21, 2024'
+    const actual = formatDayViewHeader(date)
 
     expect(actual).toEqual(expected)
   })
