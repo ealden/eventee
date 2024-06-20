@@ -2,7 +2,7 @@
 import { ref, computed } from 'vue'
 
 import {
-  dateToday, dateFrom, dateTimeFrom, formatDate, formatTime, formatHour, formatDateToday
+  dateToday, dateFrom, dateTimeFrom, formatDate, formatTime, formatDateToday
 } from '../common/date.js'
 
 const props = defineProps(['events', 'today', 'isCurrentView'])
@@ -51,8 +51,8 @@ function nextDay() {
       </div>
     </div>
     <div id="day" class="container">
-      <div class="row" v-for="(dateTime, i) in calendar">
-        <div class="col-1 border text-end">{{ formatHour(i + 1) }}</div>
+      <div class="row" v-for="dateTime in calendar">
+        <div class="col-1 border text-end">{{ formatTime(dateTime) }}</div>
         <div class="col border">
           <div class="row">
             <div class="col event"

@@ -97,10 +97,6 @@ export function formatDateTime(date) {
     .concat(':00:00.000Z')
 }
 
-export function formatHour(hour) {
-  return [(hour - 1).toString().padStart(2, 0), ':00'].join('')
-}
-
 export function formatDateToday(date) {
   const dateObject = new Date(date)
 

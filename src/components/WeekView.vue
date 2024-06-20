@@ -2,7 +2,7 @@
 import { ref, computed } from 'vue'
 
 import {
-  dateToday, dateTimeFrom, weekStart, weekFrom, formatTime, formatHour, formatYear, formatMonth, formatDay
+  dateToday, dateTimeFrom, weekStart, weekFrom, formatTime, formatYear, formatMonth, formatDay
 } from '../common/date.js'
 
 const props = defineProps(['events', 'today', 'isCurrentView'])
@@ -106,8 +106,8 @@ function nextWeek() {
           </span>
         </div>
       </div>
-      <div class="row" v-for="(hour, i) in calendar">
-        <div class="col-1 border text-end">{{ formatHour(i + 1) }}</div>
+      <div class="row" v-for="hour in calendar">
+        <div class="col-1 border text-end">{{ formatTime(hour[0]) }}</div>
         <div class="col border" v-for="dateTime in hour">
           <div class="row">
             <div class="col event"

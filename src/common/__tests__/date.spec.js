@@ -12,7 +12,6 @@ import {
   formatDate,
   formatTime,
   formatDateTime,
-  formatHour,
   formatDateToday,
   formatYear,
   formatMonth,
@@ -213,17 +212,6 @@ describe('formatDateTime', () => {
   it('returns YYYY-MM-DDTHH:00:00.000Z', () => {
     expect(formatDateTime('2024-06-21T01:00:00.000Z')).toEqual('2024-06-21T01:00:00.000Z')
     expect(formatDateTime('2024-06-21T01:23:45.678Z')).toEqual('2024-06-21T01:00:00.000Z')
-  })
-})
-
-describe('formatHour', () => {
-  it('returns HH:mm', () => {
-    const i = 1
-
-    const expected = '00:00'
-    const actual = formatHour(i)
-
-    expect(actual).toEqual(expected)
   })
 })
 
