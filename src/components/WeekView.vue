@@ -49,7 +49,9 @@ function nextWeek() {
     <div class="container">
       <div class="row">
         <div class="col">
-          <h2 class="current-period">{{ formatMonthYear(today) }}</h2>
+          <h2 class="current-period" data-test="header">
+            {{ formatMonthYear(today) }}
+          </h2>
         </div>
         <div class="col text-end">
           <a id="prev-week" href="#" @click="prevWeek">&lt; Prev</a>
@@ -112,7 +114,8 @@ function nextWeek() {
           <div class="row">
             <div class="col event"
                  :class="formatDateTime(date, formatHour(hour))"
-                 v-for="event in events[formatDateTime(date, formatHour(hour))]">
+                 v-for="event in events[formatDateTime(date, formatHour(hour))]"
+                 data-test="event">
               <span class="summary">
                 {{ event.summary }}
               </span>
