@@ -2,7 +2,7 @@
 import { ref, computed } from 'vue'
 
 import {
-  dateToday, dateFrom, weekStart, weekFrom, formatDate, formatTime, formatDateTime, formatHour, formatMonthYear, formatDay
+  dateToday, dateFrom, weekStart, weekFrom, formatDate, formatTime, formatDateTime, formatHour, formatYear, formatMonth, formatDay
 } from '../common/date.js'
 
 const props = defineProps(['events', 'today', 'isCurrentView'])
@@ -40,7 +40,7 @@ function nextWeek() {
       <div class="row">
         <div class="col">
           <h2 class="current-period" data-test="header">
-            {{ formatMonthYear(today) }}
+            {{ formatMonth(today) }} {{ formatYear(today) }}
           </h2>
         </div>
         <div class="col text-end">

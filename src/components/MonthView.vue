@@ -2,7 +2,7 @@
 import { ref, computed } from 'vue'
 
 import {
-  dateToday, dateFrom, monthStart, monthEnd, monthFrom, formatDate, formatTime, formatMonthYear, formatDay
+  dateToday, dateFrom, monthStart, monthEnd, monthFrom, formatDate, formatTime, formatYear, formatMonth, formatDay
 } from '../common/date.js'
 
 const props = defineProps(['events', 'today', 'isCurrentView'])
@@ -63,7 +63,7 @@ function nextMonth() {
       <div class="row">
         <div class="col">
           <h2 class="current-period" data-test="header">
-            {{ formatMonthYear(today) }}
+            {{ formatMonth(today) }} {{ formatYear(today) }}
           </h2>
         </div>
         <div class="col text-end">

@@ -13,7 +13,6 @@ import {
   formatDateTime,
   formatHour,
   formatDateToday,
-  formatMonthYear,
   formatYear,
   formatMonth,
   formatDay
@@ -211,17 +210,6 @@ describe('formatDateToday', () => {
 
     const expected = 'June 20, 2024'
     const actual = formatDateToday(date)
-
-    expect(actual).toEqual(expected)
-  })
-})
-
-describe('formatMonthYear', () => {
-  it('returns MMM yyyy', () => {
-    const date = '2024-06-20'
-
-    const expected = 'June 2024'
-    const actual = formatMonthYear(date)
 
     expect(actual).toEqual(expected)
   })

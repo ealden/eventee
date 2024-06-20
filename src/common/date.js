@@ -109,15 +109,6 @@ export function formatMonth(date) {
   return MONTHS[copyDate(date).getUTCMonth() + 1]
 }
 
-export function formatMonthYear(date) {
-  const dateObject = new Date(date)
-
-  const year = dateObject.getUTCFullYear()
-  const month = MONTHS[dateObject.getUTCMonth() + 1]
-
-  return [month, year].join(' ')
-}
-
 export function formatDay(date) {
   return new Date(date).getUTCDate()
 }
