@@ -3,6 +3,7 @@ import { describe, it, expect } from 'vitest'
 import {
   monthStart,
   monthEnd,
+  monthFrom,
   formatDate,
   formatTime,
   formatDateTime,
@@ -40,6 +41,33 @@ describe('monthEnd', () => {
 
     // Not leap year
     expect(monthEnd(new Date('2025-02-13T00:00:00.000Z'))).toEqual(new Date('2025-02-28T00:00:00.000Z'))
+  })
+})
+
+describe('monthFrom', () => {
+  it('returns +offset from month start', () => {
+    const date = new Date('2024-06-20T00:00:00.000Z')
+
+    const expected = new Date('2024-07-01T00:00:00.000Z')
+    const actual = monthFrom(date, 1)
+
+    expect(actual).toEqual(expected)
+  }),
+  it('returns -offset from month start', () => {
+    const date = new Date('2024-06-20T00:00:00.000Z')
+
+    const expected = new Date('2024-05-01T00:00:00.000Z')
+    const actual = monthFrom(date, -1)
+
+    expect(actual).toEqual(expected)
+  }),
+  it('returns no offset from month start', () => {
+    const date = new Date('2024-06-20T00:00:00.000Z')
+
+    const expected = new Date('2024-06-01T00:00:00.000Z')
+    const actual = monthFrom(date, 0)
+
+    expect(actual).toEqual(expected)
   })
 })
 

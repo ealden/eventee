@@ -1,7 +1,7 @@
 <script setup>
 import { ref, computed } from 'vue'
 
-import { monthStart, monthEnd, formatDate, formatTime, formatMonthYear, formatDay } from '../common/date.js'
+import { monthStart, monthEnd, monthFrom, formatDate, formatTime, formatMonthYear, formatDay } from '../common/date.js'
 
 const props = defineProps(['events', 'today', 'isCurrentView'])
 
@@ -44,11 +44,7 @@ const month = computed(() => {
 })
 
 function prevMonth() {
-  const date = new Date(today.value)
-  date.setUTCMonth(date.getUTCMonth() - 1)
-  date.setUTCDate(1)
-
-  today.value = date
+  today.value = monthFrom(today.value, -1)
 }
 
 function thisMonth() {
@@ -56,11 +52,7 @@ function thisMonth() {
 }
 
 function nextMonth() {
-  const date = new Date(today.value)
-  date.setUTCMonth(date.getUTCMonth() + 1)
-  date.setUTCDate(1)
-
-  today.value = date
+  today.value = monthFrom(today.value, 1)
 }
 </script>
 

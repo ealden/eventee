@@ -18,6 +18,13 @@ export function monthEnd(date) {
   return target
 }
 
+export function monthFrom(date, offset) {
+  const target = monthStart(date)
+  target.setUTCMonth(target.getUTCMonth() + offset)
+
+  return target
+}
+
 const MONTHS = {
   1: 'January',
   2: 'February',
