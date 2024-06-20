@@ -19,6 +19,13 @@ export function dateFrom(date, offset) {
   return target
 }
 
+export function dateTimeFrom(date, hourOffset) {
+  const target = copyDate(date)
+  target.setUTCHours(target.getUTCHours() + hourOffset)
+
+  return target
+}
+
 export function weekStart(date) {
   const target = copyDate(date)
   target.setUTCDate(target.getUTCDate() - target.getUTCDay())

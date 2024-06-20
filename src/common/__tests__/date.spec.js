@@ -3,6 +3,7 @@ import { describe, it, expect } from 'vitest'
 import {
   dateToday,
   dateFrom,
+  dateTimeFrom,
   weekStart,
   weekFrom,
   monthStart,
@@ -46,6 +47,33 @@ describe('dateFrom', () => {
 
     const expected = new Date('2024-06-20T00:00:00.000Z')
     const actual = dateFrom(date, 0)
+
+    expect(actual).toEqual(expected)
+  })
+})
+
+describe('dateTimeFrom', () => {
+  it('returns +offset from hour', () => {
+    const date = new Date('2024-06-20T00:00:00.000Z')
+
+    const expected = new Date('2024-06-20T01:00:00.000Z')
+    const actual = dateTimeFrom(date, 1)
+
+    expect(actual).toEqual(expected)
+  }),
+  it('returns -offset from hour', () => {
+    const date = new Date('2024-06-20T00:00:00.000Z')
+
+    const expected = new Date('2024-06-19T23:00:00.000Z')
+    const actual = dateTimeFrom(date, -1)
+
+    expect(actual).toEqual(expected)
+  }),
+  it('returns no offset from hour', () => {
+    const date = new Date('2024-06-20T00:00:00.000Z')
+
+    const expected = new Date('2024-06-20T00:00:00.000Z')
+    const actual = dateTimeFrom(date, 0)
 
     expect(actual).toEqual(expected)
   })
