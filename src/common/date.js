@@ -101,6 +101,10 @@ export function formatDateToday(date) {
   return [month, ' ', day, ', ', year].join('')
 }
 
+export function formatYear(date) {
+  return copyDate(date).getUTCFullYear()
+}
+
 export function formatMonth(date) {
   return MONTHS[copyDate(date).getUTCMonth() + 1]
 }

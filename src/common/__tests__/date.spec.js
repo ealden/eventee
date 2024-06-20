@@ -14,6 +14,7 @@ import {
   formatHour,
   formatDateToday,
   formatMonthYear,
+  formatYear,
   formatMonth,
   formatDay
 } from '../date.js'
@@ -221,6 +222,17 @@ describe('formatMonthYear', () => {
 
     const expected = 'June 2024'
     const actual = formatMonthYear(date)
+
+    expect(actual).toEqual(expected)
+  })
+})
+
+describe('formatYear', () => {
+  it('returns yyyy', () => {
+    const date = new Date('2024-06-20T00:00:00.000Z')
+
+    const expected = 2024
+    const actual = formatYear(date)
 
     expect(actual).toEqual(expected)
   })
