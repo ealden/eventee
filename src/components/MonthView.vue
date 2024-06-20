@@ -2,7 +2,7 @@
 import { ref, computed } from 'vue'
 
 import {
-  dateToday, monthStart, monthEnd, monthFrom, formatDate, formatTime, formatMonthYear, formatDay
+  dateToday, dateFrom, monthStart, monthEnd, monthFrom, formatDate, formatTime, formatMonthYear, formatDay
 } from '../common/date.js'
 
 const props = defineProps(['events', 'today', 'isCurrentView'])
@@ -21,9 +21,8 @@ const month = computed(() => {
 
   const month = []
 
-  for (let i = 1; i <= endDate.getUTCDate(); i++) {
-    const date = new Date(startDate)
-    date.setUTCDate(i)
+  for (let i = 0; i < endDate.getUTCDate(); i++) {
+    const date = dateFrom(monthStart(today.value), i)
 
     week.push(formatDate(date))
 
