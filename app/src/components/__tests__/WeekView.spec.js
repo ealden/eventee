@@ -56,6 +56,7 @@ const currentPeriod = '.current-period'
 const event = '.event'
 
 const prevWeek = '#prev-week'
+const nextWeek = '#next-week'
 
 describe('WeekView', () => {
   it('renders properly', () => {
@@ -68,6 +69,14 @@ describe('WeekView', () => {
     const wrapper = mount(WeekView, options)
 
     await wrapper.get(prevWeek).trigger('click')
+
+    expect(wrapper.get(currentPeriod).text()).toEqual('June 2024')
+    expect(wrapper.findAll(event)).toHaveLength(0)
+  }),
+  it('shows next week', async () => {
+    const wrapper = mount(WeekView, options)
+
+    await wrapper.get(nextWeek).trigger('click')
 
     expect(wrapper.get(currentPeriod).text()).toEqual('June 2024')
     expect(wrapper.findAll(event)).toHaveLength(0)
