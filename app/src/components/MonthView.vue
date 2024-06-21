@@ -76,7 +76,7 @@ function nextMonth() {
     <div class="container">
       <div class="row">
         <div class="col">
-          <h2 class="current-period" data-test="header">
+          <h2 class="current-period">
             {{ header }}
           </h2>
         </div>
@@ -109,8 +109,7 @@ function nextMonth() {
             </div>
             <div class="row event"
                  :class="date"
-                 v-for="event in events[date]"
-                 data-test="event">
+                 v-for="event in events[date]">
               <div class="col summary text-start">
                 {{ event.summary }}
               </div>
