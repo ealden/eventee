@@ -1,7 +1,8 @@
 Feature: Week View
 
   Background:
-    Given I have these existing events:
+    Given today is '2024-06-18'
+    And   I have these existing events:
       | Summary   | Starts At         | Ends At           |
       | Event 1   | 2024-06-14 14:00  | 2024-06-14 15:00  |
       | Event 2   | 2024-06-14 15:00  | 2024-06-14 16:00  |

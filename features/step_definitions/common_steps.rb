@@ -1,3 +1,7 @@
+Given 'today is {string}' do |today|
+  travel_to Date.parse(today)
+end
+
 Given 'I have these existing events:' do |table|
   table.hashes.each do |event|
     Event.create summary: event['Summary'],
@@ -30,4 +34,8 @@ end
 
 Then 'I must not see any event(s)' do
   expect(@page.events).to be_empty
+end
+
+After do
+  travel_back
 end

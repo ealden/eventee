@@ -52,6 +52,14 @@ function monthView() {
   view.value = 3
 }
 
+function fetchToday() {
+  axios
+    .get(import.meta.env.VITE_API_HOST + '/api/today')
+    .then(response => {
+      today.value = new Date(response.data.today)
+    })
+}
+
 function fetchEvents() {
   axios
     .get(import.meta.env.VITE_API_HOST + '/api/events')
@@ -61,7 +69,7 @@ function fetchEvents() {
 }
 
 onMounted(() => {
-  today.value = new Date('2024-06-18')
+  fetchToday()
   fetchEvents()
 })
 </script>

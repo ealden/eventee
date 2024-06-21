@@ -1,7 +1,3 @@
-Given 'today is {string}' do |today|
-  travel_to Date.parse(today)
-end
-
 When 'I try to get what today is' do
   get '/api/today'
 end
