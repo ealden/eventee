@@ -29,11 +29,7 @@ bundle exec rails server
 To run acceptance tests:
 
 ```
-cd app/
-npm run deploy
-
-cd ../api/
-bundle exec rails cucumber
+./script/test
 ```
 
 We use Cucumber for Specification by Example.  This resides in Rails, so we can easily manage test data.

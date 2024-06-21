@@ -1,0 +1,14 @@
+#!/bin/sh
+
+set -e
+
+cd app/
+npm run spec
+npm run build
+npm run deploy
+cd - > /dev/null
+
+cd api/
+bundle exec rails spec
+bundle exec rails cucumber
+cd - > /dev/null
