@@ -74,7 +74,7 @@ function nextWeek() {
     <div class="container">
       <div class="row">
         <div class="col">
-          <h2 class="current-period" data-test="header">
+          <h2 class="current-period">
             {{ header }}
           </h2>
         </div>
@@ -103,8 +103,7 @@ function nextWeek() {
           <div class="row">
             <div class="col event"
                  :class="dateTime"
-                 v-for="event in events[dateTime]"
-                 data-test="event">
+                 v-for="event in events[dateTime]">
               <span class="summary">
                 {{ event.summary }}
               </span>
