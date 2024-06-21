@@ -25,6 +25,13 @@ export function dateFrom(date, offset) {
   return target
 }
 
+export function dateTimeKey(date) {
+  return new Date(date)
+    .toISOString()
+    .split(':')[0]
+    .concat(':00:00.000Z')
+}
+
 export function dateTimeFrom(date, hourOffset) {
   const target = copyDate(date)
   target.setUTCHours(target.getUTCHours() + hourOffset)
@@ -94,13 +101,6 @@ export function formatTime(date) {
     .toISOString()
     .split('T')[1]
     .replace(':00.000Z', '')
-}
-
-export function formatDateTime(date) {
-  return new Date(date)
-    .toISOString()
-    .split(':')[0]
-    .concat(':00:00.000Z')
 }
 
 export function formatDay(date) {

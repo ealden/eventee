@@ -4,6 +4,7 @@ import {
   dateToday,
   dateKey,
   dateFrom,
+  dateTimeKey,
   dateTimeFrom,
   weekStart,
   weekFrom,
@@ -12,7 +13,6 @@ import {
   monthFrom,
   formatDate,
   formatTime,
-  formatDateTime,
   formatDay,
   formatDayViewHeader,
   formatMonthViewHeader
@@ -43,6 +43,13 @@ describe('dateFrom', () => {
   }),
   it('returns no offset from date', () => {
     expect(dateFrom(new Date('2024-06-20T00:00:00.000Z'), 0)).toEqual(new Date('2024-06-20T00:00:00.000Z'))
+  })
+})
+
+describe('dateTimeKey', () => {
+  it('returns YYYY-MM-DDTHH:00:00.000Z', () => {
+    expect(dateTimeKey('2024-06-21T01:00:00.000Z')).toEqual('2024-06-21T01:00:00.000Z')
+    expect(dateTimeKey('2024-06-21T01:23:45.678Z')).toEqual('2024-06-21T01:00:00.000Z')
   })
 })
 
@@ -163,13 +170,6 @@ describe('formatDate', () => {
 describe('formatTime', () => {
   it('returns HH:mm', () => {
     expect(formatTime('2024-06-20T09:00:00.000Z')).toEqual('09:00')
-  })
-})
-
-describe('formatDateTime', () => {
-  it('returns YYYY-MM-DDTHH:00:00.000Z', () => {
-    expect(formatDateTime('2024-06-21T01:00:00.000Z')).toEqual('2024-06-21T01:00:00.000Z')
-    expect(formatDateTime('2024-06-21T01:23:45.678Z')).toEqual('2024-06-21T01:00:00.000Z')
   })
 })
 

@@ -1,4 +1,4 @@
-import { dateKey, formatDateTime } from './dates.js'
+import { dateKey, dateTimeKey } from './dates.js'
 
 export function groupEvents(events) {
   const groups = {}
@@ -12,7 +12,7 @@ export function groupEvents(events) {
 
     groups[date].push(event)
 
-    const dateTime = formatDateTime(event.starts_at)
+    const dateTime = dateTimeKey(event.starts_at)
 
     if (!Object.hasOwn(groups, dateTime)) {
       groups[dateTime] = []
