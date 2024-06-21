@@ -8,7 +8,7 @@
     "build": "vite build",
     "deploy": "vite build && copyup dist/* public",
     "preview": "vite preview",
-    "test": "vitest run",
+    "spec": "vitest run",
     "test:unit": "vitest",
     "test:e2e": "playwright test",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
