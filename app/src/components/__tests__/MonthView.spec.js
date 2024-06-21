@@ -54,6 +54,7 @@ const currentPeriod = '.current-period'
 const event = '.event'
 
 const prevMonth = '#prev-month'
+const thisMonth = '#this-month'
 const nextMonth = '#next-month'
 
 describe('MonthView', () => {
@@ -78,5 +79,14 @@ describe('MonthView', () => {
 
     expect(wrapper.get(currentPeriod).text()).toEqual('July 2024')
     expect(wrapper.findAll(event)).toHaveLength(1)
+  }),
+  it('shows this month', async () => {
+    const wrapper = mount(MonthView, options)
+
+    await wrapper.get(prevMonth).trigger('click')
+    await wrapper.get(thisMonth).trigger('click')
+
+    expect(wrapper.get(currentPeriod).text()).toEqual('June 2024')
+    expect(wrapper.findAll(event)).toHaveLength(5)
   })
 })
