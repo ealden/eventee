@@ -42,6 +42,7 @@ const currentPeriod = '.current-period'
 const event = '.event'
 
 const prevDay = '#prev-day'
+const nextDay = '#next-day'
 
 describe('DayView', () => {
   it('renders properly', () => {
@@ -57,5 +58,13 @@ describe('DayView', () => {
 
     expect(wrapper.get(currentPeriod).text()).toEqual('June 19, 2024')
     expect(wrapper.findAll(event)).toHaveLength(0)
+  }),
+  it('shows tomorrow', async () => {
+    const wrapper = mount(DayView, options)
+
+    await wrapper.get(nextDay).trigger('click')
+
+    expect(wrapper.get(currentPeriod).text()).toEqual('June 21, 2024')
+    expect(wrapper.findAll(event)).toHaveLength(1)
   })
 })
