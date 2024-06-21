@@ -25,7 +25,9 @@ npm run deploy
 bundle exec rails cucumber
 ```
 
-We use Cucumber for Specification by Example.  This resides in Rails, so we can easily manage test data.  This means that we need to build our Vite app, and then "deploy" it inside Rails, before running our acceptance tests.
+We use Cucumber for Specification by Example.  This resides in Rails, so we can easily manage test data.
+
+We need to build our Vite app, then "deploy" it inside Rails, before running our acceptance tests.
 
 ## Future
 
