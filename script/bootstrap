@@ -1,0 +1,20 @@
+#!/bin/sh
+
+set -e
+
+echo ""
+echo "  Eventee Setup"
+echo ""
+
+echo "  + Setting up Vite..."
+cd app/
+npm install
+cd - > /dev/null
+
+echo "  + Setting up Rails..."
+cd api/
+bundle install
+cd - > /dev/null
+
+echo ""
+echo "  We're ready to rock!"

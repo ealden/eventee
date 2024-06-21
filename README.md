@@ -4,22 +4,24 @@ Calendar app.  Built using Rails + Vue.js (in Vite).
 
 ## Development
 
-Setup Vite:
+To setup Vite and Rails:
+
+```
+./script/bootstrap
+```
+
+To start Vite:
 
 ```
 cd app/
-npm install
-
 npm run spec
 npm run dev
 ```
 
-Setup Rails:
+To start Rails:
 
 ```
 cd api/
-bundle exec rails install
-
 bundle exec rails spec
 bundle exec rails server
 ```
