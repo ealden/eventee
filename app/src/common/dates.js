@@ -96,6 +96,7 @@ export function formatTime(date) {
   return new Date(date)
     .toISOString()
     .split('T')[1]
+    .replace(/^0/, '')
     .replace(':00.000Z', '')
 }
 

@@ -162,8 +162,8 @@ describe('formatDate', () => {
 })
 
 describe('formatTime', () => {
-  it('returns HH:mm', () => {
-    expect(formatTime('2024-06-20T09:00:00.000Z')).toEqual('09:00')
+  it('returns H:mm', () => {
+    expect(formatTime('2024-06-20T09:00:00.000Z')).toEqual('9:00')
   })
 })
 
