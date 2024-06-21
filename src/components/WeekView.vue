@@ -6,8 +6,8 @@ import {
   dateTimeFrom,
   weekStart,
   weekFrom,
-  formatDate,
   formatTime,
+  formatDateTime,
   formatDay,
   formatMonthViewHeader
 } from '../common/dates.js'
@@ -107,10 +107,10 @@ function nextWeek() {
                 {{ event.summary }}
               </span>
               <span class="starts_at visually-hidden">
-                {{ formatDate(event.starts_at) }} {{ formatTime(event.starts_at) }}
+                {{ formatDateTime(event.starts_at) }}
               </span>
               <span class="ends_at visually-hidden">
-                {{ formatDate(event.ends_at) }} {{ formatTime(event.ends_at) }}
+                {{ formatDateTime(event.ends_at) }}
               </span>
             </div>
           </div>
