@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "deploy": "vite build && copyup dist/* public",
     "preview": "vite preview",
     "test": "vitest run",
     "test:unit": "vitest",
