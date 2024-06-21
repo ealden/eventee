@@ -2,13 +2,21 @@
 
 Calendar app.  Built using Rails + Vue.js (in Vite).
 
-## Testing
+## Development
+
+To run the application:
+
+| App   | Command                   |
+| ----- | ------------------------- |
+| Vite  | npm run dev               |
+| Rails | bundle exec rails server  |
 
 To run unit tests:
 
-| Application | Framework | Command |
-| Frontend    | Vite      | npm run spec           |
-| Backend     | Rails     | bundle exec rails spec |
+| App   | Command                   |
+| ----- | ------------------------- |
+| Vite  | npm run spec              |
+| Rails | bundle exec rails spec    |
 
 To run acceptance tests:
 
