@@ -33,7 +33,7 @@ class EventsPage < SitePrism::Page
   element :nav_week_view, '#nav-week-view'
   element :nav_month_view, '#nav-month-view'
 
-  element :current_period, '.current-period'
+  element :current_period, '#current-period'
 
   elements :days, '.day'
 

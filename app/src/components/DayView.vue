@@ -50,7 +50,7 @@ function nextDay() {
     <div class="container">
       <div class="row">
         <div class="col">
-          <h2 class="current-period">
+          <h2 id="current-period">
             {{ header }}
           </h2>
         </div>

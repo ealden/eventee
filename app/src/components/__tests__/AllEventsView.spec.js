@@ -28,10 +28,7 @@ describe('AllEventsView', () => {
       }
     })
 
-    const header = wrapper.get('[data-test="header"]')
-    const events = wrapper.findAll('[data-test="event"]')
-
-    expect(header.text()).toEqual('All Events')
-    expect(events).toHaveLength(3)
+    expect(wrapper.get('#currentPeriod').text()).toEqual('All Events')
+    expect(wrapper.findAll('.event')).toHaveLength(3)
   })
 })

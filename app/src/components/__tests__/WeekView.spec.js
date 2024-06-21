@@ -52,7 +52,7 @@ const options = {
   }
 }
 
-const currentPeriod = '.current-period'
+const currentPeriod = '#current-period'
 const event = '.event'
 
 const prevWeek = '#prev-week'
