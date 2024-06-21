@@ -1,24 +1,24 @@
-# README
+# Eventee
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Calendar app.  Built using Rails + Vue.js (in Vite).
 
-Things you may want to cover:
+## Testing
 
-* Ruby version
+To run unit tests:
 
-* System dependencies
+| Application | Framework | Command |
+| Frontend    | Vite      | npm run spec           |
+| Backend     | Rails     | bundle exec rails spec |
 
-* Configuration
+To run acceptance tests:
 
-* Database creation
+```
+npm run deploy
+bundle exec rails cucumber
+```
 
-* Database initialization
+We use Cucumber for Specification by Example.  This resides in Rails, so we can easily manage test data.  This means that we need to build our Vite app, and then "deploy" it inside Rails, before running our acceptance tests.
 
-* How to run the test suite
+## Future
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+This application is structured so we can reimplement in Rust + React :)
