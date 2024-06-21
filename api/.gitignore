@@ -34,8 +34,4 @@
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 
-/node_modules
 /public/index.html
-!.env.development
-!.env.production
-/dist
