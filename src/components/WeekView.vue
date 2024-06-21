@@ -10,7 +10,7 @@ import {
   formatTime,
   formatDay,
   formatMonthViewHeader
-} from '../common/date.js'
+} from '../common/dates.js'
 
 const props = defineProps(['events', 'today', 'isCurrentView'])
 

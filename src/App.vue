@@ -2,7 +2,7 @@
 import { ref, computed, onMounted } from 'vue'
 import axios from 'axios'
 
-import { formatDate, formatDateTime } from './common/date.js'
+import { formatDate, formatDateTime } from './common/dates.js'
 import AllEventsView from './components/AllEventsView.vue'
 import DayView from './components/DayView.vue'
 import WeekView from './components/WeekView.vue'

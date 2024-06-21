@@ -15,7 +15,7 @@ import {
   formatDay,
   formatDayViewHeader,
   formatMonthViewHeader
-} from '../date.js'
+} from '../dates.js'
 
 describe('dateToday', () => {
   it('returns 2024-06-18', () => {

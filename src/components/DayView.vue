@@ -8,7 +8,7 @@ import {
   formatDate,
   formatTime,
   formatDayViewHeader
-} from '../common/date.js'
+} from '../common/dates.js'
 
 const props = defineProps(['events', 'today', 'isCurrentView'])
 
