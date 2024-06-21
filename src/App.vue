@@ -2,7 +2,7 @@
 import { ref, computed, onMounted } from 'vue'
 import axios from 'axios'
 
-import { formatDate, formatDateTime } from './common/dates.js'
+import { groupEvents } from './common/events.js'
 import AllEventsView from './components/AllEventsView.vue'
 import DayView from './components/DayView.vue'
 import WeekView from './components/WeekView.vue'
@@ -33,27 +33,7 @@ const isMonthView = computed(() => {
 })
 
 const groups = computed(() => {
-  const groups = {}
-
-  for (const event of events.value) {
-    const date = formatDate(event.starts_at)
-
-    if (!Object.hasOwn(groups, date)) {
-      groups[date] = []
-    }
-
-    groups[date].push(event)
-
-    const dateTime = formatDateTime(event.starts_at)
-
-    if (!Object.hasOwn(groups, dateTime)) {
-      groups[dateTime] = []
-    }
-
-    groups[dateTime].push(event)
-  }
-
-  return groups
+  return groupEvents(events.value)
 })
 
 function allEventsView() {
