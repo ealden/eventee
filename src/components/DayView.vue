@@ -2,7 +2,6 @@
 import { ref, computed } from 'vue'
 
 import {
-  dateToday,
   dateFrom,
   dateTimeKey,
   dateTimeFrom,
@@ -15,15 +14,17 @@ const props = defineProps(['events', 'today', 'isCurrentView'])
 
 const today = ref(props.today)
 
+const currentDate = ref(today.value)
+
 const header = computed(() => {
-  return formatDayViewHeader(today.value)
+  return formatDayViewHeader(currentDate.value)
 })
 
 const calendar = computed(() => {
   const calendar = []
 
   for (let h = 0; h < 24; h++) {
-    const date = dateTimeFrom(today.value, h)
+    const date = dateTimeFrom(currentDate.value, h)
 
     calendar.push(dateTimeKey(date))
   }
@@ -32,15 +33,15 @@ const calendar = computed(() => {
 })
 
 function prevDay() {
-  today.value = dateFrom(today.value, -1)
+  currentDate.value = dateFrom(currentDate.value, -1)
 }
 
 function thisDay() {
-  today.value = dateToday()
+  currentDate.value = today.value
 }
 
 function nextDay() {
-  today.value = dateFrom(today.value, 1)
+  currentDate.value = dateFrom(currentDate.value, 1)
 }
 </script>
 

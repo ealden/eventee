@@ -1,7 +1,6 @@
 import { describe, it, expect } from 'vitest'
 
 import {
-  dateToday,
   dateKey,
   dateFrom,
   dateTimeKey,
@@ -18,12 +17,6 @@ import {
   formatDayViewHeader,
   formatMonthViewHeader
 } from '../dates.js'
-
-describe('dateToday', () => {
-  it('returns 2024-06-18', () => {
-    expect(dateToday()).toEqual(new Date('2024-06-18T00:00:00Z'))
-  })
-})
 
 describe('dateKey', () => {
   it('returns YYYY-MM-DD', () => {

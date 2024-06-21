@@ -2,7 +2,6 @@
 import { ref, computed } from 'vue'
 
 import {
-  dateToday,
   dateKey,
   dateFrom,
   monthStart,
@@ -18,13 +17,15 @@ const props = defineProps(['events', 'today', 'isCurrentView'])
 
 const today = ref(props.today)
 
+const currentDate = ref(today.value)
+
 const header = computed(() => {
-  return formatMonthViewHeader(today.value)
+  return formatMonthViewHeader(currentDate.value)
 })
 
 const calendar = computed(() => {
-  const startDate = monthStart(today.value)
-  const endDate = monthEnd(today.value)
+  const startDate = monthStart(currentDate.value)
+  const endDate = monthEnd(currentDate.value)
 
   let week = []
 
@@ -35,7 +36,7 @@ const calendar = computed(() => {
   const calendar = []
 
   for (let i = 0; i < endDate.getUTCDate(); i++) {
-    const date = dateFrom(monthStart(today.value), i)
+    const date = dateFrom(monthStart(currentDate.value), i)
 
     week.push(dateKey(date))
 
@@ -58,15 +59,15 @@ const calendar = computed(() => {
 })
 
 function prevMonth() {
-  today.value = monthFrom(today.value, -1)
+  currentDate.value = monthFrom(currentDate.value, -1)
 }
 
 function thisMonth() {
-  today.value = dateToday()
+  currentDate.value = today.value
 }
 
 function nextMonth() {
-  today.value = monthFrom(today.value, 1)
+  currentDate.value = monthFrom(currentDate.value, 1)
 }
 </script>
 

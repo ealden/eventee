@@ -8,10 +8,6 @@ function copyDate(date) {
   return target
 }
 
-export function dateToday() {
-  return new Date('2024-06-18T00:00:00Z')
-}
-
 export function dateKey(date) {
   return new Date(date)
     .toISOString()
