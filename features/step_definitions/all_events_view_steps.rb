@@ -5,17 +5,3 @@ When 'I try to view all my events' do
 
   @page.nav_all_events_view.click
 end
-
-Then 'I must see the following events:' do |table|
-  expected = table.hashes
-
-  actual = @page.events.collect do |event|
-    {
-      'Summary' => event.summary.text,
-      'Starts At' => event.starts_at.text,
-      'Ends At' => event.ends_at.text
-    }
-  end
-
-  expect(actual).to eql expected
-end

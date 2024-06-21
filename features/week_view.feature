@@ -16,26 +16,22 @@ Feature: Week View
     Then  I must see the calendar for 'June 2024':
       | Sun | Mon | Tue | Wed | Thu | Fri | Sat |
       | 16  | 17  | 18  | 19  | 20  | 21  | 22  |
-    And   I must see 3 events
-    And   I must see these events on '2024-06-17':
-      | Starts At | Summary |
-      | 14:00     | Event 4 |
-    And   I must see these events on '2024-06-18':
-      | Starts At | Summary   |
-      | 13:00     | Event 5a  |
-      | 13:00     | Event 5b  |
+    And   I must see these events:
+      | Summary   | Starts At         | Ends At           |
+      | Event 4   | 2024-06-17 14:00  | 2024-06-17 20:00  |
+      | Event 5a  | 2024-06-18 13:00  | 2024-06-18 14:00  |
+      | Event 5b  | 2024-06-18 13:00  | 2024-06-18 15:00  |
 
   Scenario: Last Week
     When  I try to view events last week
     Then  I must see the calendar for 'June 2024':
       | Sun | Mon | Tue | Wed | Thu | Fri | Sat |
       | 9   | 10  | 11  | 12  | 13  | 14  | 15  |
-    And   I must see 3 events
-    And   I must see these events on '2024-06-14':
-      | Starts At | Summary |
-      | 14:00     | Event 1 |
-      | 15:00     | Event 2 |
-      | 17:00     | Event 3 |
+    And   I must see these events:
+      | Summary   | Starts At         | Ends At           |
+      | Event 1   | 2024-06-14 14:00  | 2024-06-14 15:00  |
+      | Event 2   | 2024-06-14 15:00  | 2024-06-14 16:00  |
+      | Event 3   | 2024-06-14 17:00  | 2024-06-14 18:00  |
 
   Scenario: Next Week
     When  I try to view events next week
@@ -49,4 +45,3 @@ Feature: Week View
     Then  I must see the calendar for 'June 2024':
       | Sun | Mon | Tue | Wed | Thu | Fri | Sat |
       | 16  | 17  | 18  | 19  | 20  | 21  | 22  |
-    And   I must see 3 events

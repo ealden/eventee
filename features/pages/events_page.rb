@@ -44,9 +44,19 @@ class EventsPage < SitePrism::Page
 
   sections :events, EventRow, '.event'
 
-  def events_on date
-    events.keep_if do |event|
-      event.root_element[:class].include? date
+  def sorted_events
+    events.sort do |a, b|
+      a.starts_at.text <=> b.starts_at.text
+    end
+  end
+
+  def event_hashes
+    sorted_events.collect do |event|
+      {
+        'Summary' => event.summary.text,
+        'Starts At' => event.starts_at.text,
+        'Ends At' => event.ends_at.text
+      }
     end
   end
 end

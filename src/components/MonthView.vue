@@ -112,9 +112,15 @@ function nextMonth() {
               <div class="col summary text-start">
                 {{ event.summary }}
               </div>
-              <div class="col starts_at text-end">
+              <div class="col text-end">
                 {{ formatTime(event.starts_at) }}
               </div>
+              <span class="starts_at visually-hidden">
+                {{ formatDate(event.starts_at) }} {{ formatTime(event.starts_at) }}
+              </span>
+              <span class="ends_at visually-hidden">
+                {{ formatDate(event.ends_at) }} {{ formatTime(event.ends_at) }}
+              </span>
             </div>
           </div>
         </div>

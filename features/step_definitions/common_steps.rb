@@ -20,21 +20,12 @@ Then 'I must see the calendar for {string}:' do |current_period, table|
   expect(actual).to eql expected
 end
 
-Then 'I must see these events on {string}:' do |date, table|
+Then 'I must see these events:' do |table|
   expected = table.hashes
 
-  actual = @page.events_on(date).collect do |event|
-    {
-      'Summary' => event.summary.text,
-      'Starts At' => event.starts_at.text
-    }
-  end
+  actual = @page.event_hashes
 
   expect(actual).to eql expected
-end
-
-Then 'I must see {int} event(s)' do |count|
-  expect(@page.events).to have_attributes count: count
 end
 
 Then 'I must not see any event(s)' do

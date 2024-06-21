@@ -6,6 +6,7 @@ import {
   dateTimeFrom,
   weekStart,
   weekFrom,
+  formatDate,
   formatTime,
   formatDay,
   formatMonthViewHeader
@@ -106,7 +107,10 @@ function nextWeek() {
                 {{ event.summary }}
               </span>
               <span class="starts_at visually-hidden">
-                {{ formatTime(event.starts_at) }}
+                {{ formatDate(event.starts_at) }} {{ formatTime(event.starts_at) }}
+              </span>
+              <span class="ends_at visually-hidden">
+                {{ formatDate(event.ends_at) }} {{ formatTime(event.ends_at) }}
               </span>
             </div>
           </div>
