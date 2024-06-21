@@ -5,7 +5,12 @@ import App from '../App.vue'
 
 describe('App', () => {
   it('shows all events view', () => {
-    const wrapper = mount(App)
+    const wrapper = mount(App, {
+      props: {
+        today: new Date('2024-06-18'),
+        view: 0
+      }
+    })
 
     expect(wrapper.find('#all-events-view').exists()).toBe(true)
     expect(wrapper.find('#day-view').exists()).toBe(false)
@@ -15,6 +20,7 @@ describe('App', () => {
   it('shows day view', () => {
     const wrapper = mount(App, {
       props: {
+        today: new Date('2024-06-18'),
         view: 1
       }
     })
@@ -27,6 +33,7 @@ describe('App', () => {
   it('shows week view', () => {
     const wrapper = mount(App, {
       props: {
+        today: new Date('2024-06-18'),
         view: 2
       }
     })
@@ -39,6 +46,7 @@ describe('App', () => {
   it('shows month view', () => {
     const wrapper = mount(App, {
       props: {
+        today: new Date('2024-06-18'),
         view: 3
       }
     })

@@ -8,11 +8,11 @@ import DayView from './components/DayView.vue'
 import WeekView from './components/WeekView.vue'
 import MonthView from './components/MonthView.vue'
 
-const props = defineProps(['view'])
+const props = defineProps(['today', 'view'])
 
 const events = ref([])
 
-const today = ref(new Date('2024-06-18'))
+const today = ref(props.today)
 
 const view = ref(props.view || 0)
 
@@ -61,6 +61,7 @@ function fetchEvents() {
 }
 
 onMounted(() => {
+  today.value = new Date('2024-06-18')
   fetchEvents()
 })
 </script>
@@ -109,10 +110,20 @@ onMounted(() => {
       </li>
     </ul>
   </nav>
-  <AllEventsView :events="events" :is-current-view="isAllEventsView" />
-  <DayView :events="groups" :today="today" :is-current-view="isDayView" />
-  <WeekView :events="groups" :today="today" :is-current-view="isWeekView" />
-  <MonthView :events="groups" :today="today" :is-current-view="isMonthView" />
+  <AllEventsView :events="events"
+                 :is-current-view="isAllEventsView" />
+  <DayView :events="groups"
+           :today="today"
+           :is-current-view="isDayView"
+           v-if="today" />
+  <WeekView :events="groups"
+            :today="today"
+            :is-current-view="isWeekView"
+            v-if="today" />
+  <MonthView :events="groups"
+             :today="today"
+             :is-current-view="isMonthView"
+             v-if="today" />
 </template>
 
 <style scoped>
