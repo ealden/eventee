@@ -1,5 +1,5 @@
 <script setup>
-import { formatDate, formatTime } from '../common/dates.js'
+import { formatDateTime } from '../common/dates.js'
 
 defineProps(['events', 'isCurrentView'])
 </script>
@@ -24,10 +24,10 @@ defineProps(['events', 'isCurrentView'])
             {{ event.summary }}
           </td>
           <td class="starts_at">
-            {{ formatDate(event.starts_at) }} {{ formatTime(event.starts_at) }}
+            {{ formatDateTime(event.starts_at) }}
           </td>
           <td class="ends_at">
-            {{ formatDate(event.ends_at) }} {{ formatTime(event.ends_at) }}
+            {{ formatDateTime(event.ends_at) }}
           </td>
         </tr>
       </tbody>
