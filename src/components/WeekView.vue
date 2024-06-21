@@ -87,7 +87,7 @@ function nextWeek() {
     </div>
     <div id="week" class="container">
       <div class="row text-center">
-        <div class="col">
+        <div class="col-1">
           &nbsp;
         </div>
         <div class="col" v-for="(value, label) in days">
