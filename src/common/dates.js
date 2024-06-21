@@ -12,6 +12,12 @@ export function dateToday() {
   return new Date('2024-06-18T00:00:00Z')
 }
 
+export function dateKey(date) {
+  return new Date(date)
+    .toISOString()
+    .split('T')[0]
+}
+
 export function dateFrom(date, offset) {
   const target = copyDate(date)
   target.setUTCDate(target.getUTCDate() + offset)

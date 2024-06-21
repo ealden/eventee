@@ -1,10 +1,10 @@
-import { formatDate, formatDateTime } from './dates.js'
+import { dateKey, formatDateTime } from './dates.js'
 
 export function groupEvents(events) {
   const groups = {}
 
   for (const event of events) {
-    const date = formatDate(event.starts_at)
+    const date = dateKey(event.starts_at)
 
     if (!Object.hasOwn(groups, date)) {
       groups[date] = []

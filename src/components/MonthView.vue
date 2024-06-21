@@ -3,6 +3,7 @@ import { ref, computed } from 'vue'
 
 import {
   dateToday,
+  dateKey,
   dateFrom,
   monthStart,
   monthEnd,
@@ -36,7 +37,7 @@ const calendar = computed(() => {
   for (let i = 0; i < endDate.getUTCDate(); i++) {
     const date = dateFrom(monthStart(today.value), i)
 
-    week.push(formatDate(date))
+    week.push(dateKey(date))
 
     if (week.length == 7) {
       calendar.push(week)
