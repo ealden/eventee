@@ -103,6 +103,13 @@ export function formatTime(date) {
     .replace(':00.000Z', '')
 }
 
+export function formatDateTime(date) {
+  return new Date(date)
+    .toISOString()
+    .replace('T', ' ')
+    .replace(':00.000Z', '')
+}
+
 export function formatDay(date) {
   return new Date(date).getUTCDate()
 }

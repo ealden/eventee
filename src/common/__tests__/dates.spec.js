@@ -13,6 +13,7 @@ import {
   monthFrom,
   formatDate,
   formatTime,
+  formatDateTime,
   formatDay,
   formatDayViewHeader,
   formatMonthViewHeader
@@ -170,6 +171,12 @@ describe('formatDate', () => {
 describe('formatTime', () => {
   it('returns HH:mm', () => {
     expect(formatTime('2024-06-20T09:00:00.000Z')).toEqual('09:00')
+  })
+})
+
+describe('formatDateTime', () => {
+  it('returns YYYY-MM-DD HH:mm', () => {
+    expect(formatDateTime('2024-06-21T11:00:00.000Z')).toEqual('2024-06-21 11:00')
   })
 })
 
