@@ -4,6 +4,7 @@ import { ref, computed } from 'vue'
 import {
   dateToday,
   dateFrom,
+  dateTimeKey,
   dateTimeFrom,
   formatTime,
   formatDateTime,
@@ -24,7 +25,7 @@ const calendar = computed(() => {
   for (let h = 0; h < 24; h++) {
     const date = dateTimeFrom(today.value, h)
 
-    calendar.push(date.toISOString())
+    calendar.push(dateTimeKey(date))
   }
 
   return calendar

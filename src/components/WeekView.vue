@@ -3,6 +3,7 @@ import { ref, computed } from 'vue'
 
 import {
   dateToday,
+  dateTimeKey,
   dateTimeFrom,
   weekStart,
   weekFrom,
@@ -31,7 +32,7 @@ const calendar = computed(() => {
     for (let d = 0; d < 7; d++) {
       const date = dateTimeFrom(startDate, ((d * 24) + h))
 
-      hour.push(date.toISOString())
+      hour.push(dateTimeKey(date))
     }
 
     calendar.push(hour)
