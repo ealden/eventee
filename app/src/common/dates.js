@@ -1,3 +1,12 @@
+export function newDate(year, month, day) {
+  const target = new Date()
+  target.setUTCFullYear(year)
+  target.setUTCMonth(month - 1)
+  target.setUTCDate(day)
+
+  return target
+}
+
 function copyDate(date) {
   const target = new Date()
   target.setUTCFullYear(date.getUTCFullYear())

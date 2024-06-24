@@ -1,6 +1,7 @@
 import { describe, it, expect } from 'vitest'
 
 import {
+  newDate,
   dateKey,
   dateFrom,
   dateTimeKey,
@@ -17,6 +18,19 @@ import {
   formatDayViewHeader,
   formatMonthViewHeader
 } from '../dates.js'
+
+describe('newDate', () => {
+  it('returns date', () => {
+    const expected = new Date()
+    expected.setUTCFullYear(2024)
+    expected.setUTCMonth(6 - 1)
+    expected.setUTCDate(24)
+
+    const actual = newDate(2024, 6, 24)
+
+    expect(actual).toEqual(expected)
+  })
+})
 
 describe('dateKey', () => {
   it('returns YYYY-MM-DD', () => {

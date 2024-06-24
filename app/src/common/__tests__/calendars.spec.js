@@ -1,13 +1,11 @@
 import { describe, it, expect } from 'vitest'
 
 import { weekCalendar, monthCalendar } from '../calendars.js'
+import { newDate } from '../dates.js'
 
 describe('weekCalendar', () => {
   it('returns calendar', () => {
-    const currentDate = new Date()
-    currentDate.setUTCFullYear(2024)
-    currentDate.setUTCMonth(6 - 1)
-    currentDate.setUTCDate(24)
+    const currentDate = newDate(2024, 6, 24)
 
     const expected = [
       [
@@ -236,10 +234,7 @@ describe('weekCalendar', () => {
 
 describe('monthCalendar', () => {
   it('returns calendar', () => {
-    const currentDate = new Date()
-    currentDate.setUTCFullYear(2024)
-    currentDate.setUTCMonth(6 - 1)
-    currentDate.setUTCDate(24)
+    const currentDate = newDate(2024, 6, 24)
 
     const expected = [
       [ null, null, null, null, null, null, '2024-06-01' ],
