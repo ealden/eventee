@@ -60,13 +60,13 @@ function nextMonth() {
                 </template>
               </div>
             </div>
-            <div class="row event"
+            <div class="row event border border-primary bg-primary-subtle bg-gradient"
                  :class="date"
                  v-for="event in events[date]">
-              <div class="col summary text-start">
+              <div class="col summary text-start px-1">
                 {{ event.summary }}
               </div>
-              <div class="col text-end">
+              <div class="col text-end px-1">
                 {{ formatTime(event.starts_at) }}
               </div>
               <span class="starts_at visually-hidden">

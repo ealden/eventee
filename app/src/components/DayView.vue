@@ -45,7 +45,7 @@ function nextDay() {
         </div>
         <div class="col border">
           <div class="row">
-            <div class="col event"
+            <div class="col event border border-primary bg-primary-subtle bg-gradient px-1"
                  :class="dateTime"
                  v-for="event in events[dateTime]">
               <span class="summary">
