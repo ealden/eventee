@@ -33,7 +33,7 @@ function nextMonth() {
 
 <template>
   <div id="month-view" v-if="isCurrentView">
-    <div class="container">
+    <div class="container mb-1">
       <div class="row">
         <div class="col">
           <h2 id="current-period">
@@ -41,9 +41,26 @@ function nextMonth() {
           </h2>
         </div>
         <div class="col text-end">
-          <a id="prev-month" href="#" @click="prevMonth">&lt; Prev</a>
-          <a id="this-month" class="mx-1" href="#" @click="thisMonth">Today</a>
-          <a id="next-month" href="#" @click="nextMonth">Next &gt;</a>
+          <div class="btn-group" role="group" aria="Calendar Navigation">
+            <button id="prev-month"
+                    type="button"
+                    class="btn btn-sm btn-outline-secondary px-2"
+                    @click="prevMonth">
+              ◀
+            </button>
+            <button id="this-month"
+                    type="button"
+                    class="btn btn-sm btn-outline-secondary"
+                    @click="thisMonth">
+              Today
+            </button>
+            <button id="next-month"
+                    type="button"
+                    class="btn btn-sm btn-outline-secondary"
+                    @click="nextMonth">
+              ▶
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -59,7 +76,9 @@ function nextMonth() {
       </div>
       <template v-for="week in calendar">
         <div class="row">
-          <div class="col border" v-for="date in week" :id="date">
+          <div class="col border"
+               :id="date"
+               v-for="date in week">
             <div class="row text-end">
               <div class="col day">
                 <template v-if="date">
