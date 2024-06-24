@@ -3,5 +3,5 @@ When 'I try to view all my events' do
 
   @page.load
 
-  @page.nav_all_events_view.click
+  @page.all_events_view.click
 end

@@ -3,7 +3,7 @@ def load_day_view
 
   @page.load
 
-  @page.nav_day_view.click
+  @page.day_view.click
 end
 
 When 'I try to view events in day view' do
@@ -13,20 +13,20 @@ end
 When 'I try to view events yesterday' do
   load_day_view
 
-  @page.day_view.prev_day.click
+  @page.prev_period.click
 end
 
 When 'I try to view events tomorrow' do
   load_day_view
 
-  @page.day_view.next_day.click
+  @page.next_period.click
 end
 
 When 'I try to view events today' do
   load_day_view
 
   # We default to today, so navigate to a different day first
-  @page.day_view.prev_day.click
+  @page.prev_period.click
 
-  @page.day_view.this_day.click
+  @page.this_period.click
 end

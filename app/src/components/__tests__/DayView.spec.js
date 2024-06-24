@@ -41,9 +41,9 @@ const options = {
 const currentPeriod = '#current-period'
 const event = '.event'
 
-const prevDay = '#prev-day'
-const thisDay = '#this-day'
-const nextDay = '#next-day'
+const prevDay = '#prev-period'
+const thisDay = '#this-period'
+const nextDay = '#next-period'
 
 describe('DayView', () => {
   it('renders properly', () => {

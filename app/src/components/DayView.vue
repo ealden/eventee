@@ -3,6 +3,7 @@ import { ref, computed } from 'vue'
 
 import { dateFrom, formatTime, formatDateTime, formatDayViewHeader } from '../common/dates.js'
 import { dayCalendar } from '../common/calendars.js'
+import ViewNavigation from './ViewNavigation.vue'
 
 const props = defineProps(['events', 'today', 'isCurrentView'])
 
@@ -33,20 +34,10 @@ function nextDay() {
 
 <template>
   <div id="day-view" v-if="isCurrentView">
-    <div class="container">
-      <div class="row">
-        <div class="col">
-          <h2 id="current-period">
-            {{ header }}
-          </h2>
-        </div>
-        <div class="col text-end">
-          <a id="prev-day" href="#" @click="prevDay">&lt; Prev</a>
-          <a id="this-day" class="mx-1" href="#" @click="thisDay">Today</a>
-          <a id="next-day" href="#" @click="nextDay">Next &gt;</a>
-        </div>
-      </div>
-    </div>
+    <ViewNavigation :header="header"
+                    :prev-action="prevDay"
+                    :this-action="thisDay"
+                    :next-action="nextDay" />
     <div id="day" class="container">
       <div class="row" v-for="dateTime in calendar">
         <div class="col-1 border text-end">{{ formatTime(dateTime) }}</div>
