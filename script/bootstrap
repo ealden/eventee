@@ -14,6 +14,9 @@ cd - > /dev/null
 echo "  + Setting up Rails..."
 cd api/
 bundle install
+bundle exec rails db:drop
+bundle exec rails db:migrate
+bundle exec rails db:seed
 cd - > /dev/null
 
 echo ""
