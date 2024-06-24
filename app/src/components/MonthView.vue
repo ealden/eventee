@@ -48,37 +48,38 @@ function nextMonth() {
         <div class="col"><strong>Fri</strong></div>
         <div class="col"><strong>Sat</strong></div>
       </div>
-      <template v-for="week in calendar">
-        <div class="row">
-          <div class="col border"
-               :id="date"
-               v-for="date in week">
-            <div class="row text-end">
-              <div class="col day">
-                <template v-if="date">
-                  {{ formatDay(date) }}
-                </template>
-              </div>
-            </div>
-            <div class="row event border border-primary bg-primary-subtle bg-gradient"
-                 :class="date"
-                 v-for="event in events[date]">
-              <div class="col summary text-start px-1">
-                {{ event.summary }}
-              </div>
-              <div class="col text-end px-1">
-                {{ formatTime(event.starts_at) }}
-              </div>
-              <span class="starts_at visually-hidden">
-                {{ formatDateTime(event.starts_at) }}
-              </span>
-              <span class="ends_at visually-hidden">
-                {{ formatDateTime(event.ends_at) }}
-              </span>
+      <div class="row" v-for="week in calendar">
+        <div class="col border"
+             :id="date"
+             v-for="date in week">
+          <div class="row text-end">
+            <div class="col day">
+              <template v-if="date">
+                {{ formatDay(date) }}
+              </template>
+              <template v-else>
+                &nbsp;
+              </template>
             </div>
           </div>
+          <div class="row event border border-primary bg-primary-subtle bg-gradient"
+               :class="date"
+               v-for="event in events[date]">
+            <div class="col summary text-start px-1">
+              {{ event.summary }}
+            </div>
+            <div class="col text-end px-1">
+              {{ formatTime(event.starts_at) }}
+            </div>
+            <span class="starts_at visually-hidden">
+              {{ formatDateTime(event.starts_at) }}
+            </span>
+            <span class="ends_at visually-hidden">
+              {{ formatDateTime(event.ends_at) }}
+            </span>
+          </div>
         </div>
-      </template>
+      </div>
     </div>
   </div>
 </template>
