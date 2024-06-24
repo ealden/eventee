@@ -18,7 +18,8 @@ describe('ViewHeader', () => {
 
     const wrapper = mount(ViewHeader, {
       props: {
-        prevAction: () => actionClicked = true
+        prevAction: () => actionClicked = true,
+        thisAction: () => true
       }
     })
 
@@ -44,6 +45,7 @@ describe('ViewHeader', () => {
 
     const wrapper = mount(ViewHeader, {
       props: {
+        thisAction: () => true,
         nextAction: () => actionClicked = true
       }
     })
@@ -51,5 +53,17 @@ describe('ViewHeader', () => {
     await wrapper.get('#next-period').trigger('click')
 
     expect(actionClicked).toEqual(true)
+  }),
+  it('hides navigation if no action', async () => {
+    const wrapper = mount(ViewHeader, {
+      props: {
+        prevAction: 0,
+        nextAction: 0
+      }
+    })
+
+    expect(wrapper.text()).not.toContain('#prev-period')
+    expect(wrapper.text()).not.toContain('#this-period')
+    expect(wrapper.text()).not.toContain('#next-period')
   })
 })

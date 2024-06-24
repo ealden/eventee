@@ -11,7 +11,10 @@ defineProps(['header', 'prevAction', 'thisAction', 'nextAction'])
         </h2>
       </div>
       <div class="col text-end">
-        <div class="btn-group" role="group" aria="Calendar Navigation">
+        <div class="btn-group"
+             role="group"
+             aria="Calendar Navigation"
+             v-if="thisAction">
           <button id="prev-period"
                   type="button"
                   class="btn btn-sm btn-outline-secondary px-2"
