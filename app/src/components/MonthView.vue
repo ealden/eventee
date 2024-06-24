@@ -3,6 +3,7 @@ import { ref, computed } from 'vue'
 
 import { monthFrom, formatTime, formatDateTime, formatDay, formatMonthViewHeader } from '../common/dates.js'
 import { monthCalendar } from '../common/calendars.js'
+import ViewNavigation from './ViewNavigation.vue'
 
 const props = defineProps(['events', 'today', 'isCurrentView'])
 
@@ -33,37 +34,10 @@ function nextMonth() {
 
 <template>
   <div id="month-view" v-if="isCurrentView">
-    <div class="container mb-1">
-      <div class="row">
-        <div class="col">
-          <h2 id="current-period">
-            {{ header }}
-          </h2>
-        </div>
-        <div class="col text-end">
-          <div class="btn-group" role="group" aria="Calendar Navigation">
-            <button id="prev-month"
-                    type="button"
-                    class="btn btn-sm btn-outline-secondary px-2"
-                    @click="prevMonth">
-              ◀
-            </button>
-            <button id="this-month"
-                    type="button"
-                    class="btn btn-sm btn-outline-secondary"
-                    @click="thisMonth">
-              Today
-            </button>
-            <button id="next-month"
-                    type="button"
-                    class="btn btn-sm btn-outline-secondary"
-                    @click="nextMonth">
-              ▶
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
+    <ViewNavigation :header="header"
+                    :prev-action="prevMonth"
+                    :this-action="thisMonth"
+                    :next-action="nextMonth" />
     <div id="month" class="container">
       <div class="row text-end">
         <div class="col"><strong>Sun</strong></div>

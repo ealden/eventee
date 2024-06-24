@@ -53,9 +53,9 @@ const options = {
 const currentPeriod = '#current-period'
 const event = '.event'
 
-const prevMonth = '#prev-month'
-const thisMonth = '#this-month'
-const nextMonth = '#next-month'
+const prevMonth = '#prev-period'
+const thisMonth = '#this-period'
+const nextMonth = '#next-period'
 
 describe('MonthView', () => {
   it('renders properly', () => {

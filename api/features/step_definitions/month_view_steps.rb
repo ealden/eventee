@@ -3,7 +3,7 @@ def load_month_view
 
   @page.load
 
-  @page.nav_month_view.click
+  @page.month_view.click
 end
 
 When 'I try to view events in month view' do
@@ -13,20 +13,20 @@ end
 When 'I try to view events last month' do
   load_month_view
 
-  @page.month_view.prev_month.click
+  @page.prev_period.click
 end
 
 When 'I try to view events next month' do
   load_month_view
 
-  @page.month_view.next_month.click
+  @page.next_period.click
 end
 
 When 'I try to view events this month' do
   load_month_view
 
   # We default to this month, so navigate to a different month first
-  @page.month_view.prev_month.click
+  @page.prev_period.click
 
-  @page.month_view.this_month.click
+  @page.this_period.click
 end
