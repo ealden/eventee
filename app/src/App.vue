@@ -75,63 +75,64 @@ onMounted(() => {
 </script>
 
 <template>
-  <nav class="navbar navbar-expand-lg bg-body-tertiary">
-    <a class="navbar-brand" href="#">
-      Eventee
-    </a>
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a id="nav-all-events-view"
-           class="nav-link"
-           href="#"
-           :class="{ active: isAllEventsView }"
-           @click="allEventsView">
-          All
-        </a>
-      </li>
-      <li class="nav-item">
-        <a id="nav-day-view"
-           class="nav-link"
-           href="#"
-           :class="{ active: isDayView }"
-           @click="dayView">
-          Day
-        </a>
-      </li>
-      <li class="nav-item">
-        <a id="nav-week-view"
-           class="nav-link"
-           href="#"
-           :class="{ active: isWeekView }"
-           @click="weekView">
-          Week
-        </a>
-      </li>
-      <li class="nav-item">
-        <a id="nav-month-view"
-           class="nav-link"
-           href="#"
-           :class="{ active: isMonthView }"
-           @click="monthView">
-          Month
-        </a>
-      </li>
-    </ul>
-  </nav>
-  <AllEventsView :events="events"
-                 :is-current-view="isAllEventsView" />
-  <DayView :events="groups"
-           :today="today"
-           :is-current-view="isDayView"
-           v-if="today" />
-  <WeekView :events="groups"
-            :today="today"
-            :is-current-view="isWeekView"
-            v-if="today" />
-  <MonthView :events="groups"
-             :today="today"
-             :is-current-view="isMonthView"
-             v-if="today" />
+  <div class="bg-body-secondary p-2 mb-3">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col">
+          <span class="fs-2">📆 Eventee</span>
+        </div>
+        <div class="col text-center">
+          <div class="btn-group" role="group" aria-label="Navigation">
+            <button id="nav-all-events-view"
+                    type="button"
+                    class="btn btn-outline-primary"
+                    :class="{ active: isAllEventsView }"
+                    @click="allEventsView">
+              All
+            </button>
+            <button id="nav-day-view"
+                    type="button"
+                    class="btn btn-outline-primary"
+                    :class="{ active: isDayView }"
+                    @click="dayView">
+              Day
+            </button>
+            <button id="nav-week-view"
+                    type="button"
+                    class="btn btn-outline-primary"
+                    :class="{ active: isWeekView }"
+                    @click="weekView">
+              Week
+            </button>
+            <button id="nav-month-view"
+                    type="button"
+                    class="btn btn-outline-primary"
+                    :class="{ active: isMonthView }"
+                    @click="monthView">
+              Month
+            </button>
+          </div>
+        </div>
+        <div class="col">&nbsp;</div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <AllEventsView :events="events"
+               :is-current-view="isAllEventsView" />
+    <DayView :events="groups"
+               :today="today"
+               :is-current-view="isDayView"
+               v-if="today" />
+    <WeekView :events="groups"
+               :today="today"
+               :is-current-view="isWeekView"
+               v-if="today" />
+    <MonthView :events="groups"
+               :today="today"
+               :is-current-view="isMonthView"
+               v-if="today" />
+  </div>
 </template>
 
 <style scoped>
