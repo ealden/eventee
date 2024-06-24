@@ -23,8 +23,7 @@ describe('AllEventsView', () => {
             starts_at: '2024-06-20T18:00:00.000Z',
             ends_at: '2024-06-20T19:00:00.000Z'
           }
-        ],
-        isCurrentView: true
+        ]
       }
     })
 

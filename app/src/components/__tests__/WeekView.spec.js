@@ -47,8 +47,7 @@ const options = {
         }
       ]
     },
-    today: new Date('2024-06-20'),
-    isCurrentView: true
+    today: new Date('2024-06-20')
   }
 }
 
