@@ -1,4 +1,33 @@
-import { monthStart, monthEnd, dateFrom, dateKey } from './dates.js'
+import {
+  dateFrom,
+  dateKey,
+  dateTimeFrom,
+  dateTimeKey,
+  weekStart,
+  weekEnd,
+  monthStart,
+  monthEnd
+} from '../common/dates.js'
+
+export function weekCalendar(currentDate) {
+  const calendar = []
+
+  const startDate = weekStart(currentDate)
+
+  for (let h = 0; h < 24; h++) {
+    const hour = []
+
+    for (let d = 0; d < 7; d++) {
+      const date = dateTimeFrom(startDate, ((d * 24) + h))
+
+      hour.push(dateTimeKey(date))
+    }
+
+    calendar.push(hour)
+  }
+
+  return calendar
+}
 
 export function monthCalendar(currentDate) {
   const startDate = monthStart(currentDate)

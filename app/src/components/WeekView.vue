@@ -1,16 +1,8 @@
 <script setup>
 import { ref, computed } from 'vue'
 
-import {
-  dateTimeKey,
-  dateTimeFrom,
-  weekStart,
-  weekFrom,
-  formatTime,
-  formatDateTime,
-  formatDay,
-  formatMonthViewHeader
-} from '../common/dates.js'
+import { weekFrom, formatTime, formatDateTime, formatDay, formatMonthViewHeader } from '../common/dates.js'
+import { weekCalendar } from '../common/calendars.js'
 
 const props = defineProps(['events', 'today', 'isCurrentView'])
 
@@ -23,23 +15,7 @@ const header = computed(() => {
 })
 
 const calendar = computed(() => {
-  const calendar = []
-
-  const startDate = weekStart(currentDate.value)
-
-  for (let h = 0; h < 24; h++) {
-    const hour = []
-
-    for (let d = 0; d < 7; d++) {
-      const date = dateTimeFrom(startDate, ((d * 24) + h))
-
-      hour.push(dateTimeKey(date))
-    }
-
-    calendar.push(hour)
-  }
-
-  return calendar
+  return weekCalendar(currentDate.value)
 })
 
 const days = computed(() => {
