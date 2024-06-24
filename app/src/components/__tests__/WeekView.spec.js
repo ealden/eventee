@@ -55,9 +55,9 @@ const options = {
 const currentPeriod = '#current-period'
 const event = '.event'
 
-const prevWeek = '#prev-week'
-const thisWeek = '#this-week'
-const nextWeek = '#next-week'
+const prevWeek = '#prev-period'
+const thisWeek = '#this-period'
+const nextWeek = '#next-period'
 
 describe('WeekView', () => {
   it('renders properly', () => {

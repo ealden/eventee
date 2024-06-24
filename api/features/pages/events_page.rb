@@ -7,12 +7,6 @@ class DayView < SitePrism::Section
   element :next_day, '#next-day'
 end
 
-class WeekView < SitePrism::Section
-  element :prev_week, '#prev-week'
-  element :this_week, '#this-week'
-  element :next_week, '#next-week'
-end
-
 class EventRow < SitePrism::Section
   element :summary, '.summary'
   element :starts_at, '.starts_at'
@@ -24,7 +18,7 @@ class EventsPage < SitePrism::Page
 
   element :nav_all_events_view, '#nav-all-events-view'
   element :nav_day_view, '#nav-day-view'
-  element :nav_week_view, '#nav-week-view'
+  element :week_view, '#nav-week-view'
   element :month_view, '#nav-month-view'
 
   element :current_period, '#current-period'
@@ -37,7 +31,6 @@ class EventsPage < SitePrism::Page
 
   section :all_events_view, AllEventsView, '#all-events-view'
   section :day_view, DayView, '#day-view'
-  section :week_view, WeekView, '#week-view'
 
   sections :events, EventRow, '.event'
 

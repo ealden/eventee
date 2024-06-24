@@ -3,6 +3,7 @@ import { ref, computed } from 'vue'
 
 import { weekFrom, formatTime, formatDateTime, formatDay, formatMonthViewHeader } from '../common/dates.js'
 import { weekCalendar } from '../common/calendars.js'
+import ViewNavigation from './ViewNavigation.vue'
 
 const props = defineProps(['events', 'today', 'isCurrentView'])
 
@@ -47,20 +48,10 @@ function nextWeek() {
 
 <template>
   <div id="week-view" v-if="isCurrentView">
-    <div class="container">
-      <div class="row">
-        <div class="col">
-          <h2 id="current-period">
-            {{ header }}
-          </h2>
-        </div>
-        <div class="col text-end">
-          <a id="prev-week" href="#" @click="prevWeek">&lt; Prev</a>
-          <a id="this-week" class="mx-1" href="#" @click="thisWeek">Today</a>
-          <a id="next-week" href="#" @click="nextWeek">Next &gt;</a>
-        </div>
-      </div>
-    </div>
+    <ViewNavigation :header="header"
+                    :prev-action="prevWeek"
+                    :this-action="thisWeek"
+                    :next-action="nextWeek" />
     <div id="week" class="container">
       <div class="row text-center">
         <div class="col-1">
