@@ -1,11 +1,11 @@
 import { describe, it, expect } from 'vitest'
 
 import { mount } from '@vue/test-utils'
-import ViewNavigation from '../ViewNavigation.vue'
+import ViewHeader from '../ViewHeader.vue'
 
-describe('ViewNavigation', () => {
+describe('ViewHeader', () => {
   it('renders properlty', async () => {
-    const wrapper = mount(ViewNavigation, {
+    const wrapper = mount(ViewHeader, {
       props: {
         header: 'June 2024'
       }
@@ -16,7 +16,7 @@ describe('ViewNavigation', () => {
   it('shows prev period', async () => {
     let actionClicked = false
 
-    const wrapper = mount(ViewNavigation, {
+    const wrapper = mount(ViewHeader, {
       props: {
         prevAction: () => actionClicked = true
       }
@@ -29,7 +29,7 @@ describe('ViewNavigation', () => {
   it('shows this period', async () => {
     let actionClicked = false
 
-    const wrapper = mount(ViewNavigation, {
+    const wrapper = mount(ViewHeader, {
       props: {
         thisAction: () => actionClicked = true
       }
@@ -42,7 +42,7 @@ describe('ViewNavigation', () => {
   it('shows next period', async () => {
     let actionClicked = false
 
-    const wrapper = mount(ViewNavigation, {
+    const wrapper = mount(ViewHeader, {
       props: {
         nextAction: () => actionClicked = true
       }

@@ -3,7 +3,7 @@ import { ref, computed } from 'vue'
 
 import { monthFrom, formatTime, formatDateTime, formatDay, formatMonthViewHeader } from '../common/dates.js'
 import { monthCalendar } from '../common/calendars.js'
-import ViewNavigation from './ViewNavigation.vue'
+import ViewHeader from './ViewHeader.vue'
 
 const props = defineProps(['events', 'today', 'isCurrentView'])
 
@@ -34,10 +34,10 @@ function nextMonth() {
 
 <template>
   <div id="month-view" v-if="isCurrentView">
-    <ViewNavigation :header="header"
-                    :prev-action="prevMonth"
-                    :this-action="thisMonth"
-                    :next-action="nextMonth" />
+    <ViewHeader :header="header"
+                :prev-action="prevMonth"
+                :this-action="thisMonth"
+                :next-action="nextMonth" />
     <div id="month" class="container">
       <div class="row text-end">
         <div class="col"><strong>Sun</strong></div>
