@@ -52,10 +52,7 @@ export function weekStart(date) {
 }
 
 export function weekFrom(date, offset) {
-  const target = weekStart(date)
-  target.setUTCDate(target.getUTCDate() + (offset * 7))
-
-  return target
+  return dateFrom(weekStart(date), (offset * 7))
 }
 
 export function monthStart(date) {
