@@ -65,7 +65,9 @@ function nextWeek() {
         </div>
       </div>
       <div class="row" v-for="hour in calendar">
-        <div class="col-1 border text-end">{{ formatTime(hour[0]) }}</div>
+        <div class="col-1 border text-end">
+          {{ formatTime(hour[0]) }}
+        </div>
         <div class="col border" v-for="dateTime in hour">
           <div class="row">
             <div class="col event"
