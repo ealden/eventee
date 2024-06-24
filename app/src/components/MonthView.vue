@@ -57,9 +57,6 @@ function nextMonth() {
               <template v-if="date">
                 {{ formatDay(date) }}
               </template>
-              <template v-else>
-                &nbsp;
-              </template>
             </div>
           </div>
           <div class="row event border border-primary bg-primary-subtle bg-gradient"
