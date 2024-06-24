@@ -74,8 +74,10 @@ function fetchEvents() {
 }
 
 onMounted(() => {
-  fetchToday()
-  fetchEvents()
+  if (!props.today) {
+    fetchToday()
+    fetchEvents()
+  }
 })
 </script>
 
