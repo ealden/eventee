@@ -28,7 +28,7 @@ describe('AllEventsView', () => {
       }
     })
 
-    expect(wrapper.get('#currentPeriod').text()).toEqual('All Events')
+    expect(wrapper.get('#current-period').text()).toEqual('All Events')
     expect(wrapper.findAll('.event')).toHaveLength(3)
   })
 })
