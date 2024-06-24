@@ -5,7 +5,7 @@ import { weekFrom, formatTime, formatDateTime, formatDay, formatMonthViewHeader 
 import { weekCalendar } from '../common/calendars.js'
 import ViewHeader from './ViewHeader.vue'
 
-const props = defineProps(['events', 'today', 'isCurrentView'])
+const props = defineProps(['events', 'today'])
 
 const today = ref(props.today)
 
@@ -47,7 +47,7 @@ function nextWeek() {
 </script>
 
 <template>
-  <div id="week-view" v-if="isCurrentView">
+  <div id="week-view">
     <ViewHeader :header="header"
                 :prev-action="prevWeek"
                 :this-action="thisWeek"

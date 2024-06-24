@@ -5,7 +5,7 @@ import { monthFrom, formatTime, formatDateTime, formatDay, formatMonthViewHeader
 import { monthCalendar } from '../common/calendars.js'
 import ViewHeader from './ViewHeader.vue'
 
-const props = defineProps(['events', 'today', 'isCurrentView'])
+const props = defineProps(['events', 'today'])
 
 const today = ref(props.today)
 
@@ -33,7 +33,7 @@ function nextMonth() {
 </script>
 
 <template>
-  <div id="month-view" v-if="isCurrentView">
+  <div id="month-view">
     <ViewHeader :header="header"
                 :prev-action="prevMonth"
                 :this-action="thisMonth"

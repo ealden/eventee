@@ -1,11 +1,11 @@
 <script setup>
 import { formatDateTime } from '../common/dates.js'
 
-defineProps(['events', 'isCurrentView'])
+defineProps(['events'])
 </script>
 
 <template>
-  <div id="all-events-view" v-if="isCurrentView">
+  <div id="all-events-view">
     <div class="container">
       <div class="row">
         <div class="col">

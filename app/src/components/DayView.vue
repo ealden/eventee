@@ -5,7 +5,7 @@ import { dateFrom, formatTime, formatDateTime, formatDayViewHeader } from '../co
 import { dayCalendar } from '../common/calendars.js'
 import ViewHeader from './ViewHeader.vue'
 
-const props = defineProps(['events', 'today', 'isCurrentView'])
+const props = defineProps(['events', 'today'])
 
 const today = ref(props.today)
 
@@ -33,7 +33,7 @@ function nextDay() {
 </script>
 
 <template>
-  <div id="day-view" v-if="isCurrentView">
+  <div id="day-view">
     <ViewHeader :header="header"
                 :prev-action="prevDay"
                 :this-action="thisDay"

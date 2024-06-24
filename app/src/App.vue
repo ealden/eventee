@@ -119,19 +119,16 @@ onMounted(() => {
   </div>
   <div class="container">
     <AllEventsView :events="events"
-               :is-current-view="isAllEventsView" />
+                   v-if="isAllEventsView" />
     <DayView :events="groups"
-               :today="today"
-               :is-current-view="isDayView"
-               v-if="today" />
+             :today="today"
+             v-if="isDayView" />
     <WeekView :events="groups"
-               :today="today"
-               :is-current-view="isWeekView"
-               v-if="today" />
+              :today="today"
+              v-if="isWeekView" />
     <MonthView :events="groups"
                :today="today"
-               :is-current-view="isMonthView"
-               v-if="today" />
+               v-if="isMonthView" />
   </div>
 </template>
 
