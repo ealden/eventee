@@ -9,7 +9,7 @@ const props = defineProps(['events', 'today'])
 
 const today = ref(props.today)
 
-const currentDate = ref(today.value)
+const currentDate = defineModel()
 
 const header = computed(() => {
   return formatMonthViewHeader(currentDate.value)

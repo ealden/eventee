@@ -45,7 +45,8 @@ const options = {
         }
       ]
     },
-    today: new Date('2024-06-20')
+    today: new Date('2024-06-20'),
+    modelValue: new Date('2024-06-20')
   }
 }
 

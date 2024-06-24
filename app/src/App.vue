@@ -14,6 +14,8 @@ const events = ref([])
 
 const today = ref(props.today)
 
+const currentDate = ref(props.today)
+
 const view = ref(props.view || 0)
 
 const isAllEventsView = computed(() => {
@@ -56,7 +58,10 @@ function fetchToday() {
   axios
     .get(import.meta.env.VITE_API_HOST + '/api/today')
     .then(response => {
-      today.value = new Date(response.data.today)
+      const date = new Date(response.data.today)
+
+      today.value = date
+      currentDate.value = date
     })
 }
 
@@ -122,12 +127,15 @@ onMounted(() => {
                    v-if="isAllEventsView" />
     <DayView :events="groups"
              :today="today"
+             v-model="currentDate"
              v-if="isDayView" />
     <WeekView :events="groups"
               :today="today"
+              v-model="currentDate"
               v-if="isWeekView" />
     <MonthView :events="groups"
                :today="today"
+               v-model="currentDate"
                v-if="isMonthView" />
   </div>
 </template>
