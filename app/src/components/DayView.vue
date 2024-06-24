@@ -1,14 +1,8 @@
 <script setup>
 import { ref, computed } from 'vue'
 
-import {
-  dateFrom,
-  dateTimeKey,
-  dateTimeFrom,
-  formatTime,
-  formatDateTime,
-  formatDayViewHeader
-} from '../common/dates.js'
+import { dateFrom, formatTime, formatDateTime, formatDayViewHeader } from '../common/dates.js'
+import { dayCalendar } from '../common/calendars.js'
 
 const props = defineProps(['events', 'today', 'isCurrentView'])
 
@@ -21,15 +15,7 @@ const header = computed(() => {
 })
 
 const calendar = computed(() => {
-  const calendar = []
-
-  for (let h = 0; h < 24; h++) {
-    const date = dateTimeFrom(currentDate.value, h)
-
-    calendar.push(dateTimeKey(date))
-  }
-
-  return calendar
+  return dayCalendar(currentDate.value)
 })
 
 function prevDay() {

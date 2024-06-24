@@ -9,6 +9,18 @@ import {
   monthEnd
 } from '../common/dates.js'
 
+export function dayCalendar(currentDate) {
+  const calendar = []
+
+  for (let h = 0; h < 24; h++) {
+    const date = dateTimeFrom(currentDate, h)
+
+    calendar.push(dateTimeKey(date))
+  }
+
+  return calendar
+}
+
 export function weekCalendar(currentDate) {
   const calendar = []
 
