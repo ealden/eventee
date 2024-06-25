@@ -41,10 +41,12 @@ function nextYear() {
                 :next-action="nextYear" />
     <div id="year" class="container">
       <div class="row mb-3"
-           v-for="i in 4">
+           v-for="i in 4"
+           :key="'i-' + i">
         <YearMonthCalendar :events="events"
                            :calendar="calendar"
                            v-for="j in 3"
+                           :key="'i-' + i + '-j-' + j"
                            :month="(3 * (i - 1)) + j" />
       </div>
     </div>

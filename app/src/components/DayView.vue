@@ -39,15 +39,17 @@ function nextDay() {
                 :this-action="thisDay"
                 :next-action="nextDay" />
     <div id="day" class="container">
-      <div class="row" v-for="dateTime in calendar">
+      <div class="row"
+           v-for="dateTime in calendar"
+           :key="dateTime">
         <div class="col-1 border text-end">
           {{ formatTime(dateTime) }}
         </div>
         <div class="col border">
           <div class="row">
             <div class="col event border border-primary bg-primary-subtle bg-gradient px-1"
-                 :class="dateTime"
-                 v-for="event in events[dateTime]">
+                 v-for="event in events[dateTime]"
+                 :key="event.id">
               <span class="summary">
                 {{ event.summary }}
               </span>

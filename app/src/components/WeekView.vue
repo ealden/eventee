@@ -57,22 +57,28 @@ function nextWeek() {
         <div class="col-1">
           &nbsp;
         </div>
-        <div class="col" v-for="(value, label) in days">
+        <div class="col"
+             v-for="(value, label) in days"
+             :key="value">
           <strong>{{ label }}</strong>
           <span class="day ms-1">
             <strong>{{ value }}</strong>
           </span>
         </div>
       </div>
-      <div class="row" v-for="hour in calendar">
+      <div class="row"
+           v-for="hour in calendar"
+           :key="hour">
         <div class="col-1 border text-end">
           {{ formatTime(hour[0]) }}
         </div>
-        <div class="col border" v-for="dateTime in hour">
+        <div class="col border"
+             v-for="dateTime in hour"
+             :key="dateTime">
           <div class="row">
             <div class="col event border border-primary bg-primary-subtle bg-gradient px-1"
-                 :class="dateTime"
-                 v-for="event in events[dateTime]">
+                 v-for="event in events[dateTime]"
+                 :key="event.id">
               <span class="summary">
                 {{ event.summary }}
               </span>

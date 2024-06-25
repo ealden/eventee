@@ -48,10 +48,13 @@ function nextMonth() {
         <div class="col"><strong>Fri</strong></div>
         <div class="col"><strong>Sat</strong></div>
       </div>
-      <div class="row" v-for="week in calendar">
+      <div class="row"
+           v-for="(week, i) in calendar"
+           :key="i">
         <div class="col border"
              :id="date"
-             v-for="date in week">
+             v-for="date in week"
+             :key="date">
           <div class="row text-end">
             <div class="col day">
               <template v-if="date">
@@ -60,8 +63,8 @@ function nextMonth() {
             </div>
           </div>
           <div class="row event border border-primary bg-primary-subtle bg-gradient"
-               :class="date"
-               v-for="event in events[date]">
+               v-for="event in events[date]"
+               :key="event.id">
             <div class="col summary text-start px-1">
               {{ event.summary }}
             </div>

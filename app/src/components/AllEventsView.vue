@@ -18,7 +18,8 @@ defineProps(['events'])
       </thead>
       <tbody>
         <tr class="event px-1"
-            v-for="event in events">
+            v-for="event in events"
+            :key="event.id">
           <td class="summary" width="60%">
             {{ event.summary }}
           </td>
