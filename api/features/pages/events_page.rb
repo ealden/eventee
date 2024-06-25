@@ -20,6 +20,7 @@ class EventsPage < SitePrism::Page
   element :next_period, '#next-period'
 
   elements :days, '.day'
+  elements :days_with_events, '.has-events'
 
   sections :events, EventRow, '.event'
 

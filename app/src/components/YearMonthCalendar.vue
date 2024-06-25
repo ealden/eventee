@@ -3,7 +3,7 @@ import { computed } from 'vue'
 
 import { formatDay } from '../common/dates.js'
 
-const props = defineProps(['month', 'calendar', 'header'])
+const props = defineProps(['month', 'events', 'calendar', 'header'])
 
 const monthKey = computed(() => {
   return 'month-' + props.month
@@ -28,13 +28,18 @@ const monthKey = computed(() => {
     </div>
     <div class="row text-center"
          v-for="week in calendar">
-      <div class="col border day"
-           :class="monthKey"
-           v-for="day in week">
-        <template v-if="day">
-          {{ formatDay(day) }}
-        </template>
-      </div>
+      <template v-for="day in week">
+        <div class="col border day"
+             :class="monthKey">
+          <template v-if="day">
+            {{ formatDay(day) }}
+          </template>
+        </div>
+        <div class="col visually-hidden"
+             :class="{ 'has-events': events[day] }">
+          {{ day }}
+        </div>
+      </template>
     </div>
   </div>
 </template>

@@ -8,6 +8,7 @@ describe('YearMonthCalendar', () => {
     const wrapper = mount(YearMonthCalendar, {
       props: {
         month: 6,
+        events: [],
         calendar: [
           [ null        , null        , null        , null        , null        , null        , '2024-06-01' ],
           [ '2024-06-02', '2024-06-03', '2024-06-04', '2024-06-05', '2024-06-06', '2024-06-07', '2024-06-08' ],
@@ -23,5 +24,6 @@ describe('YearMonthCalendar', () => {
     expect(wrapper.get('.header').text()).toEqual('June')
     expect(wrapper.findAll('.day')).toHaveLength(42)
     expect(wrapper.findAll('.month-6')).toHaveLength(42)
+    expect(wrapper.findAll('.has-events')).toHaveLength(0)
   })
 })

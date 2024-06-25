@@ -38,3 +38,11 @@ Then 'I must see this calendar for month {int}:' do |month, table|
 
   expect(actual).to eql expected
 end
+
+Then 'I must see these days have events:' do |table|
+  expected = table.raw.drop(1).flatten
+
+  actual = @page.days_with_events.map(&:text)
+
+  expect(actual).to eql expected
+end
