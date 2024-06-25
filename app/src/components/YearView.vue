@@ -40,7 +40,7 @@ function nextYear() {
                 :this-action="thisYear"
                 :next-action="nextYear" />
     <div id="year" class="container">
-      <div class="row mb-3"
+      <div class="row mb-4"
            v-for="i in 4"
            :key="['i', i].join('-')">
         <YearMonthCalendar :events="events"
