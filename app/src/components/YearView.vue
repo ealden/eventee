@@ -40,49 +40,12 @@ function nextYear() {
                 :this-action="thisYear"
                 :next-action="nextYear" />
     <div id="year" class="container">
-      <div class="row">
-        <YearMonthCalendar month="1"
-                           :events="events"
-                           :calendar="calendar" />
-        <YearMonthCalendar month="2"
-                           :events="events"
-                           :calendar="calendar" />
-        <YearMonthCalendar month="3"
-                           :events="events"
-                           :calendar="calendar" />
-      </div>
-      <div class="row mt-3">
-        <YearMonthCalendar month="4"
-                           :events="events"
-                           :calendar="calendar" />
-        <YearMonthCalendar month="5"
-                           :events="events"
-                           :calendar="calendar" />
-        <YearMonthCalendar month="6"
-                           :events="events"
-                           :calendar="calendar" />
-      </div>
-      <div class="row mt-3">
-        <YearMonthCalendar month="7"
-                           :events="events"
-                           :calendar="calendar" />
-        <YearMonthCalendar month="8"
-                           :events="events"
-                           :calendar="calendar" />
-        <YearMonthCalendar month="9"
-                           :events="events"
-                           :calendar="calendar" />
-      </div>
-      <div class="row mt-3">
-        <YearMonthCalendar month="10"
-                           :events="events"
-                           :calendar="calendar" />
-        <YearMonthCalendar month="11"
-                           :events="events"
-                           :calendar="calendar" />
-        <YearMonthCalendar month="12"
-                           :events="events"
-                           :calendar="calendar" />
+      <div class="row mb-3"
+           v-for="i in 4">
+        <YearMonthCalendar :events="events"
+                           :calendar="calendar"
+                           v-for="j in 3"
+                           :month="(3 * (i - 1)) + j" />
       </div>
     </div>
   </div>
