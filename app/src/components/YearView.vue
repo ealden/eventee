@@ -42,11 +42,11 @@ function nextYear() {
     <div id="year" class="container">
       <div class="row mb-3"
            v-for="i in 4"
-           :key="'i-' + i">
+           :key="['i', i].join('-')">
         <YearMonthCalendar :events="events"
                            :calendar="calendar"
                            v-for="j in 3"
-                           :key="'i-' + i + '-j-' + j"
+                           :key="['i', i, 'j', j].join('-')"
                            :month="(3 * (i - 1)) + j" />
       </div>
     </div>
