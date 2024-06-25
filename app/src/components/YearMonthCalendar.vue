@@ -27,7 +27,7 @@ const monthKey = computed(() => {
       <div class="col border"><strong>S</strong></div>
     </div>
     <div class="row text-center"
-         v-for="week in calendar">
+         v-for="week in calendar[month]">
       <template v-for="day in week">
         <div class="col border day"
              :class="[monthKey, { 'border-primary bg-primary-subtle bg-gradient': events[day] }]">
