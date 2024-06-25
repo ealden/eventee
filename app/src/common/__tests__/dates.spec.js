@@ -12,6 +12,7 @@ import {
   monthEnd,
   monthFrom,
   yearStart,
+  yearFrom,
   formatDate,
   formatTime,
   formatDateTime,
@@ -155,6 +156,22 @@ describe('monthEnd', () => {
   })
 })
 
+describe('monthFrom', () => {
+  it('returns +offset from month start', () => {
+    expect(monthFrom(new Date('2024-06-20T00:00:00.000Z'), 1)).toEqual(new Date('2024-07-01T00:00:00.000Z'))
+    expect(monthFrom(new Date('2024-06-20T00:00:00.000Z'), 2)).toEqual(new Date('2024-08-01T00:00:00.000Z'))
+    expect(monthFrom(new Date('2024-06-20T00:00:00.000Z'), 3)).toEqual(new Date('2024-09-01T00:00:00.000Z'))
+  }),
+  it('returns -offset from month start', () => {
+    expect(monthFrom(new Date('2024-06-20T00:00:00.000Z'), -1)).toEqual(new Date('2024-05-01T00:00:00.000Z'))
+    expect(monthFrom(new Date('2024-06-20T00:00:00.000Z'), -2)).toEqual(new Date('2024-04-01T00:00:00.000Z'))
+    expect(monthFrom(new Date('2024-06-20T00:00:00.000Z'), -3)).toEqual(new Date('2024-03-01T00:00:00.000Z'))
+  }),
+  it('returns no offset from month start', () => {
+    expect(monthFrom(new Date('2024-06-20T00:00:00.000Z'), 0)).toEqual(new Date('2024-06-01T00:00:00.000Z'))
+  })
+})
+
 describe('yearStart', () => {
   it('returns start of the year', () => {
     const expected = new Date('2024-01-01T00:00:00.000Z')
@@ -174,21 +191,22 @@ describe('yearStart', () => {
   })
 })
 
-describe('monthFrom', () => {
-  it('returns +offset from month start', () => {
-    expect(monthFrom(new Date('2024-06-20T00:00:00.000Z'), 1)).toEqual(new Date('2024-07-01T00:00:00.000Z'))
-    expect(monthFrom(new Date('2024-06-20T00:00:00.000Z'), 2)).toEqual(new Date('2024-08-01T00:00:00.000Z'))
-    expect(monthFrom(new Date('2024-06-20T00:00:00.000Z'), 3)).toEqual(new Date('2024-09-01T00:00:00.000Z'))
+describe('yearFrom', () => {
+  it('returns +offset from year start', () => {
+    expect(yearFrom(new Date('2024-06-25T00:00:00.000Z'), 1)).toEqual(new Date('2025-01-01T00:00:00.000Z'))
+    expect(yearFrom(new Date('2024-06-25T00:00:00.000Z'), 2)).toEqual(new Date('2026-01-01T00:00:00.000Z'))
+    expect(yearFrom(new Date('2024-06-25T00:00:00.000Z'), 3)).toEqual(new Date('2027-01-01T00:00:00.000Z'))
   }),
-  it('returns -offset from month start', () => {
-    expect(monthFrom(new Date('2024-06-20T00:00:00.000Z'), -1)).toEqual(new Date('2024-05-01T00:00:00.000Z'))
-    expect(monthFrom(new Date('2024-06-20T00:00:00.000Z'), -2)).toEqual(new Date('2024-04-01T00:00:00.000Z'))
-    expect(monthFrom(new Date('2024-06-20T00:00:00.000Z'), -3)).toEqual(new Date('2024-03-01T00:00:00.000Z'))
+  it('returns -offset from year start', () => {
+    expect(yearFrom(new Date('2024-06-25T00:00:00.000Z'), -1)).toEqual(new Date('2023-01-01T00:00:00.000Z'))
+    expect(yearFrom(new Date('2024-06-25T00:00:00.000Z'), -2)).toEqual(new Date('2022-01-01T00:00:00.000Z'))
+    expect(yearFrom(new Date('2024-06-25T00:00:00.000Z'), -3)).toEqual(new Date('2021-01-01T00:00:00.000Z'))
   }),
-  it('returns no offset from month start', () => {
-    expect(monthFrom(new Date('2024-06-20T00:00:00.000Z'), 0)).toEqual(new Date('2024-06-01T00:00:00.000Z'))
+  it('returns no offset from year start', () => {
+    expect(yearFrom(new Date('2024-06-25T00:00:00.000Z'), 0)).toEqual(new Date('2024-01-01T00:00:00.000Z'))
   })
 })
+
 
 describe('formatDate', () => {
   it('returns YYYY-MM-DD', () => {

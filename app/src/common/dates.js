@@ -85,6 +85,13 @@ export function yearStart(date) {
   return target
 }
 
+export function yearFrom(date, offset) {
+  const target = yearStart(date)
+  target.setUTCFullYear(target.getUTCFullYear() + offset)
+
+  return target
+}
+
 const MONTHS = {
   1: 'January',
   2: 'February',

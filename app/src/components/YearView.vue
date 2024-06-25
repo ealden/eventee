@@ -1,7 +1,7 @@
 <script setup>
 import { computed } from 'vue'
 
-import { formatYearHeader } from '../common/dates.js'
+import { yearFrom, formatYearHeader } from '../common/dates.js'
 import { yearCalendar } from '../common/calendars.js'
 import ViewHeader from './ViewHeader.vue'
 import YearMonthCalendar from './YearMonthCalendar.vue'
@@ -17,12 +17,7 @@ const calendar = computed(() => {
 })
 
 function prevYear() {
-  const target = new Date()
-  target.setUTCFullYear(currentDate.value.getUTCFullYear() - 1)
-  target.setUTCMonth(1 - 1)
-  target.setUTCDate(1)
-
-  currentDate.value = target
+  currentDate.value = yearFrom(currentDate.value, -1)
 }
 </script>
 
