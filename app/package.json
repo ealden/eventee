@@ -10,7 +10,6 @@
     "preview": "vite preview",
     "spec": "vitest run",
     "test:unit": "vitest",
-    "test:e2e": "playwright test",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore"
   },
   "dependencies": {
