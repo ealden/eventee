@@ -74,3 +74,20 @@ export function monthCalendar(currentDate) {
 
   return calendar
 }
+
+export function yearCalendar() {
+  return {
+    1: monthCalendar(new Date('2024-01-01')),
+    2: monthCalendar(new Date('2024-02-01')),
+    3: monthCalendar(new Date('2024-03-01')),
+    4: monthCalendar(new Date('2024-04-01')),
+    5: monthCalendar(new Date('2024-05-01')),
+    6: monthCalendar(new Date('2024-06-01')),
+    7: monthCalendar(new Date('2024-07-01')),
+    8: monthCalendar(new Date('2024-08-01')),
+    9: monthCalendar(new Date('2024-09-01')),
+    10: monthCalendar(new Date('2024-10-01')),
+    11: monthCalendar(new Date('2024-11-01')),
+    12: monthCalendar(new Date('2024-12-01'))
+  }
+}
