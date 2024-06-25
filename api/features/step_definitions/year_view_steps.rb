@@ -1,9 +1,19 @@
-When 'I try to view events in year view' do
+def load_year_view
   @page = EventsPage.new
 
   @page.load
 
   @page.year_view.click
+end
+
+When 'I try to view events in year view' do
+  load_year_view
+end
+
+When 'I try to view events last year' do
+  load_year_view
+
+  @page.prev_period.click
 end
 
 Then 'I must see this calendar for month {int}:' do |month, table|

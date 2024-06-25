@@ -15,11 +15,22 @@ const header = computed(() => {
 const calendar = computed(() => {
   return yearCalendar(currentDate.value)
 })
+
+function prevYear() {
+  const target = new Date()
+  target.setUTCFullYear(currentDate.value.getUTCFullYear() - 1)
+  target.setUTCMonth(1 - 1)
+  target.setUTCDate(1)
+
+  currentDate.value = target
+}
 </script>
 
 <template>
   <div id="year-view">
-    <ViewHeader :header="header" />
+    <ViewHeader :header="header"
+                :prev-action="prevYear"
+                :this-action="prevYear" />
     <div id="year" class="container">
       <div class="row">
         <YearMonthCalendar month="1" :calendar="calendar[1]" header="January" />
