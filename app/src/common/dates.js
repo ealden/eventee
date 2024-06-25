@@ -77,6 +77,14 @@ export function monthFrom(date, offset) {
   return target
 }
 
+export function yearStart(date) {
+  const target = copyDate(date)
+  target.setUTCMonth(1 - 1)
+  target.setUTCDate(1)
+
+  return target
+}
+
 const MONTHS = {
   1: 'January',
   2: 'February',

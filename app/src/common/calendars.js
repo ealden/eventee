@@ -6,7 +6,8 @@ import {
   weekStart,
   monthStart,
   monthEnd,
-  monthFrom
+  monthFrom,
+  yearStart,
 } from '../common/dates.js'
 
 export function dayCalendar(currentDate) {
@@ -77,10 +78,7 @@ export function monthCalendar(currentDate) {
 }
 
 export function yearCalendar(currentDate) {
-  const startDate = new Date()
-  startDate.setUTCFullYear(currentDate.getUTCFullYear())
-  startDate.setUTCMonth(1 - 1)
-  startDate.setUTCDate(1)
+  const startDate = yearStart(currentDate)
 
   const calendar = {}
 
