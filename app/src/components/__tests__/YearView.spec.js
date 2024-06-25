@@ -12,6 +12,7 @@ const options = {
 const currentPeriod = '#current-period'
 
 const prevYear = '#prev-period'
+const nextYear = '#next-period'
 
 describe('YearView', () => {
   it('renders properly', () => {
@@ -25,5 +26,12 @@ describe('YearView', () => {
     await wrapper.get(prevYear).trigger('click')
 
     expect(wrapper.get(currentPeriod).text()).toEqual('2023')
+  }),
+  it('shows next year', async () => {
+    const wrapper = mount(YearView, options)
+
+    await wrapper.get(nextYear).trigger('click')
+
+    expect(wrapper.get(currentPeriod).text()).toEqual('2025')
   })
 })

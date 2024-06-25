@@ -16,6 +16,12 @@ When 'I try to view events last year' do
   @page.prev_period.click
 end
 
+When 'I try to view events next year' do
+  load_year_view
+
+  @page.next_period.click
+end
+
 Then 'I must see this calendar for month {int}:' do |month, table|
   expected = table.raw.drop(1).flatten
 

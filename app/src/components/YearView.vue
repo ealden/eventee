@@ -19,13 +19,18 @@ const calendar = computed(() => {
 function prevYear() {
   currentDate.value = yearFrom(currentDate.value, -1)
 }
+
+function nextYear() {
+  currentDate.value = yearFrom(currentDate.value, 1)
+}
 </script>
 
 <template>
   <div id="year-view">
     <ViewHeader :header="header"
                 :prev-action="prevYear"
-                :this-action="prevYear" />
+                :this-action="prevYear"
+                :next-action="nextYear" />
     <div id="year" class="container">
       <div class="row">
         <YearMonthCalendar month="1" :calendar="calendar[1]" header="January" />
