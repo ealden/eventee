@@ -46,3 +46,7 @@ Then 'I must see these days have events:' do |table|
 
   expect(actual).to eql expected
 end
+
+Then 'I must not see days with events' do
+  expect(@page.days_with_events).to be_empty
+end

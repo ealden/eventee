@@ -120,6 +120,7 @@ Feature: Year View
       | 17  | 18  | 19  | 20  | 21  | 22  | 23  |
       | 24  | 25  | 26  | 27  | 28  | 29  | 30  |
       | 31  |     |     |     |     |     |     |
+    And   I must not see days with events
 
   Scenario: Next Year
     When  I try to view events next year
@@ -131,6 +132,7 @@ Feature: Year View
       | 12  | 13  | 14  | 15  | 16  | 17  | 18  |
       | 19  | 20  | 21  | 22  | 23  | 24  | 25  |
       | 26  | 27  | 28  | 29  | 30  | 31  |     |
+    And   I must not see days with events
 
   Scenario: This Year
     When  I try to view events this year
@@ -142,3 +144,10 @@ Feature: Year View
       | 14  | 15  | 16  | 17  | 18  | 19  | 20  |
       | 21  | 22  | 23  | 24  | 25  | 26  | 27  |
       | 28  | 29  | 30  | 31  |     |     |     |
+    And   I must see these days have events:
+      | Day with Events |
+      | 2024-05-07      |
+      | 2024-06-14      |
+      | 2024-06-17      |
+      | 2024-06-30      |
+      | 2024-07-07      |
