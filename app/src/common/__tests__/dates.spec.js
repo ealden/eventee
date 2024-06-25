@@ -17,7 +17,8 @@ import {
   formatDateTime,
   formatDay,
   formatDayViewHeader,
-  formatMonthViewHeader
+  formatMonthViewHeader,
+  formatYearHeader
 } from '../dates.js'
 
 describe('newDate', () => {
@@ -233,5 +234,25 @@ describe('formatMonthViewHeader', () => {
     expect(formatMonthViewHeader(new Date('2024-10-10T00:00:00.000Z'))).toEqual('October 2024')
     expect(formatMonthViewHeader(new Date('2024-11-11T00:00:00.000Z'))).toEqual('November 2024')
     expect(formatMonthViewHeader(new Date('2024-12-12T00:00:00.000Z'))).toEqual('December 2024')
+  })
+})
+
+describe('formatYearHeader', () => {
+  it('returns YYYY', () => {
+    expect(formatYearHeader(new Date('2024-01-01T00:00:00.000Z'))).toEqual('2024')
+    expect(formatYearHeader(new Date('2024-02-02T00:00:00.000Z'))).toEqual('2024')
+    expect(formatYearHeader(new Date('2024-03-03T00:00:00.000Z'))).toEqual('2024')
+    expect(formatYearHeader(new Date('2024-04-04T00:00:00.000Z'))).toEqual('2024')
+    expect(formatYearHeader(new Date('2024-05-05T00:00:00.000Z'))).toEqual('2024')
+    expect(formatYearHeader(new Date('2024-06-06T00:00:00.000Z'))).toEqual('2024')
+    expect(formatYearHeader(new Date('2024-07-07T00:00:00.000Z'))).toEqual('2024')
+    expect(formatYearHeader(new Date('2024-08-08T00:00:00.000Z'))).toEqual('2024')
+    expect(formatYearHeader(new Date('2024-09-09T00:00:00.000Z'))).toEqual('2024')
+    expect(formatYearHeader(new Date('2024-10-10T00:00:00.000Z'))).toEqual('2024')
+    expect(formatYearHeader(new Date('2024-11-11T00:00:00.000Z'))).toEqual('2024')
+    expect(formatYearHeader(new Date('2024-12-12T00:00:00.000Z'))).toEqual('2024')
+
+    expect(formatYearHeader(new Date('2023-12-31T00:00:00.000Z'))).toEqual('2023')
+    expect(formatYearHeader(new Date('2025-01-01T00:00:00.000Z'))).toEqual('2025')
   })
 })

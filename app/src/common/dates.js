@@ -143,3 +143,7 @@ export function formatMonthViewHeader(date) {
 
   return [month, year].join(' ')
 }
+
+export function formatYearHeader(date) {
+  return date.getUTCFullYear().toString()
+}

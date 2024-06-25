@@ -1,11 +1,16 @@
 <script setup>
 import { computed } from 'vue'
 
+import { formatYearHeader } from '../common/dates.js'
 import { yearCalendar } from '../common/calendars.js'
 import ViewHeader from './ViewHeader.vue'
 import YearMonthCalendar from './YearMonthCalendar.vue'
 
 const currentDate = defineModel()
+
+const header = computed(() => {
+  return formatYearHeader(currentDate.value)
+})
 
 const calendar = computed(() => {
   return yearCalendar(currentDate.value)
@@ -14,7 +19,7 @@ const calendar = computed(() => {
 
 <template>
   <div id="year-view">
-    <ViewHeader header="2024" />
+    <ViewHeader :header="header" />
     <div id="year" class="container">
       <div class="row">
         <YearMonthCalendar month="1" :calendar="calendar[1]" header="January" />
