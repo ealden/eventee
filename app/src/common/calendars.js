@@ -5,7 +5,8 @@ import {
   dateTimeKey,
   weekStart,
   monthStart,
-  monthEnd
+  monthEnd,
+  monthFrom
 } from '../common/dates.js'
 
 export function dayCalendar(currentDate) {
@@ -75,19 +76,17 @@ export function monthCalendar(currentDate) {
   return calendar
 }
 
-export function yearCalendar() {
-  return {
-    1: monthCalendar(new Date('2024-01-01')),
-    2: monthCalendar(new Date('2024-02-01')),
-    3: monthCalendar(new Date('2024-03-01')),
-    4: monthCalendar(new Date('2024-04-01')),
-    5: monthCalendar(new Date('2024-05-01')),
-    6: monthCalendar(new Date('2024-06-01')),
-    7: monthCalendar(new Date('2024-07-01')),
-    8: monthCalendar(new Date('2024-08-01')),
-    9: monthCalendar(new Date('2024-09-01')),
-    10: monthCalendar(new Date('2024-10-01')),
-    11: monthCalendar(new Date('2024-11-01')),
-    12: monthCalendar(new Date('2024-12-01'))
+export function yearCalendar(currentDate) {
+  const startDate = new Date()
+  startDate.setUTCFullYear(currentDate.getUTCFullYear())
+  startDate.setUTCMonth(1 - 1)
+  startDate.setUTCDate(1)
+
+  const calendar = {}
+
+  for (let i = 0; i < 12; i++) {
+    calendar[i + 1] = monthCalendar(monthFrom(startDate, i))
   }
+
+  return calendar
 }

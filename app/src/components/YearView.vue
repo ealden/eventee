@@ -5,8 +5,10 @@ import { yearCalendar } from '../common/calendars.js'
 import ViewHeader from './ViewHeader.vue'
 import YearMonthCalendar from './YearMonthCalendar.vue'
 
+const currentDate = defineModel()
+
 const calendar = computed(() => {
-  return yearCalendar()
+  return yearCalendar(currentDate.value)
 })
 </script>
 
