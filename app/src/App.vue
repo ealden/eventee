@@ -7,6 +7,7 @@ import AllEventsView from './components/AllEventsView.vue'
 import DayView from './components/DayView.vue'
 import WeekView from './components/WeekView.vue'
 import MonthView from './components/MonthView.vue'
+import YearView from './components/YearView.vue'
 
 const props = defineProps(['today'])
 
@@ -34,6 +35,10 @@ const isMonthView = computed(() => {
   return view.value == 3
 })
 
+const isYearView = computed(() => {
+  return view.value == 4
+})
+
 const groups = computed(() => {
   return groupEvents(events.value)
 })
@@ -52,6 +57,10 @@ function weekView() {
 
 function monthView() {
   view.value = 3
+}
+
+function yearView() {
+  view.value = 4
 }
 
 function fetchToday() {
@@ -118,6 +127,13 @@ onMounted(() => {
                     @click="monthView">
               Month
             </button>
+            <button id="nav-year-view"
+                    type="button"
+                    class="btn btn-outline-primary"
+                    :class="{ active: isYearView }"
+                    @click="yearView">
+              Year
+            </button>
           </div>
         </div>
         <div class="col">&nbsp;</div>
@@ -139,6 +155,10 @@ onMounted(() => {
                :today="today"
                v-model="currentDate"
                v-if="isMonthView" />
+    <YearView :events="groups"
+              :today="today"
+              v-model="currentDate"
+              v-if="isYearView" />
   </div>
 </template>
 

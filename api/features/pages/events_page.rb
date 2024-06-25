@@ -11,6 +11,7 @@ class EventsPage < SitePrism::Page
   element :day_view, '#nav-day-view'
   element :week_view, '#nav-week-view'
   element :month_view, '#nav-month-view'
+  element :year_view, '#nav-year-view'
 
   element :current_period, '#current-period'
 
@@ -37,4 +38,28 @@ class EventsPage < SitePrism::Page
       }
     end
   end
+
+  def days_of_month
+    @months ||= days_by_month
+  end
+
+  private
+
+    def days_by_month
+      months = {}
+
+      days.each do |day|
+        month = day[:class].split(' ').keep_if { |clazz|
+          clazz.include? 'month-'
+        }.first.delete('month-').to_i
+
+        unless months.include? month
+          months[month] = []
+        end
+
+        months[month] << day
+      end
+
+      months
+    end
 end
