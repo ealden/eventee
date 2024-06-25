@@ -38,43 +38,36 @@ const options = {
   }
 }
 
-const currentPeriod = '#current-period'
-const event = '.event'
-
-const prevDay = '#prev-period'
-const thisDay = '#this-period'
-const nextDay = '#next-period'
-
 describe('DayView', () => {
   it('renders properly', () => {
     const wrapper = mount(DayView, options)
 
-    expect(wrapper.get(currentPeriod).text()).toEqual('June 20, 2024')
-    expect(wrapper.findAll(event)).toHaveLength(3)
+    expect(wrapper.get('#current-period').text()).toEqual('June 20, 2024')
+    expect(wrapper.findAll('.event')).toHaveLength(3)
   }),
   it('shows yesterday', async () => {
     const wrapper = mount(DayView, options)
 
-    await wrapper.get(prevDay).trigger('click')
+    await wrapper.get('#prev-period').trigger('click')
 
-    expect(wrapper.get(currentPeriod).text()).toEqual('June 19, 2024')
-    expect(wrapper.findAll(event)).toHaveLength(0)
+    expect(wrapper.get('#current-period').text()).toEqual('June 19, 2024')
+    expect(wrapper.findAll('.event')).toHaveLength(0)
   }),
   it('shows tomorrow', async () => {
     const wrapper = mount(DayView, options)
 
-    await wrapper.get(nextDay).trigger('click')
+    await wrapper.get('#next-period').trigger('click')
 
-    expect(wrapper.get(currentPeriod).text()).toEqual('June 21, 2024')
-    expect(wrapper.findAll(event)).toHaveLength(1)
+    expect(wrapper.get('#current-period').text()).toEqual('June 21, 2024')
+    expect(wrapper.findAll('.event')).toHaveLength(1)
   }),
   it('shows today', async () => {
     const wrapper = mount(DayView, options)
 
-    await wrapper.get(prevDay).trigger('click')
-    await wrapper.get(thisDay).trigger('click')
+    await wrapper.get('#prev-period').trigger('click')
+    await wrapper.get('#this-period').trigger('click')
 
-    expect(wrapper.get(currentPeriod).text()).toEqual('June 20, 2024')
-    expect(wrapper.findAll(event)).toHaveLength(3)
+    expect(wrapper.get('#current-period').text()).toEqual('June 20, 2024')
+    expect(wrapper.findAll('.event')).toHaveLength(3)
   })
 })

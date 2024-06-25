@@ -10,38 +10,32 @@ const options = {
   }
 }
 
-const currentPeriod = '#current-period'
-
-const prevYear = '#prev-period'
-const thisYear = '#this-period'
-const nextYear = '#next-period'
-
 describe('YearView', () => {
   it('renders properly', () => {
     const wrapper = mount(YearView, options)
 
-    expect(wrapper.get(currentPeriod).text()).toEqual('2024')
+    expect(wrapper.get('#current-period').text()).toEqual('2024')
   }),
   it('shows last year', async () => {
     const wrapper = mount(YearView, options)
 
-    await wrapper.get(prevYear).trigger('click')
+    await wrapper.get('#prev-period').trigger('click')
 
-    expect(wrapper.get(currentPeriod).text()).toEqual('2023')
+    expect(wrapper.get('#current-period').text()).toEqual('2023')
   }),
   it('shows next year', async () => {
     const wrapper = mount(YearView, options)
 
-    await wrapper.get(nextYear).trigger('click')
+    await wrapper.get('#next-period').trigger('click')
 
-    expect(wrapper.get(currentPeriod).text()).toEqual('2025')
+    expect(wrapper.get('#current-period').text()).toEqual('2025')
   }),
   it('shows this year', async () => {
     const wrapper = mount(YearView, options)
 
-    await wrapper.get(prevYear).trigger('click')
-    await wrapper.get(thisYear).trigger('click')
+    await wrapper.get('#prev-period').trigger('click')
+    await wrapper.get('#this-period').trigger('click')
 
-    expect(wrapper.get(currentPeriod).text()).toEqual('2024')
+    expect(wrapper.get('#current-period').text()).toEqual('2024')
   })
 })
