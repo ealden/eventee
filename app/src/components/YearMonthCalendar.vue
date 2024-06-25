@@ -1,9 +1,9 @@
 <script setup>
 import { computed } from 'vue'
 
-import { formatDay } from '../common/dates.js'
+import { MONTHS, formatDay } from '../common/dates.js'
 
-const props = defineProps(['month', 'events', 'calendar', 'header'])
+const props = defineProps(['month', 'events', 'calendar'])
 
 const monthKey = computed(() => {
   return 'month-' + props.month
@@ -14,7 +14,7 @@ const monthKey = computed(() => {
   <div class="col px-3">
     <div class="row">
       <div class="col fw-bold fs-5 header">
-        {{ header }}
+        {{ MONTHS[month] }}
       </div>
     </div>
     <div class="row text-center">

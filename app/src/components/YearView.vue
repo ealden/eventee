@@ -43,58 +43,46 @@ function nextYear() {
       <div class="row">
         <YearMonthCalendar month="1"
                            :events="events"
-                           :calendar="calendar"
-                           header="January" />
+                           :calendar="calendar" />
         <YearMonthCalendar month="2"
                            :events="events"
-                           :calendar="calendar"
-                           header="February" />
+                           :calendar="calendar" />
         <YearMonthCalendar month="3"
                            :events="events"
-                           :calendar="calendar"
-                           header="March" />
+                           :calendar="calendar" />
       </div>
       <div class="row mt-3">
         <YearMonthCalendar month="4"
                            :events="events"
-                           :calendar="calendar"
-                           header="April" />
+                           :calendar="calendar" />
         <YearMonthCalendar month="5"
                            :events="events"
-                           :calendar="calendar"
-                           header="May" />
+                           :calendar="calendar" />
         <YearMonthCalendar month="6"
                            :events="events"
-                           :calendar="calendar"
-                           header="June" />
+                           :calendar="calendar" />
       </div>
       <div class="row mt-3">
         <YearMonthCalendar month="7"
                            :events="events"
-                           :calendar="calendar"
-                           header="July" />
+                           :calendar="calendar" />
         <YearMonthCalendar month="8"
                            :events="events"
-                           :calendar="calendar"
-                           header="August" />
+                           :calendar="calendar" />
         <YearMonthCalendar month="9"
                            :events="events"
-                           :calendar="calendar"
-                           header="September" />
+                           :calendar="calendar" />
       </div>
       <div class="row mt-3">
         <YearMonthCalendar month="10"
                            :events="events"
-                           :calendar="calendar"
-                           header="October" />
+                           :calendar="calendar" />
         <YearMonthCalendar month="11"
                            :events="events"
-                           :calendar="calendar"
-                           header="November" />
+                           :calendar="calendar" />
         <YearMonthCalendar month="12"
                            :events="events"
-                           :calendar="calendar"
-                           header="December" />
+                           :calendar="calendar" />
       </div>
     </div>
   </div>

@@ -93,7 +93,7 @@ export function yearFrom(date, offset) {
   return target
 }
 
-const MONTHS = {
+export const MONTHS = {
   1: 'January',
   2: 'February',
   3: 'March',
