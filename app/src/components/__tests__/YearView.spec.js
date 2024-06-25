@@ -5,6 +5,7 @@ import YearView from '../YearView.vue'
 
 const options = {
   props: {
+    today: new Date('2024-06-25'),
     modelValue: new Date('2024-06-25')
   }
 }
@@ -12,6 +13,7 @@ const options = {
 const currentPeriod = '#current-period'
 
 const prevYear = '#prev-period'
+const thisYear = '#this-period'
 const nextYear = '#next-period'
 
 describe('YearView', () => {
@@ -33,5 +35,13 @@ describe('YearView', () => {
     await wrapper.get(nextYear).trigger('click')
 
     expect(wrapper.get(currentPeriod).text()).toEqual('2025')
+  }),
+  it('shows this year', async () => {
+    const wrapper = mount(YearView, options)
+
+    await wrapper.get(prevYear).trigger('click')
+    await wrapper.get(thisYear).trigger('click')
+
+    expect(wrapper.get(currentPeriod).text()).toEqual('2024')
   })
 })

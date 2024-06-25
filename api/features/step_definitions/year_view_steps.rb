@@ -16,6 +16,15 @@ When 'I try to view events last year' do
   @page.prev_period.click
 end
 
+When 'I try to view events this year' do
+  load_year_view
+
+  # We default to this year, so navigate to a different year first
+  @page.prev_period.click
+
+  @page.this_period.click
+end
+
 When 'I try to view events next year' do
   load_year_view
 

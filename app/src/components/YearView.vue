@@ -1,10 +1,14 @@
 <script setup>
-import { computed } from 'vue'
+import { ref, computed } from 'vue'
 
 import { yearFrom, formatYearHeader } from '../common/dates.js'
 import { yearCalendar } from '../common/calendars.js'
 import ViewHeader from './ViewHeader.vue'
 import YearMonthCalendar from './YearMonthCalendar.vue'
+
+const props = defineProps(['today'])
+
+const today = ref(props.today)
 
 const currentDate = defineModel()
 
@@ -20,6 +24,10 @@ function prevYear() {
   currentDate.value = yearFrom(currentDate.value, -1)
 }
 
+function thisYear() {
+  currentDate.value = today.value
+}
+
 function nextYear() {
   currentDate.value = yearFrom(currentDate.value, 1)
 }
@@ -29,7 +37,7 @@ function nextYear() {
   <div id="year-view">
     <ViewHeader :header="header"
                 :prev-action="prevYear"
-                :this-action="prevYear"
+                :this-action="thisYear"
                 :next-action="nextYear" />
     <div id="year" class="container">
       <div class="row">
