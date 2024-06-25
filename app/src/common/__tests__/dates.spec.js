@@ -28,6 +28,7 @@ describe('newDate', () => {
     expected.setUTCFullYear(2024)
     expected.setUTCMonth(6 - 1)
     expected.setUTCDate(24)
+    expected.setUTCHours(0, 0, 0, 0)
 
     const actual = newDate(2024, 6, 24)
 

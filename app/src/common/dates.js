@@ -3,6 +3,7 @@ export function newDate(year, month, day) {
   target.setUTCFullYear(year)
   target.setUTCMonth(month - 1)
   target.setUTCDate(day)
+  target.setUTCHours(0, 0, 0, 0)
 
   return target
 }
