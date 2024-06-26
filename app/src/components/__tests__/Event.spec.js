@@ -18,5 +18,6 @@ describe('Event', () => {
     expect(wrapper.get('.summary').text()).toEqual('Event')
     expect(wrapper.get('.starts_at').text()).toEqual('2024-06-26 16:00')
     expect(wrapper.get('.ends_at').text()).toEqual('2024-06-26 17:00')
+    expect(wrapper.get('.duration').text()).toEqual('1')
   })
 })

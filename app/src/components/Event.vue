@@ -1,7 +1,20 @@
 <script setup>
+import { ref, computed } from 'vue'
+
 import { formatDateTime } from '../common/dates.js'
 
-defineProps(['event'])
+const props = defineProps(['event'])
+
+const event = ref(props.event)
+
+const duration = computed(() => {
+  const startsAt = new Date(event.value.starts_at)
+  const endsAt = new Date(event.value.ends_at)
+
+  const diff = endsAt.getTime() - startsAt.getTime()
+
+  return diff / 1000 / 60 / 60
+})
 </script>
 
 <template>
@@ -15,5 +28,14 @@ defineProps(['event'])
     <span class="ends_at visually-hidden">
       {{ formatDateTime(event.ends_at) }}
     </span>
+    <span class="duration visually-hidden">
+      {{ duration }}
+    </span>
   </div>
 </template>
+
+<style scoped>
+.col {
+  height: 50px;
+}
+</style>
