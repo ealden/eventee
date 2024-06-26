@@ -3,9 +3,13 @@ import { ref, computed } from 'vue'
 
 import { formatDateTime } from '../common/dates.js'
 
-const props = defineProps(['event'])
+const props = defineProps(['event', 'total', 'index'])
 
 const event = ref(props.event)
+
+const total = ref(props.total)
+
+const index = ref(props.index)
 
 const duration = computed(() => {
   const startsAt = new Date(event.value.starts_at)
@@ -15,10 +19,23 @@ const duration = computed(() => {
 
   return diff / 1000 / 60 / 60
 })
+
+const style = computed(() => {
+  const width = 100 / total.value
+  const height = 50 * duration.value
+  const left = width * index.value
+
+  return {
+    width: width + '%',
+    height: height + 'px',
+    left: left + '%'
+  }
+})
 </script>
 
 <template>
-  <div class="position-absolute col event border border-primary bg-primary-subtle bg-gradient px-1">
+  <div class="position-absolute col event border border-primary bg-primary-subtle bg-gradient px-1"
+       :style="style">
     <span class="summary">
       {{ event.summary }}
     </span>
@@ -28,14 +45,5 @@ const duration = computed(() => {
     <span class="ends_at visually-hidden">
       {{ formatDateTime(event.ends_at) }}
     </span>
-    <span class="duration visually-hidden">
-      {{ duration }}
-    </span>
   </div>
 </template>
-
-<style scoped>
-.col {
-  height: calc(50px * v-bind(duration))
-}
-</style>

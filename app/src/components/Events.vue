@@ -6,8 +6,10 @@ defineProps(['events'])
 
 <template>
   <div class="position-relative row">
-    <Event v-for="event in events"
+    <Event v-for="(event, i) in events"
            :key="event.id"
-           :event="event" />
+           :event="event"
+           :total="events.length"
+           :index="i" />
   </div>
 </template>
