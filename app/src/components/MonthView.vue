@@ -48,7 +48,7 @@ function nextMonth() {
         <div class="col"><strong>Fri</strong></div>
         <div class="col"><strong>Sat</strong></div>
       </div>
-      <div class="row"
+      <div class="row event-row"
            v-for="(week, i) in calendar"
            :key="i">
         <div class="col border"
@@ -83,3 +83,9 @@ function nextMonth() {
     </div>
   </div>
 </template>
+
+<style scoped>
+.event-row {
+  height: 150px;
+}
+</style>
