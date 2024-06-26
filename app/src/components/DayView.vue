@@ -4,7 +4,7 @@ import { ref, computed } from 'vue'
 import { dateFrom, formatTime, formatDayViewHeader } from '../common/dates.js'
 import { dayCalendar } from '../common/calendars.js'
 import ViewHeader from './ViewHeader.vue'
-import Events from './Events.vue'
+import Event from './Event.vue'
 
 const props = defineProps(['events', 'today'])
 
@@ -47,7 +47,13 @@ function nextDay() {
           {{ formatTime(dateTime) }}
         </div>
         <div class="col border">
-          <Events :events="events[dateTime]" />
+          <div class="position-relative row">
+            <Event v-for="(event, i) in events[dateTime]"
+                   :key="event.id"
+                   :event="event"
+                   :total="events.length"
+                   :index="i" />
+          </div>
         </div>
       </div>
     </div>

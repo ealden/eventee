@@ -4,7 +4,7 @@ import { ref, computed } from 'vue'
 import { weekFrom, formatTime, formatDay, formatMonthViewHeader } from '../common/dates.js'
 import { weekCalendar } from '../common/calendars.js'
 import ViewHeader from './ViewHeader.vue'
-import Events from './Events.vue'
+import Event from './Event.vue'
 
 const props = defineProps(['events', 'today'])
 
@@ -76,7 +76,13 @@ function nextWeek() {
         <div class="col border"
              v-for="dateTime in hour"
              :key="dateTime">
-          <Events :events="events[dateTime]" />
+          <div class="position-relative row">
+            <Event v-for="(event, i) in events[dateTime]"
+                   :key="event.id"
+                   :event="event"
+                   :total="events.length"
+                   :index="i" />
+          </div>
         </div>
       </div>
     </div>
