@@ -1,7 +1,7 @@
 <script setup>
 import { ref, computed } from 'vue'
 
-import { formatDateTime } from '../common/dates.js'
+import { formatTime, formatDateTime } from '../common/dates.js'
 
 const props = defineProps(['event', 'total', 'index'])
 
@@ -36,9 +36,12 @@ const style = computed(() => {
 <template>
   <div class="position-absolute col event border border-primary bg-primary-subtle bg-gradient px-1"
        :style="style">
-    <span class="summary">
-      {{ event.summary }}
-    </span>
+    <div class="hour">
+      {{ formatTime(event.starts_at) }}
+    </div>
+    <div span class="summary">
+      <strong>{{ event.summary }}</strong>
+    </div>
     <span class="starts_at visually-hidden">
       {{ formatDateTime(event.starts_at) }}
     </span>
