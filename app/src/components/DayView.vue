@@ -39,7 +39,7 @@ function nextDay() {
                 :this-action="thisDay"
                 :next-action="nextDay" />
     <div id="day" class="container">
-      <div class="row"
+      <div class="row event-row"
            v-for="dateTime in calendar"
            :key="dateTime">
         <div class="col-1 border text-end">
@@ -66,3 +66,9 @@ function nextDay() {
     </div>
   </div>
 </template>
+
+<style scoped>
+.event-row {
+  height: 50px;
+}
+</style>

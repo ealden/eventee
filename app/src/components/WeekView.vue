@@ -66,7 +66,7 @@ function nextWeek() {
           </span>
         </div>
       </div>
-      <div class="row"
+      <div class="row event-row"
            v-for="hour in calendar"
            :key="hour">
         <div class="col-1 border text-end">
@@ -95,3 +95,9 @@ function nextWeek() {
     </div>
   </div>
 </template>
+
+<style scoped>
+.event-row {
+  height: 50px;
+}
+</style>
