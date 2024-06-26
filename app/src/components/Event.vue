@@ -18,7 +18,7 @@ const duration = computed(() => {
 </script>
 
 <template>
-  <div class="col event border border-primary bg-primary-subtle bg-gradient px-1">
+  <div class="position-absolute col event border border-primary bg-primary-subtle bg-gradient px-1">
     <span class="summary">
       {{ event.summary }}
     </span>
@@ -36,6 +36,6 @@ const duration = computed(() => {
 
 <style scoped>
 .col {
-  height: 50px;
+  height: calc(50px * v-bind(duration))
 }
 </style>
