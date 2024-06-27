@@ -21,16 +21,16 @@ const calendar = computed(() => {
 })
 
 const days = computed(() => {
-  const date = calendar.value[0]
+  const week = calendar.value[0]
 
   return {
-    'Sun': formatDay(date[0]),
-    'Mon': formatDay(date[1]),
-    'Tue': formatDay(date[2]),
-    'Wed': formatDay(date[3]),
-    'Thu': formatDay(date[4]),
-    'Fri': formatDay(date[5]),
-    'Sat': formatDay(date[6])
+    'Sun': formatDay(week[0]),
+    'Mon': formatDay(week[1]),
+    'Tue': formatDay(week[2]),
+    'Wed': formatDay(week[3]),
+    'Thu': formatDay(week[4]),
+    'Fri': formatDay(week[5]),
+    'Sat': formatDay(week[6])
   }
 })
 
