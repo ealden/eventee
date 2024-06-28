@@ -18,6 +18,7 @@ describe('App', () => {
     expect(wrapper.find('#week-view').exists()).toBe(false)
     expect(wrapper.find('#month-view').exists()).toBe(false)
     expect(wrapper.find('#year-view').exists()).toBe(false)
+    expect(wrapper.find('#add-event').exists()).toBe(false)
   }),
   it('shows day view', async () => {
     const wrapper = mount(App, options)
@@ -29,6 +30,7 @@ describe('App', () => {
     expect(wrapper.find('#week-view').exists()).toBe(false)
     expect(wrapper.find('#month-view').exists()).toBe(false)
     expect(wrapper.find('#year-view').exists()).toBe(false)
+    expect(wrapper.find('#add-event').exists()).toBe(false)
   }),
   it('shows week view', async () => {
     const wrapper = mount(App, options)
@@ -40,6 +42,7 @@ describe('App', () => {
     expect(wrapper.find('#week-view').exists()).toBe(true)
     expect(wrapper.find('#month-view').exists()).toBe(false)
     expect(wrapper.find('#year-view').exists()).toBe(false)
+    expect(wrapper.find('#add-event').exists()).toBe(false)
   }),
   it('shows month view', async () => {
     const wrapper = mount(App, options)
@@ -51,6 +54,7 @@ describe('App', () => {
     expect(wrapper.find('#week-view').exists()).toBe(false)
     expect(wrapper.find('#month-view').exists()).toBe(true)
     expect(wrapper.find('#year-view').exists()).toBe(false)
+    expect(wrapper.find('#add-event').exists()).toBe(false)
   }),
   it('shows year view', async () => {
     const wrapper = mount(App, options)
@@ -62,5 +66,18 @@ describe('App', () => {
     expect(wrapper.find('#week-view').exists()).toBe(false)
     expect(wrapper.find('#month-view').exists()).toBe(false)
     expect(wrapper.find('#year-view').exists()).toBe(true)
+    expect(wrapper.find('#add-event').exists()).toBe(false)
+  }),
+  it('shows add event', async () => {
+    const wrapper = mount(App, options)
+
+    await wrapper.get('#nav-add-event').trigger('click')
+
+    expect(wrapper.find('#all-events-view').exists()).toBe(false)
+    expect(wrapper.find('#day-view').exists()).toBe(false)
+    expect(wrapper.find('#week-view').exists()).toBe(false)
+    expect(wrapper.find('#month-view').exists()).toBe(false)
+    expect(wrapper.find('#year-view').exists()).toBe(false)
+    expect(wrapper.find('#add-event').exists()).toBe(true)
   })
 })
