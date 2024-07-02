@@ -9,9 +9,14 @@ module ActionDispatch
     def json
       json = JSON.parse body, symbolize_names: true
 
-      json.each do |entry|
-        entry[:created_at] = 'timestamp'
-        entry[:updated_at] = 'timestamp'
+      if json.is_a? Array
+        json.each do |entry|
+          entry[:created_at] = 'timestamp'
+          entry[:updated_at] = 'timestamp'
+        end
+      else
+        json[:created_at] = 'timestamp'
+        json[:updated_at] = 'timestamp'
       end
 
       json

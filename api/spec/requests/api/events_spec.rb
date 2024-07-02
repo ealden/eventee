@@ -13,4 +13,17 @@ RSpec.describe 'Api::Events', type: :request do
       expect(response.json).to eql 'api/events/get_response'.json
     end
   end
+
+  describe 'POST /api/events' do
+    it 'creates a new event' do
+      event = {}
+
+      post '/api/events', params: event
+
+      expect(response).to have_http_status :created
+      expect(response.json).to eql 'api/events/post_response'.json
+
+      expect(Event.count).to eql 1
+    end
+  end
 end
