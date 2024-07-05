@@ -10,13 +10,11 @@ import MonthView from './components/MonthView.vue'
 import YearView from './components/YearView.vue'
 import AddEvent from './components/AddEvent.vue'
 
-const props = defineProps(['today'])
-
 const events = ref([])
 
-const today = ref(props.today)
+const today = ref(new Date())
 
-const currentDate = ref(props.today)
+const currentDate = ref(new Date())
 
 const view = ref(0)
 
@@ -101,11 +99,9 @@ function afterCreate() {
   newEvent.value = true
 }
 
-onMounted(() => {
-  if (!props.today) {
-    fetchToday()
-    fetchEvents()
-  }
+onMounted(async () => {
+  await fetchToday()
+  await fetchEvents()
 })
 </script>
 

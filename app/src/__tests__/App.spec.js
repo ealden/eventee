@@ -1,17 +1,26 @@
-import { describe, it, expect } from 'vitest'
+import { describe, it, expect, vi, beforeEach } from 'vitest'
+import axios from 'axios'
 
 import { mount } from '@vue/test-utils'
 import App from '../App.vue'
 
-const options = {
-  props: {
-    today: new Date('2024-06-18'),
-  }
-}
+vi.mock('axios')
 
 describe('App', () => {
+  beforeEach(() => {
+    axios
+      .get
+      .mockResolvedValueOnce({
+        data: {
+          today: '2024-06-18'
+        }
+      })
+      .mockResolvedValueOnce({
+        data: []
+      })
+  }),
   it('defaults to all events view', () => {
-    const wrapper = mount(App, options)
+    const wrapper = mount(App)
 
     expect(wrapper.find('#all-events-view').exists()).toBe(true)
     expect(wrapper.find('#day-view').exists()).toBe(false)
@@ -21,7 +30,7 @@ describe('App', () => {
     expect(wrapper.find('#add-event').exists()).toBe(false)
   }),
   it('shows day view', async () => {
-    const wrapper = mount(App, options)
+    const wrapper = mount(App)
 
     await wrapper.get('#nav-day-view').trigger('click')
 
@@ -33,7 +42,7 @@ describe('App', () => {
     expect(wrapper.find('#add-event').exists()).toBe(false)
   }),
   it('shows week view', async () => {
-    const wrapper = mount(App, options)
+    const wrapper = mount(App)
 
     await wrapper.get('#nav-week-view').trigger('click')
 
@@ -45,7 +54,7 @@ describe('App', () => {
     expect(wrapper.find('#add-event').exists()).toBe(false)
   }),
   it('shows month view', async () => {
-    const wrapper = mount(App, options)
+    const wrapper = mount(App)
 
     await wrapper.get('#nav-month-view').trigger('click')
 
@@ -57,7 +66,7 @@ describe('App', () => {
     expect(wrapper.find('#add-event').exists()).toBe(false)
   }),
   it('shows year view', async () => {
-    const wrapper = mount(App, options)
+    const wrapper = mount(App)
 
     await wrapper.get('#nav-year-view').trigger('click')
 
@@ -69,7 +78,7 @@ describe('App', () => {
     expect(wrapper.find('#add-event').exists()).toBe(false)
   }),
   it('shows add event', async () => {
-    const wrapper = mount(App, options)
+    const wrapper = mount(App)
 
     await wrapper.get('#nav-add-event').trigger('click')
 
