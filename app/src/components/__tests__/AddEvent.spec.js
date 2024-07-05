@@ -10,5 +10,7 @@ describe('AddEvent', () => {
     expect(wrapper.find('#summary').exists()).toBe(true)
     expect(wrapper.find('#starts_at').exists()).toBe(true)
     expect(wrapper.find('#ends_at').exists()).toBe(true)
+
+    expect(wrapper.find('#submit').exists()).toBe(true)
   })
 })

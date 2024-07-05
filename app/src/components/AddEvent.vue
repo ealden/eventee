@@ -1,4 +1,16 @@
 <script setup>
+import axios from 'axios'
+
+function submit() {
+  const url = import.meta.env.VITE_API_HOST + '/api/events'
+  const event = {}
+
+  axios
+    .post(url, event)
+    .then(response => {
+      location.href = '/?event=new'
+    })
+}
 </script>
 
 <template>
@@ -69,6 +81,16 @@
                        class="form-control">
               </div>
             </div>
+          </div>
+        </div>
+        <div class="row mb-2">
+          <div class="col-4">
+            <button id="submit"
+                    type="submit"
+                    class="btn btn-primary"
+                    @click.prevent="submit">
+              Submit
+            </button>
           </div>
         </div>
       </div>

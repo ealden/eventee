@@ -20,6 +20,8 @@ const currentDate = ref(props.today)
 
 const view = ref(0)
 
+const newEvent = ref(false)
+
 const isAllEventsView = computed(() => {
   return view.value == 0
 })
@@ -96,6 +98,11 @@ onMounted(() => {
     fetchToday()
     fetchEvents()
   }
+
+  const params = new URLSearchParams(window.location.search)
+  newEvent.value = params.has('event')
+
+  window.history.pushState({}, document.title, window.location.pathname);
 })
 </script>
 
@@ -157,6 +164,12 @@ onMounted(() => {
     </div>
   </div>
   <div class="container">
+    <div id="message"
+         class="alert alert-success"
+         role="Alert"
+         v-if="newEvent">
+      ✅ New event added
+    </div>
     <AllEventsView :events="events"
                    v-if="isAllEventsView" />
     <DayView :events="groups"

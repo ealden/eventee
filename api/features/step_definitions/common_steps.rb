@@ -24,6 +24,12 @@ Then 'I must see the calendar for {string}:' do |current_period, table|
   expect(actual).to eql expected
 end
 
+Then 'I must see the message {string}' do |message|
+  expect(@page.message.text).to eql message
+
+  @page = EventsPage.new
+end
+
 Then 'I must see these events:' do |table|
   expected = table.hashes
 
