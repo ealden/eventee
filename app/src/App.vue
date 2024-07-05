@@ -93,16 +93,19 @@ function fetchEvents() {
     })
 }
 
+function afterCreate() {
+  fetchEvents()
+
+  allEventsView()
+
+  newEvent.value = true
+}
+
 onMounted(() => {
   if (!props.today) {
     fetchToday()
     fetchEvents()
   }
-
-  const params = new URLSearchParams(window.location.search)
-  newEvent.value = params.has('event')
-
-  window.history.pushState({}, document.title, window.location.pathname);
 })
 </script>
 
@@ -188,7 +191,8 @@ onMounted(() => {
               :today="today"
               v-model="currentDate"
               v-if="isYearView" />
-    <AddEvent v-if="isAddEvent" />
+    <AddEvent @after-create="afterCreate"
+              v-if="isAddEvent" />
   </div>
 </template>
 

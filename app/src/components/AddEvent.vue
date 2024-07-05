@@ -1,6 +1,8 @@
 <script setup>
 import axios from 'axios'
 
+const emit = defineEmits(['after-create'])
+
 function submit() {
   const url = import.meta.env.VITE_API_HOST + '/api/events'
   const event = {}
@@ -8,7 +10,7 @@ function submit() {
   axios
     .post(url, event)
     .then(response => {
-      location.href = '/?event=new'
+      emit('after-create')
     })
 }
 </script>
