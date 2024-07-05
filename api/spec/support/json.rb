@@ -11,12 +11,14 @@ module ActionDispatch
 
       if json.is_a? Array
         json.each do |entry|
-          entry[:created_at] = 'timestamp'
-          entry[:updated_at] = 'timestamp'
+          [:created_at, :updated_at].each do |field|
+            entry[field] = 'timestamp' if entry.include? field
+          end
         end
       else
-        json[:created_at] = 'timestamp'
-        json[:updated_at] = 'timestamp'
+        [:created_at, :updated_at].each do |field|
+          json[field] = 'timestamp' if json.include? field
+        end
       end
 
       json
