@@ -5,7 +5,11 @@ const emit = defineEmits(['after-create'])
 
 function submit() {
   const url = import.meta.env.VITE_API_HOST + '/api/events'
-  const event = {}
+  const event = {
+    summary: 'New Event',
+    starts_at: '2024-07-02T15:00:00.000Z',
+    ends_at: '2024-07-02T18:00:00.000Z'
+  }
 
   axios
     .post(url, event)

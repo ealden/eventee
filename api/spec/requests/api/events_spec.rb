@@ -16,7 +16,11 @@ RSpec.describe 'Api::Events', type: :request do
 
   describe 'POST /api/events' do
     it 'creates a new event' do
-      event = {}
+      event = {
+        summary: 'New Event',
+        starts_at: '2024-07-02T15:00:00.000Z',
+        ends_at: '2024-07-02T18:00:00.000Z'
+      }
 
       post '/api/events', params: event
 

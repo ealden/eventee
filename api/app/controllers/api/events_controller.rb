@@ -4,11 +4,15 @@ class Api::EventsController < ApiController
   end
 
   def create
-    event = Event.create summary: 'New Event',
-                         starts_at: '2024-07-02 15:00',
-                         ends_at: '2024-07-02 18:00'
+    event = Event.create event_params
 
     render status: :created,
            json: event
+  end
+
+  private
+
+  def event_params
+    params.permit :summary, :starts_at, :ends_at
   end
 end
