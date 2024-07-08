@@ -1,7 +1,7 @@
 class AddEventPage < SitePrism::Page
   set_url '/'
 
-  element :add_event, '#nav-add-event'
+  element :nav_add_event, '#nav-add-event'
 
   element :message, '#message'
 
@@ -15,7 +15,23 @@ class AddEventPage < SitePrism::Page
 
   def load
     super do |page|
-      page.add_event.click
+      page.nav_add_event.click
     end
+  end
+
+  def add_event event
+    load
+
+    summary.set event[:summary]
+    starts_at.set format_datetime_local event[:starts_at]
+    ends_at.set format_datetime_local event[:ends_at]
+
+    submit.click
+  end
+
+  private
+
+  def format_datetime_local input
+    '00' + input.gsub(' ', ',')
   end
 end

@@ -1,18 +1,16 @@
 <script setup>
+import { ref } from 'vue'
 import axios from 'axios'
 
 const emit = defineEmits(['after-create'])
 
+const event = ref({})
+
 function submit() {
   const url = import.meta.env.VITE_API_HOST + '/api/events'
-  const event = {
-    summary: 'New Event',
-    starts_at: '2024-07-02T15:00:00.000Z',
-    ends_at: '2024-07-02T18:00:00.000Z'
-  }
 
   axios
-    .post(url, event)
+    .post(url, event.value)
     .then(response => {
       emit('after-create')
     })
@@ -46,7 +44,8 @@ function submit() {
               <div class="col">
                 <input id="summary"
                        type="input"
-                       class="form-control">
+                       class="form-control"
+                       v-model="event.summary">
               </div>
             </div>
           </div>
@@ -65,7 +64,8 @@ function submit() {
               <div class="col">
                 <input id="starts_at"
                        type="datetime-local"
-                       class="form-control">
+                       class="form-control"
+                       v-model="event.starts_at">
               </div>
             </div>
           </div>
@@ -84,7 +84,8 @@ function submit() {
               <div class="col">
                 <input id="ends_at"
                        type="datetime-local"
-                       class="form-control">
+                       class="form-control"
+                       v-model="event.ends_at">
               </div>
             </div>
           </div>
