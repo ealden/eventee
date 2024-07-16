@@ -1,0 +1,12 @@
+#!/bin/sh
+
+set -e
+
+cd react/
+npm run build
+cd - > /dev/null
+
+cd api/
+bundle exec rails spec
+CUCUMBER_OPTS="--tags @react" bundle exec rails cucumber
+cd - > /dev/null
