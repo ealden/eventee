@@ -19,5 +19,10 @@ bundle exec rails db:migrate
 bundle exec rails db:seed
 cd - > /dev/null
 
+echo "  + Setting up React..."
+cd react/
+npm install
+cd - > /dev/null
+
 echo ""
 echo "  We're ready to rock!"
