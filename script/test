@@ -4,6 +4,7 @@ set -e
 
 cd app/
 npm run spec
+npm run build
 rm -rf ../api/public/*
 npm run deploy
 cd - > /dev/null
