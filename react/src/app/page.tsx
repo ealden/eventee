@@ -1,4 +1,4 @@
-const data = [
+const events = [
   { id: 1, summary: 'Event 1', starts_at: '2024-06-14 14:00', ends_at: '2024-06-14 15:00' },
   { id: 2, summary: 'Event 2', starts_at: '2024-06-14 15:00', ends_at: '2024-06-14 16:00' },
   { id: 3, summary: 'Event 3', starts_at: '2024-06-14 17:00', ends_at: '2024-06-14 18:00' },
@@ -7,20 +7,6 @@ const data = [
 ];
 
 export default function App() {
-  const events = data.map(event =>
-    <tr className="event px-1" key={event.id}>
-      <td className="summary" width="60%">
-        {event.summary}
-      </td>
-      <td className="starts_at" width="20%">
-        {event.starts_at}
-      </td>
-      <td className="ends_at" width="20%">
-        {event.ends_at}
-      </td>
-    </tr>
-  );
-
   return (
     <>
       <div className="bg-body-secondary p-2 mb-3">
@@ -90,7 +76,19 @@ export default function App() {
               </tr>
             </thead>
             <tbody>
-              {events}
+            {events.map(event => (
+              <tr className="event px-1" key={event.id}>
+                <td className="summary" width="60%">
+                  {event.summary}
+                </td>
+                <td className="starts_at" width="20%">
+                  {event.starts_at}
+                </td>
+                <td className="ends_at" width="20%">
+                  {event.ends_at}
+                </td>
+              </tr>
+            ))}
             </tbody>
           </table>
         </div>
