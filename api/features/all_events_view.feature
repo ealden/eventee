@@ -1,5 +1,5 @@
 Feature: All Events View
-
+  @react
   Scenario: All Events View
     Given today is '2024-06-18'
     And   I have these existing events:
