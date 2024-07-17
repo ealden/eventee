@@ -3,7 +3,8 @@
 set -e
 
 cd react/
-npm run build
+rm -rf ../api/public/*
+npm run deploy
 cd - > /dev/null
 
 cd api/

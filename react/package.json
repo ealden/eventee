@@ -1,10 +1,11 @@
 {
-  "name": "eventee",
+  "name": "eventee-react",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev -p 3001",
     "build": "next build",
+    "deploy": "next build && copyup out/* 'out/_next/**/*' ../api/public",
     "start": "next start",
     "lint": "next lint"
   },
