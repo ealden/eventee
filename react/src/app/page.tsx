@@ -1,12 +1,28 @@
-const events = [
-  { id: 1, summary: 'Event 1', starts_at: '2024-06-14 14:00', ends_at: '2024-06-14 15:00' },
-  { id: 2, summary: 'Event 2', starts_at: '2024-06-14 15:00', ends_at: '2024-06-14 16:00' },
-  { id: 3, summary: 'Event 3', starts_at: '2024-06-14 17:00', ends_at: '2024-06-14 18:00' },
-  { id: 4, summary: 'Event 4', starts_at: '2024-06-17 14:00', ends_at: '2024-06-17 20:00' },
-  { id: 5, summary: 'Event 5', starts_at: '2024-06-30 12:00', ends_at: '2024-06-30 18:00' }
-];
+'use client'
+
+import { useState, useEffect } from 'react'
+import axios from 'axios'
+
+import { formatDateTime } from '../common/dates.js'
+
+interface Event {
+  id: number,
+  summary: string,
+  starts_at: Date,
+  ends_at: Date
+}
 
 export default function App() {
+  const [events, setEvents] = useState([])
+
+  useEffect(() => {
+    axios
+    .get(process.env.NEXT_PUBLIC_API_HOST + 'api/events')
+    .then(response => {
+      setEvents(response.data)
+    })
+  }, [])
+
   return (
     <>
       <div className="bg-body-secondary p-2 mb-3">
@@ -76,16 +92,16 @@ export default function App() {
               </tr>
             </thead>
             <tbody>
-            {events.map(event => (
+            {events.map((event: Event) => (
               <tr className="event px-1" key={event.id}>
                 <td className="summary" width="60%">
                   {event.summary}
                 </td>
                 <td className="starts_at" width="20%">
-                  {event.starts_at}
+                  {formatDateTime(event.starts_at)}
                 </td>
                 <td className="ends_at" width="20%">
-                  {event.ends_at}
+                  {formatDateTime(event.ends_at)}
                 </td>
               </tr>
             ))}
