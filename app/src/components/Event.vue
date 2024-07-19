@@ -39,7 +39,7 @@ const style = computed(() => {
     <div class="hour">
       {{ formatTime(event.starts_at) }}
     </div>
-    <div span class="summary">
+    <div class="summary">
       <strong>{{ event.summary }}</strong>
     </div>
     <span class="starts_at visually-hidden">
