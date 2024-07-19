@@ -8,7 +8,8 @@
     "deploy": "copyup out/* 'out/_next/**/*' ../api/public",
     "start": "next start",
     "lint": "next lint",
-    "test": "jest"
+    "test": "jest",
+    "spec": "jest"
   },
   "dependencies": {
     "axios": "^1.7.2",
