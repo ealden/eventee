@@ -12,6 +12,7 @@ Feature: Day View
       | Event 5b  | 2024-06-18 13:00  | 2024-06-18 15:00  |
       | Event 6   | 2024-06-30 12:00  | 2024-06-30 18:00  |
 
+  @react
   Scenario: Day View
     When  I try to view events in day view
     Then  I must see the calendar for 'June 18, 2024'

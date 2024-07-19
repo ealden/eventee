@@ -4,9 +4,19 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 
 import AllEventsView from '../components/AllEventsView'
+import DayView from '../components/DayView'
 
 export default function App() {
   const [events, setEvents] = useState([])
+  const [view, setView] = useState(0)
+
+  function allEventsView() {
+    setView(0)
+  }
+
+  function dayView() {
+    setView(1)
+  }
 
   useEffect(() => {
     axios
@@ -28,12 +38,14 @@ export default function App() {
               <div className="btn-group" role="group" aria-label="Navigation">
                 <button id="nav-all-events-view"
                         type="button"
-                        className="btn btn-outline-primary">
+                        className="btn btn-outline-primary"
+                        onClick={allEventsView}>
                   All
                 </button>
                 <button id="nav-day-view"
                         type="button"
-                        className="btn btn-outline-primary">
+                        className="btn btn-outline-primary"
+                        onClick={dayView}>
                   Day
                 </button>
                 <button id="nav-week-view"
@@ -64,7 +76,8 @@ export default function App() {
         </div>
       </div>
       <div className="container">
-        <AllEventsView events={events} />
+        {(view == 0) && <AllEventsView events={events} />}
+        {(view == 1) && <DayView />}
       </div>
     </>
   )
