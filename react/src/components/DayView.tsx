@@ -1,4 +1,4 @@
-import { formatTime, formatDateTime } from '../common/dates.js'
+import { formatTime, formatDateTime, formatDayViewHeader } from '../common/dates.js'
 import { dayCalendar } from '../common/calendars.js'
 
 interface Event {
@@ -25,7 +25,7 @@ export default function DayView({
         <div className="row">
           <div className="col">
             <h2 id="current-period">
-              June 18, 2024
+              {formatDayViewHeader(currentDate)}
             </h2>
           </div>
           <div className="col text-end">
