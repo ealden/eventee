@@ -1,12 +1,5 @@
 import { formatTime, formatDateTime } from '../common/dates.js'
 
-interface Event {
-  id: number,
-  summary: string,
-  starts_at: string,
-  ends_at: string
-}
-
 export default function Event({
   event
 } : Readonly<{

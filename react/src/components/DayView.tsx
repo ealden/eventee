@@ -5,13 +5,6 @@ import { dayCalendar } from '../common/calendars.js'
 import ViewHeader from './ViewHeader'
 import Event from './Event'
 
-interface Event {
-  id: number,
-  summary: string,
-  starts_at: string,
-  ends_at: string
-}
-
 export default function DayView({
   events,
   today

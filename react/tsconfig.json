@@ -28,6 +28,7 @@
     }
   },
   "include": [
+    "src/types/gloibal.d.ts",
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
