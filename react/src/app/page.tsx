@@ -23,11 +23,11 @@ export default function App() {
 
   useEffect(() => {
     axios
-    .get(process.env.NEXT_PUBLIC_API_HOST + 'api/events')
-    .then(response => {
-      setEvents(response.data)
-      setGroups(groupEvents(response.data))
-    })
+      .get(process.env.NEXT_PUBLIC_API_HOST + 'api/events')
+      .then(response => {
+        setEvents(response.data)
+        setGroups(groupEvents(response.data))
+      })
   }, [])
 
   return (
