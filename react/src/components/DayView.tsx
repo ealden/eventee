@@ -25,6 +25,10 @@ export default function DayView({
     setCurrentDate(dateFrom(currentDate, -1))
   }
 
+  function thisDay() {
+    setCurrentDate(today)
+  }
+
   function nextDay() {
     setCurrentDate(dateFrom(currentDate, 1))
   }
@@ -49,7 +53,8 @@ export default function DayView({
               </button>
               <button id="this-period"
                       type="button"
-                      className="btn btn-sm btn-outline-secondary">
+                      className="btn btn-sm btn-outline-secondary"
+                      onClick={thisDay}>
                 Today
               </button>
               <button id="next-period"

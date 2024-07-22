@@ -1,3 +1,4 @@
+@react
 Feature: Day View
 
   Background:
@@ -12,7 +13,6 @@ Feature: Day View
       | Event 5b  | 2024-06-18 13:00  | 2024-06-18 15:00  |
       | Event 6   | 2024-06-30 12:00  | 2024-06-30 18:00  |
 
-  @react
   Scenario: Day View
     When  I try to view events in day view
     Then  I must see the calendar for 'June 18, 2024'
@@ -21,7 +21,6 @@ Feature: Day View
       | Event 5a  | 2024-06-18 13:00  | 2024-06-18 14:00  |
       | Event 5b  | 2024-06-18 13:00  | 2024-06-18 15:00  |
 
-  @react
   Scenario: Yesterday
     When  I try to view events yesterday
     Then  I must see the calendar for 'June 17, 2024'
@@ -29,7 +28,6 @@ Feature: Day View
       | Summary   | Starts At         | Ends At           |
       | Event 4   | 2024-06-17 14:00  | 2024-06-17 20:00  |
 
-  @react
   Scenario: Tomorrow
     When  I try to view events tomorrow
     Then  I must see the calendar for 'June 19, 2024'
