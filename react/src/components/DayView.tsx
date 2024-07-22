@@ -19,6 +19,8 @@ export default function DayView({
 }>) {
   const [currentDate, setCurrentDate] = useState(today)
 
+  const header = formatDayViewHeader(currentDate)
+
   const calendar = dayCalendar(currentDate)
 
   function prevDay() {
@@ -39,7 +41,7 @@ export default function DayView({
         <div className="row">
           <div className="col">
             <h2 id="current-period">
-              {formatDayViewHeader(currentDate)}
+              {header}
             </h2>
           </div>
           <div className="col text-end">
