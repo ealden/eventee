@@ -3,9 +3,13 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 
+import { newDate } from '../common/dates.js'
 import { groupEvents } from '../common/events.js'
 import AllEventsView from '../components/AllEventsView'
 import DayView from '../components/DayView'
+
+const today = newDate(2024, 6, 18)
+const currentDate = newDate(2024, 6, 18)
 
 export default function App() {
   const [events, setEvents] = useState([])
@@ -81,7 +85,7 @@ export default function App() {
       </div>
       <div className="container">
         {(view == 0) && <AllEventsView events={events} />}
-        {(view == 1) && <DayView events={groups} />}
+        {(view == 1) && <DayView events={groups} today={today} currentDate={currentDate} />}
       </div>
     </>
   )

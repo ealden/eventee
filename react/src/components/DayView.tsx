@@ -1,9 +1,5 @@
-import { newDate, formatTime, formatDateTime } from '../common/dates.js'
+import { formatTime, formatDateTime } from '../common/dates.js'
 import { dayCalendar } from '../common/calendars.js'
-
-const currentDate = newDate(2024, 6, 18)
-
-const calendar = dayCalendar(currentDate)
 
 interface Event {
   id: number,
@@ -13,10 +9,16 @@ interface Event {
 }
 
 export default function DayView({
-  events
+  events,
+  today,
+  currentDate
 }: Readonly<{
-  events: { [key: string]: Event[] }
+  events: { [key: string]: Event[] },
+  today: Date,
+  currentDate: Date
 }>) {
+  const calendar = dayCalendar(currentDate)
+
   return (
     <div id="day-view">
       <div className="container mb-1">
