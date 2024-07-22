@@ -2,6 +2,7 @@ import { useState } from 'react'
 
 import { dateFrom, formatTime, formatDateTime, formatDayViewHeader } from '../common/dates.js'
 import { dayCalendar } from '../common/calendars.js'
+import ViewHeader from './ViewHeader'
 
 interface Event {
   id: number,
@@ -37,38 +38,10 @@ export default function DayView({
 
   return (
     <div id="day-view">
-      <div className="container mb-1">
-        <div className="row">
-          <div className="col">
-            <h2 id="current-period">
-              {header}
-            </h2>
-          </div>
-          <div className="col text-end">
-            <div className="btn-group"
-                 role="group">
-              <button id="prev-period"
-                      type="button"
-                      className="btn btn-sm btn-outline-secondary px-2"
-                      onClick={prevDay}>
-                ◀
-              </button>
-              <button id="this-period"
-                      type="button"
-                      className="btn btn-sm btn-outline-secondary"
-                      onClick={thisDay}>
-                Today
-              </button>
-              <button id="next-period"
-                      type="button"
-                      className="btn btn-sm btn-outline-secondary"
-                      onClick={nextDay}>
-                ▶
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
+      <ViewHeader header={header}
+                  prevAction={prevDay}
+                  thisAction={thisDay}
+                  nextAction={nextDay} />
       <div id="day" className="container">
       {calendar.map((dateTime) => (
         <div className="row event-row"
