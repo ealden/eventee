@@ -54,13 +54,13 @@ export default function App() {
               <div className="btn-group" role="group" aria-label="Navigation">
                 <button id="nav-all-events-view"
                         type="button"
-                        className="btn btn-outline-primary"
+                        className={`btn btn-outline-primary ${(view == 0) && 'active'}`}
                         onClick={allEventsView}>
                   All
                 </button>
                 <button id="nav-day-view"
                         type="button"
-                        className="btn btn-outline-primary"
+                        className={`btn btn-outline-primary ${(view == 1) && 'active'}`}
                         onClick={dayView}>
                   Day
                 </button>
