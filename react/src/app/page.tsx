@@ -3,16 +3,15 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 
-import { newDate } from '../common/dates.js'
 import { groupEvents } from '../common/events.js'
 import AllEventsView from '../components/AllEventsView'
 import DayView from '../components/DayView'
 
-const today = newDate(2024, 6, 18)
-const currentDate = newDate(2024, 6, 18)
-
 export default function App() {
   const [events, setEvents] = useState([])
+  const [today, setToday] = useState(new Date())
+  const [currentDate, setCurrentDate] = useState(new Date())
+
   const [view, setView] = useState(0)
 
   const [groups, setGroups] = useState({})
@@ -27,10 +26,21 @@ export default function App() {
 
   useEffect(() => {
     axios
+      .get(process.env.NEXT_PUBLIC_API_HOST + 'api/today')
+      .then(response => {
+        const date = new Date(response.data.today)
+
+        setToday(date)
+        setCurrentDate(date)
+      })
+
+    axios
       .get(process.env.NEXT_PUBLIC_API_HOST + 'api/events')
       .then(response => {
-        setEvents(response.data)
-        setGroups(groupEvents(response.data))
+        const events = response.data
+
+        setEvents(events)
+        setGroups(groupEvents(events))
       })
   }, [])
 
