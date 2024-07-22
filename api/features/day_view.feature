@@ -21,6 +21,7 @@ Feature: Day View
       | Event 5a  | 2024-06-18 13:00  | 2024-06-18 14:00  |
       | Event 5b  | 2024-06-18 13:00  | 2024-06-18 15:00  |
 
+  @react
   Scenario: Yesterday
     When  I try to view events yesterday
     Then  I must see the calendar for 'June 17, 2024'

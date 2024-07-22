@@ -8,7 +8,7 @@ describe('DayView', () => {
   it('renders properly', () => {
     const today = newDate(2024, 7, 22)
 
-    render(<DayView events={[]} today={today} currentDate={today} />)
+    render(<DayView events={[]} today={today} />)
 
     const heading = screen.getByRole('heading', { level: 2 })
 

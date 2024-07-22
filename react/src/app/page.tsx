@@ -10,7 +10,6 @@ import DayView from '../components/DayView'
 export default function App() {
   const [events, setEvents] = useState([])
   const [today, setToday] = useState(new Date())
-  const [currentDate, setCurrentDate] = useState(new Date())
 
   const [view, setView] = useState(0)
 
@@ -28,10 +27,9 @@ export default function App() {
     axios
       .get(process.env.NEXT_PUBLIC_API_HOST + 'api/today')
       .then(response => {
-        const date = new Date(response.data.today)
+        const today = new Date(response.data.today)
 
-        setToday(date)
-        setCurrentDate(date)
+        setToday(today)
       })
 
     axios
@@ -95,7 +93,7 @@ export default function App() {
       </div>
       <div className="container">
         {(view == 0) && <AllEventsView events={events} />}
-        {(view == 1) && <DayView events={groups} today={today} currentDate={currentDate} />}
+        {(view == 1) && <DayView events={groups} today={today} />}
       </div>
     </>
   )

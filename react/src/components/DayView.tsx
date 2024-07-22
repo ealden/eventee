@@ -1,4 +1,6 @@
-import { formatTime, formatDateTime, formatDayViewHeader } from '../common/dates.js'
+import { useState } from 'react'
+
+import { dateFrom, formatTime, formatDateTime, formatDayViewHeader } from '../common/dates.js'
 import { dayCalendar } from '../common/calendars.js'
 
 interface Event {
@@ -10,14 +12,18 @@ interface Event {
 
 export default function DayView({
   events,
-  today,
-  currentDate
+  today
 }: Readonly<{
   events: { [key: string]: Event[] },
-  today: Date,
-  currentDate: Date
+  today: Date
 }>) {
+  const [currentDate, setCurrentDate] = useState(today)
+
   const calendar = dayCalendar(currentDate)
+
+  function prevDay() {
+    setCurrentDate(dateFrom(currentDate, -1))
+  }
 
   return (
     <div id="day-view">
@@ -33,7 +39,8 @@ export default function DayView({
                  role="group">
               <button id="prev-period"
                       type="button"
-                      className="btn btn-sm btn-outline-secondary px-2">
+                      className="btn btn-sm btn-outline-secondary px-2"
+                      onClick={prevDay}>
                 ◀
               </button>
               <button id="this-period"
