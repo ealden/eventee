@@ -5,7 +5,7 @@ import DayView from '../DayView'
 
 describe('DayView', () => {
   it('renders properly', () => {
-    render(<DayView />)
+    render(<DayView events={[]} />)
 
     const heading = screen.getByRole('heading', { level: 2 })
 

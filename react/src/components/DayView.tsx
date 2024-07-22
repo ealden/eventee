@@ -12,14 +12,11 @@ interface Event {
   ends_at: string
 }
 
-const events: { [key: string]: Event[] } = {
-  '2024-06-18T13:00:00.000Z': [
-    { id: 1, summary: 'Event 5a', starts_at: '2024-06-18T13:00:00.000Z', ends_at: '2024-06-18T14:00:00.000Z' },
-    { id: 2, summary: 'Event 5b', starts_at: '2024-06-18T13:00:00.000Z', ends_at: '2024-06-18T15:00:00.000Z' }
-  ]
-}
-
-export default function DayView() {
+export default function DayView({
+  events
+}: Readonly<{
+  events: { [key: string]: Event[] }
+}>) {
   return (
     <div id="day-view">
       <div className="container mb-1">

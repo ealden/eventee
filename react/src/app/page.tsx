@@ -3,12 +3,15 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 
+import { groupEvents } from '../common/events.js'
 import AllEventsView from '../components/AllEventsView'
 import DayView from '../components/DayView'
 
 export default function App() {
   const [events, setEvents] = useState([])
   const [view, setView] = useState(0)
+
+  const [groups, setGroups] = useState({})
 
   function allEventsView() {
     setView(0)
@@ -23,6 +26,7 @@ export default function App() {
     .get(process.env.NEXT_PUBLIC_API_HOST + 'api/events')
     .then(response => {
       setEvents(response.data)
+      setGroups(groupEvents(response.data))
     })
   }, [])
 
@@ -77,7 +81,7 @@ export default function App() {
       </div>
       <div className="container">
         {(view == 0) && <AllEventsView events={events} />}
-        {(view == 1) && <DayView />}
+        {(view == 1) && <DayView events={groups} />}
       </div>
     </>
   )
