@@ -6,6 +6,7 @@ import axios from 'axios'
 import { groupEvents } from '../common/events.js'
 import AllEventsView from '../components/AllEventsView'
 import DayView from '../components/DayView'
+import WeekView from '../components/WeekView'
 
 export default function App() {
   const [events, setEvents] = useState([])
@@ -21,6 +22,10 @@ export default function App() {
 
   function dayView() {
     setView(1)
+  }
+
+  function weekView() {
+    setView(2)
   }
 
   useEffect(() => {
@@ -66,7 +71,8 @@ export default function App() {
                 </button>
                 <button id="nav-week-view"
                         type="button"
-                        className="btn btn-outline-primary">
+                        className={`btn btn-outline-primary ${(view == 2) && 'active'}`}
+                        onClick={weekView}>
                   Week
                 </button>
                 <button id="nav-month-view"
@@ -94,6 +100,7 @@ export default function App() {
       <div className="container">
         {(view == 0) && <AllEventsView events={events} />}
         {(view == 1) && <DayView events={groups} today={today} />}
+        {(view == 2) && <WeekView events={groups} today={today} />}
       </div>
     </>
   )

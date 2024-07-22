@@ -1,3 +1,4 @@
+@react
 Feature: Week View
 
   Background:
