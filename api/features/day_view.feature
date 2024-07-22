@@ -29,6 +29,7 @@ Feature: Day View
       | Summary   | Starts At         | Ends At           |
       | Event 4   | 2024-06-17 14:00  | 2024-06-17 20:00  |
 
+  @react
   Scenario: Tomorrow
     When  I try to view events tomorrow
     Then  I must see the calendar for 'June 19, 2024'
